@@ -17,9 +17,14 @@ async def run():
         await ws.send(json.dumps({"type": "auth", "access_token": TOKEN}))
         await ws.recv()
         
-        await ws.send(json.dumps({"id": 1, "type": "supervisor/api", "endpoint": "/ingress/session", "method": "post"}))
+        await ws.send(json.dumps({"id": 1, "type": "supervisor/api", "endpoint": "/addons/c839f4a9_bl_haos/info", "method": "get"}))
+        addon_info = (json.loads(await ws.recv())).get("result", {})
+        ingress_url = addon_info.get("ingress_url")
+        if not ingress_url.endswith("/"):
+            ingress_url += "/"
+        
+        await ws.send(json.dumps({"id": 2, "type": "supervisor/api", "endpoint": "/ingress/session", "method": "post"}))
         session_id = (json.loads(await ws.recv())).get("result", {}).get("session")
-        ingress_url = "/api/hassio_ingress/iLVjC7IzpodIae1Oqa20mkdgflEPEJsr7sL7LA4wD-8/"
         
         print("1. Starting discovery scan on hci0...")
         req_start = urllib.request.Request(

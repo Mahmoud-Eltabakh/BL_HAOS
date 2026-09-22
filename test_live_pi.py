@@ -93,7 +93,7 @@ async def run_diagnostics():
         # 6. Test Live Bluetooth Device Scan on hci0
         print("[*] Triggering live Bluetooth discovery scan on hci0...")
         req_scan = urllib.request.Request(
-            f"{HA_URL}{ingress_url}api/scan",
+            f"{HA_URL}{ingress_url}api/scan/start",
             data=json.dumps({"adapter_name": "hci0"}).encode("utf-8"),
             headers={"Cookie": f"ingress_session={session_id}", "Content-Type": "application/json"},
             method="POST"
