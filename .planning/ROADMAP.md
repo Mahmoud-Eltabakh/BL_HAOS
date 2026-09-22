@@ -16,7 +16,7 @@ BL-HAOS builds a robust, audiophile-grade Bluetooth audio streaming and multi-ro
 - [x] **Phase 8: Multi-Room Synchronization with Snapcast** - Integrate Snapcast server and dynamic client pipelines to enable sample-accurate multi-speaker synchronized playback.
 - [x] **Phase 9: Native Integration Foundation** - Replace unsupported MQTT `media_player` discovery with a bundled Home Assistant integration and direct add-on transport contract.
 - [x] **Phase 10: Native Player Control & State Sync** - Implement direct media commands, playback URL resolution, and resilient entity state synchronization.
-- [ ] **Phase 11: Migration & Live Verification** - Retire the unsupported discovery path, expose diagnostics, and verify real speaker playback on HAOS.
+- [x] **Phase 11: Migration & Live Verification** - Retire the unsupported discovery path, expose diagnostics, and verify real speaker playback on HAOS.
 
 ## Phase Details
 
@@ -194,8 +194,8 @@ Plans:
 **Plans**: 2 plans
 
   Plans:
-  - [ ] 11-01-PLAN.md — Retire MQTT discovery, preserve opt-in interoperability, and expose redacted native diagnostics
-  - [ ] 11-02-PLAN.md — Safely migrate the live HAOS integration and verify Logitech native media playback
+  - [x] 11-01-PLAN.md — Retire MQTT discovery, preserve opt-in interoperability, and expose redacted native diagnostics
+  - [x] 11-02-PLAN.md — Safely migrate the live HAOS integration and verify Logitech native media playback
 
 ## Progress
 
