@@ -1,0 +1,27 @@
+# BL-HAOS
+
+BL-HAOS is the umbrella project for Bluetooth audio playback on Home Assistant OS. It is split into two independently versioned modules.
+
+## Modules
+
+| Module | Repository | Responsibility |
+|---|---|---|
+| Bridge | [BL-HAOS-Bridge](https://github.com/Mahmoud-Eltabakh/BL-HAOS-Bridge) | Privileged Home Assistant OS add-on: BlueZ, PipeWire, WirePlumber, Snapcast, playback, and authenticated REST/WebSocket bridge. |
+| Integration | [BL-HAOS-Integration](https://github.com/Mahmoud-Eltabakh/BL-HAOS-Integration) | HACS custom integration: native `media_player` entities and Home Assistant config flow. |
+
+The modules are included here as Git submodules under `modules/bridge` and `modules/integration`.
+
+## Install
+
+1. Add `https://github.com/Mahmoud-Eltabakh/BL-HAOS-Bridge` to the Home Assistant Add-on Store.
+2. Install and start **BL-HAOS**.
+3. Add `https://github.com/Mahmoud-Eltabakh/BL-HAOS-Integration` as a custom HACS Integration repository.
+4. Install the integration, restart Home Assistant Core, and complete its config flow with the Bridge endpoint and matching bridge token.
+
+## Development
+
+```powershell
+git clone --recurse-submodules https://github.com/Mahmoud-Eltabakh/BL_HAOS.git
+```
+
+Develop and release the Bridge and Integration from their own repositories. This repository retains project coordination and planning artifacts.
