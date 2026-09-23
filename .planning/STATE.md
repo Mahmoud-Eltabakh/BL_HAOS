@@ -77,3 +77,14 @@ Recent decisions affecting current work:
 Last session: 2026-09-23
 Stopped at: Completed Phase 19 diagnostics, supportability, and observability; continue with Phase 20 go-live gates.
 Resume file: None
+
+## Phase 20 release quality gates — HOLD
+
+Phase 20 plans are complete, but the milestone remains **hold** and is not complete. Go-live is blocked by:
+- Full Playwright regression evidence is missing.
+- pip-audit and Trivy scans are missing.
+- Registry and architecture publishing are incomplete.
+- A validated HAOS image and authenticated Home Assistant validation are missing.
+- Approved target hardware is missing.
+
+The GO-LIVE-READOUT.md, RELEASE-RUNBOOK.md, and available release evidence document these gaps; release approval must not proceed until every blocker is closed.

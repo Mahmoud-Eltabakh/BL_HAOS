@@ -94,3 +94,8 @@ Phases 1-15 remain the feature-delivery backbone: add-on foundation, audio stack
 
 ---
 *Roadmap updated: 2026-09-23 after completing Phase 19; Phase 20 is current
+## Phase 20 — Release quality gates and go-live: HOLD
+
+**Plans:** complete. **Milestone:** hold (not complete).
+
+Go-live blockers: missing full Playwright regression; missing pip-audit/Trivy evidence; incomplete registry/architecture publishing; missing HAOS image and authenticated Home Assistant validation; and no approved hardware. See the Phase 20 summaries, GO-LIVE-READOUT.md, RELEASE-RUNBOOK.md, and release evidence for the validation record and exit criteria.
