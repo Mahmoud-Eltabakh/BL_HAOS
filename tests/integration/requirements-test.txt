@@ -1,0 +1,12 @@
+pytest
+pytest-asyncio
+pytest-playwright
+pytest-cov==6.0.0
+requests
+pytest-homeassistant-custom-component==0.13.205
+fastapi
+uvicorn
+wsproto
+pydantic>=2.6
+httpx
+dbus-fast

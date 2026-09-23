@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-23T05:08:49Z",
+  "candidate": {
+    "version": "0.2.23",
+    "architecture": "amd64",
+    "build_identity": "modules/bridge config.yaml and build.yaml parity; local candidate; image digest unavailable"
+  },
+  "required_reports": [
+    "bridge-junit.xml",
+    "integration-junit.xml",
+    "sil-junit.xml",
+    "coverage.xml",
+    "coverage-html"
+  ],
+  "gates": {
+    "REGRESSION": {
+      "status": "fail",
+      "exit_status": 2,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "python -m pytest tests/ -q",
+      "result": "collection blocked: playwright is unavailable"
+    },
+    "SIL-CONTRACT": {
+      "status": "pass",
+      "exit_status": 0,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "python -m pytest tests/integration/tests/test_orchestration.py -q",
+      "result": "12 focused evidence and orchestration tests passed"
+    },
+    "SIL-CONTAINER": {
+      "status": "pass",
+      "exit_status": 0,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "docker compose -f tests/integration/docker-compose.yml run --rm test-runner",
+      "result": "bridge 6 passed; integration 5 passed; reports retained"
+    },
+    "DEPENDENCY-AUDIT": {
+      "status": "blocked",
+      "exit_status": 1,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "python3 -m pip_audit --strict --requirement backend/requirements.txt; npm --prefix web_ui audit --audit-level=high; trivy fs --severity HIGH,CRITICAL --exit-code 1 modules/bridge",
+      "result": "Trivy is unavailable on the Windows host; audit lane not proven"
+    },
+    "ARCH-BUILD": {
+      "status": "blocked",
+      "exit_status": 1,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "Run the Home Assistant Builder workflow for aarch64, amd64, and armv7",
+      "result": "Architecture publishing requires Linux CI, QEMU, and registry credentials"
+    },
+    "ARTIFACT-COMPAT": {
+      "status": "pass",
+      "exit_status": 0,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "python -m pytest tests/integration/tests/test_release_contract.py -q",
+      "result": "6 release contract tests passed; manifests and report set present"
+    },
+    "DEMO-OFFLINE": {
+      "status": "pass",
+      "exit_status": 0,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "python -m pytest modules/bridge/tests/test_demo_mode.py -q",
+      "result": "4 passed"
+    },
+    "DEEP-HAOS": {
+      "status": "blocked",
+      "exit_status": 1,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "docker compose -f tests/integration/docker-compose.yml up --abort-on-container-exit --exit-code-from test-runner test-runner",
+      "result": "config_usb has no provisioning image; do not launch an unprovisioned Linux/KVM HAOS VM"
+    },
+    "LIVE-HARDWARE": {
+      "status": "blocked",
+      "exit_status": 1,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "python test_full_pi_workflow.py",
+      "result": "HA credentials, approved adapter, speaker, and media item are not available"
+    },
+    "HAOS-PREFLIGHT": {
+      "status": "blocked",
+      "exit_status": 1,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "python query_ha.py preflight",
+      "result": "HA_URL, HA_WS, and HA_TOKEN are not present in the process environment"
+    },
+    "UPGRADE-ROLLBACK": {
+      "status": "blocked",
+      "exit_status": 1,
+      "timestamp": "2026-09-23T05:08:49Z",
+      "command": "Run the upgrade and rollback sequence in RELEASE-RUNBOOK.md on the provisioned HAOS host",
+      "result": "No authenticated HAOS host or known-good Supervisor rollback target is available"
+    }
+  },
+  "blockers": [
+    {"gate": "REGRESSION", "owner": "QA owner", "rerun_command": "Install the declared test dependencies including playwright, then run python -m pytest tests/ -q"},
+    {"gate": "DEPENDENCY-AUDIT", "owner": "Security owner", "rerun_command": "Run the pinned pip-audit, npm audit, and Trivy commands from RELEASE-GATES.md on Linux CI"},
+    {"gate": "ARCH-BUILD", "owner": "Release engineer", "rerun_command": "Dispatch the builder workflow with registry credentials for aarch64, amd64, and armv7"},
+    {"gate": "DEEP-HAOS", "owner": "HAOS environment owner", "rerun_command": "Run the Deep HAOS compose command from RELEASE-RUNBOOK.md on Linux/KVM"},
+    {"gate": "LIVE-HARDWARE", "owner": "Hardware owner", "rerun_command": "Set process-only HA_URL, HA_WS, HA_TOKEN and run test_full_pi_workflow.py with approved hardware"},
+    {"gate": "HAOS-PREFLIGHT", "owner": "HAOS environment owner", "rerun_command": "Set process-only HA_URL, HA_WS, HA_TOKEN and run python query_ha.py preflight"},
+    {"gate": "UPGRADE-ROLLBACK", "owner": "Release engineer", "rerun_command": "Complete the bounded upgrade and rollback rehearsal against a known-good HAOS version or backup"}
+  ],
+  "decision": "HOLD"
+}

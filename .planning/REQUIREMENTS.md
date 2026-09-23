@@ -8,12 +8,12 @@
 
 ### Runtime Reliability & Health (PROD)
 
-- [ ] **PROD-01**: Define a canonical runtime health state for the add-on, the Bluetooth manager, PipeWire, Snapcast, and each tracked speaker.
-- [ ] **PROD-02**: Detect and report degraded and unavailable states when BlueZ, PipeWire, or the sink path is missing or unhealthy.
-- [ ] **PROD-03**: Ensure each Bluetooth speaker has a deterministic state transition model from `unknown` through `connected`, `disconnected`, `reconnecting`, and `unavailable`.
-- [ ] **PROD-04**: Recover gracefully from stale BlueZ devices, stale cached objects, and transient D-Bus disconnect events without leaving the app in a silent broken state.
-- [ ] **PROD-05**: Publish explicit startup and shutdown lifecycle progress, failure, and completion events with bounded status details.
-- [ ] **PROD-06**: Version runtime event/API contracts and prevent duplicate reconnect workers for the same speaker.
+- [x] **PROD-01**: Define a canonical runtime health state for the add-on, the Bluetooth manager, PipeWire, Snapcast, and each tracked speaker.
+- [x] **PROD-02**: Detect and report degraded and unavailable states when BlueZ, PipeWire, or the sink path is missing or unhealthy.
+- [x] **PROD-03**: Ensure each Bluetooth speaker has a deterministic state transition model from `unknown` through `connected`, `disconnected`, `reconnecting`, and `unavailable`.
+- [x] **PROD-04**: Recover gracefully from stale BlueZ devices, stale cached objects, and transient D-Bus disconnect events without leaving the app in a silent broken state.
+- [x] **PROD-05**: Publish explicit startup and shutdown lifecycle progress, failure, and completion events with bounded status details.
+- [x] **PROD-06**: Version runtime event/API contracts and prevent duplicate reconnect workers for the same speaker.
 
 ### Security & Safe Execution (SAFE)
 
@@ -47,12 +47,12 @@
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | SIL-03 | Phase 16 | Complete (16-01, 16-02) |
-| PROD-01 | Phase 17 | Planned |
-| PROD-02 | Phase 17 | Planned |
-| PROD-03 | Phase 17 | Planned |
-| PROD-04 | Phase 17 | Planned |
-| PROD-05 | Phase 17 | Planned |
-| PROD-06 | Phase 17 | Planned |
+| PROD-01 | Phase 17 | Complete (17-01, 17-02) |
+| PROD-02 | Phase 17 | Complete (17-01, 17-02) |
+| PROD-03 | Phase 17 | Complete (17-01, 17-02) |
+| PROD-04 | Phase 17 | Complete (17-01, 17-02) |
+| PROD-05 | Phase 17 | Complete (17-01, 17-02) |
+| PROD-06 | Phase 17 | Complete (17-01, 17-02) |
 | SAFE-01 | Phase 18 | Planned |
 | SAFE-02 | Phase 18 | Planned |
 | SAFE-03 | Phase 18 | Planned |
