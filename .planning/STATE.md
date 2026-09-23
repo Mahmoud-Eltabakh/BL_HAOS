@@ -3,10 +3,10 @@ gsd_state_version: '1.0'
 status: milestone_active
 progress:
   total_phases: 5
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 10
-  completed_plans: 8
-  percent: 60
+  completed_plans: 10
+  percent: 80
 ---
 
 # Project State
@@ -20,17 +20,17 @@ See: [PROJECT.md](PROJECT.md) (updated 2026-09-23)
 
 ## Current Position
 
-Phase: 19 of 20 (Diagnostics, Supportability & Observability)
-Plan: 0 of 0 in current phase
-Status: Phase 19 complete; Phase 20 current
-Last activity: 2026-09-23 — Phase 18 security validation, secret redaction, dependency pinning, and frontend audit gates passed.
+Phase: 20 of 20 (Release Quality Gates & Go-Live)
+Plan: 2 of 2 in current phase
+Status: Plans complete; milestone held pending go-live evidence
+Last activity: 2026-09-23 — Phase 20 release gates and evidence validator completed with decision HOLD.
 
-Progress: [██████░░░░░░] 60%
+Progress: [████████░░░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6 in the current milestone
+- Total plans completed: 10 in the current milestone
 - Average duration: pending
 - Total execution time: pending
 
@@ -41,8 +41,8 @@ Progress: [██████░░░░░░] 60%
 | 16. Automated Orchestration & Reporting | 2/2 | Complete | 2026-09-23 |
 | 17. Production Runtime Stabilization | 2/2 | Complete | 2026-09-23 |
 | 18. Security & Safe Execution Hardening | 2/2 | Complete | 2026-09-23 |
-| 19. Diagnostics, Supportability & Observability | 0/2 | Ready | pending |
-| 20. Release Quality Gates & Go-Live | 0/2 | pending | pending |
+| 19. Diagnostics, Supportability & Observability | 2/2 | Complete | 2026-09-23 |
+| 20. Release Quality Gates & Go-Live | 2/2 | Complete, held | 2026-09-23 |
 
 ## Accumulated Context
 
@@ -58,8 +58,8 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- Define the diagnostics, telemetry, support-bundle, recovery-guidance, and deterministic demo contracts for Phase 19.
-- Resolve the local Python `pip-audit` tooling gap through the CI gate or a reproducible developer setup.
+- Close the seven release blockers documented in `tests/integration/GO-LIVE-READOUT.md`.
+- Re-run the release evidence validator after authenticated HAOS, hardware, CI audit, and architecture evidence is available.
 
 ### Blockers/Concerns
 
@@ -75,7 +75,7 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-09-23
-Stopped at: Completed Phase 19 diagnostics, supportability, and observability; continue with Phase 20 go-live gates.
+Stopped at: Completed all planned phases; milestone remains HOLD pending release evidence.
 Resume file: None
 
 ## Phase 20 release quality gates — HOLD

@@ -55,8 +55,8 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
   4. Auth and privilege boundaries remain strict under restart, failure, and malformed-input scenarios.
   5. Dependencies are pinned and scanned for known vulnerabilities in CI.
 **Plans**:
- - [ ] 18-01-PLAN.md: Safe input validation and command guard rails
- - [ ] 18-02-PLAN.md: Secret handling, auth hardening, dependency pinning, and CVE gates
+- [x] 18-01-PLAN.md: Safe input validation and command guard rails
+- [x] 18-02-PLAN.md: Secret handling, auth hardening, dependency pinning, and CVE gates
 
 ### Phase 19: Diagnostics, Supportability & Observability
 **Goal**: Make runtime failure modes visible and diagnosable without SSH guesswork.
@@ -71,8 +71,8 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
 **Plans**:
 **Plans:** 2 plans
 Plans:
-- [ ] 19-01-PLAN.md: Unified diagnostics, telemetry, lifecycle events, and support bundle
-- [ ] 19-02-PLAN.md: Operator recovery guidance and deterministic demo/test mode
+- [x] 19-01-PLAN.md: Unified diagnostics, telemetry, lifecycle events, and support bundle
+- [x] 19-02-PLAN.md: Operator recovery guidance and deterministic demo/test mode
 
 ### Phase 20: Release Quality Gates & Go-Live
 **Goal**: Create a release gate that proves the project is safe to ship and support.
@@ -85,8 +85,8 @@ Plans:
   4. Stable/preview support policy, security disclosure process, compatibility matrix, and go-live checklist are documented.
   5. Release evidence is attached to each candidate and a failed gate blocks publication.
 **Plans**:
-- [ ] 20-01: Release gate checklist, regression matrix, compatibility policy, and CI enforcement
-- [ ] 20-02: Final HAOS validation, upgrade/rollback rehearsal, and go-live readout
+- [x] 20-01: Release gate checklist, regression matrix, compatibility policy, and CI enforcement
+- [x] 20-02: Final HAOS validation, upgrade/rollback rehearsal, and go-live readout
 
 ## Historical context
 
