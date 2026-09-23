@@ -8,7 +8,7 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
 
 ## Production milestone
 
-- [x] **Phase 16: Automated Orchestration & Reporting**
+- [ ] **Phase 16: Automated Orchestration & Reporting**
 - [ ] **Phase 17: Production Runtime Stabilization**
 - [ ] **Phase 18: Security & Safe Execution Hardening**
 - [ ] **Phase 19: Diagnostics, Supportability & Observability**
