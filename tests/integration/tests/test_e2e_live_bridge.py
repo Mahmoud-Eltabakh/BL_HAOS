@@ -99,6 +99,10 @@ async def test_connect_integration_creates_media_player_entity(hass):
     else:
         assert demo_state.state == "unavailable"
 
+    from homeassistant.components.media_player import MediaPlayerEntityFeature
+
+    assert demo_state.attributes["supported_features"] & MediaPlayerEntityFeature.BROWSE_MEDIA
+
     assert await hass.config_entries.async_unload(entry.entry_id)
     await hass.async_block_till_done()
 
