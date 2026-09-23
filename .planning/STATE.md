@@ -1,58 +1,52 @@
 ---
 gsd_state_version: '1.0'
-status: milestone_complete
+status: milestone_active
 progress:
-  total_phases: 11
-  completed_phases: 11
-  total_plans: 21
-  completed_plans: 21
-  percent: 100
+  total_phases: 5
+  completed_phases: 0
+  total_plans: 10
+  completed_plans: 2
+  percent: 20
 ---
 
 # Project State
 
 ## Project Reference
 
-See: [PROJECT.md](PROJECT.md) (updated 2026-09-21)
+See: [PROJECT.md](PROJECT.md) (updated 2026-09-23)
 
-**Core value:** Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `media_player` playback to any Bluetooth speaker with rock-solid background auto-reconnection and multi-room synchronization.
-**Current focus:** Milestone Complete
+**Core value:** Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `media_player` playback to any Bluetooth speaker with rock-solid background auto-reconnection, safe degraded-mode behavior, and production-grade operational visibility.
+**Current focus:** Production-Level Readiness milestone
 
 ## Current Position
 
-Phase: 11 of 11 (Migration & Live Verification)
+Phase: 16 of 20 (Automated Orchestration & Reporting)
 Plan: 2 of 2 in current phase
-Status: Milestone complete and verified
-Last activity: 2026-09-22 — Completed Phase 11 migration, live verification, and host readiness
+Status: Phase complete; Docker image validation remains pending
+Last activity: 2026-09-23 — Refined the production-readiness milestone using Sendspin operational lessons; Docker image validation remains pending.
 
-Progress: [██████████] 100%
+Progress: [██░░░░░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 21
-- Average duration: 5 min
-- Total execution time: 1.5 hours
+- Total plans completed: 2 in the current milestone
+- Average duration: pending
+- Total execution time: pending
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Add-on Foundation & Container Blueprint | 2/2 | 10m | 5m |
-| 2. PipeWire Audio Server & Codec Suite | 2/2 | 10m | 5m |
-| 3. BlueZ D-Bus Bluetooth Controller | 2/2 | 10m | 5m |
-| 4. Aggressive Auto-Reconnect Engine | 1/1 | 5m | 5m |
-| 5. FastAPI Backend Daemon & Real-Time Event Bus | 2/2 | 10m | 5m |
-| 6. Ingress Web Dashboard UI | 2/2 | 10m | 5m |
-| 7. Home Assistant Media Player Integration | 2/2 | 10m | 5m |
-| 8. Multi-Room Synchronization with Snapcast | 2/2 | 10m | 5m |
-| 9. Native Integration Foundation | 2/2 | 10m | 5m |
-| 10. Native Player Control & State Sync | 2/2 | 10m | 5m |
-| 11. Migration & Live Verification | 2/2 | 10m | 5m |
+| 16. Automated Orchestration & Reporting | 2/2 | Complete | 2026-09-23 |
+| 17. Production Runtime Stabilization | 0/2 | pending | pending |
+| 18. Security & Safe Execution Hardening | 0/2 | pending | pending |
+| 19. Diagnostics, Supportability & Observability | 0/2 | pending | pending |
+| 20. Release Quality Gates & Go-Live | 0/2 | pending | pending |
 
 **Recent Trend:**
-- Last 5 plans: None
-- Trend: Not started
+- Last 5 plans: none
+- Trend: Initial milestone setup
 
 *Updated after each plan completion*
 
@@ -63,22 +57,22 @@ Progress: [██████████] 100%
 Decisions are logged in [PROJECT.md](PROJECT.md) Key Decisions table.
 Recent decisions affecting current work:
 
-- [Init]: HA Add-on Architecture with Ingress UI and Debian Bookworm base for robust D-Bus & PipeWire support.
-- [Init]: PipeWire + WirePlumber modern audio engine for high-res codecs (SBC-XQ, AAC, aptX, LDAC) and AVRCP hardware volume sync.
-- [Init]: Snapcast for multi-room synchronized streaming across multiple Bluetooth speakers.
-- [Init]: Aggressive background auto-reconnect engine with exponential backoff for waking speakers.
+- [Core]: Production quality is now the primary milestone objective; feature breadth no longer outranks runtime stability.
+- [Core]: Degraded-mode safety and honest health states are required for trust and supportability.
+- [Core]: Security hardening and safe validation of inputs must come before final release readiness.
+- [Core]: Observability and diagnostics are required to make runtime failures visible and actionable.
 
 ### Pending Todos
 
-None yet.
+- Define the runtime health state model, lifecycle contract, and failure classification.
+- Define the validation, security, and support-bundle boundaries for all user-controlled inputs.
 
 ### Blockers/Concerns
 
-None yet.
+- Docker image build and SIL runner execution were not confirmed within the available validation window.
+- The production bar now includes deterministic demo validation, lifecycle/runtime contracts, guided recovery, and release evidence in addition to reliability and diagnostics.
 
 ## Deferred Items
-
-Items acknowledged and deferred at milestone close:
 
 | Category | Item | Status | Deferred At | Milestone |
 |----------|------|--------|-------------|-----------|
@@ -86,6 +80,6 @@ Items acknowledged and deferred at milestone close:
 
 ## Session Continuity
 
-Last session: 2026-09-22
-Stopped at: Completed 10-02-PLAN.md. Ready to plan Phase 11.
+Last session: 2026-09-23
+Stopped at: Refined the production-readiness milestone with Sendspin-inspired operational contracts; continue with Phase 17 planning.
 Resume file: None

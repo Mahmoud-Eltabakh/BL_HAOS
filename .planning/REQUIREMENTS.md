@@ -1,45 +1,78 @@
 # Requirements
 
 **Project:** BL-HAOS (Bluetooth Audio Adapter for Home Assistant OS)
-**Defined:** 2026-09-22
+**Defined:** 2026-09-23
+**Milestone:** Production-Level Readiness
 
-## Native Media Player Bridge Requirements
+## Production Readiness Requirements
 
-### Native Integration (NMP)
+### Runtime Reliability & Health (PROD)
 
-- [x] **NMP-01**: Bundle and install a Home Assistant custom integration without overwriting user-managed Home Assistant configuration.
-- [x] **NMP-02**: Register exactly one configurable BL-HAOS integration entry after Home Assistant loads the bundled component.
-- [x] **NMP-03**: Create a native `media_player` entity for each trusted Bluetooth audio sink with a stable unique ID and speaker device record.
-- [x] **NMP-04**: Use the add-on REST API plus WebSocket events as the primary entity control and state transport; no MQTT broker is required for the core entity path.
-- [ ] **NMP-05**: Map play, pause, stop, play-media, and volume commands to the add-on and reflect acknowledgements and connection availability in Home Assistant.
-- [ ] **NMP-06**: Resolve Home Assistant media-source and TTS URLs so the add-on can play them on the selected Bluetooth speaker.
-- [ ] **NMP-07**: Recreate entities and state correctly after Home Assistant or add-on restart, speaker disconnect, and auto-reconnect.
+- [ ] **PROD-01**: Define a canonical runtime health state for the add-on, the Bluetooth manager, PipeWire, Snapcast, and each tracked speaker.
+- [ ] **PROD-02**: Detect and report degraded and unavailable states when BlueZ, PipeWire, or the sink path is missing or unhealthy.
+- [ ] **PROD-03**: Ensure each Bluetooth speaker has a deterministic state transition model from `unknown` through `connected`, `disconnected`, `reconnecting`, and `unavailable`.
+- [ ] **PROD-04**: Recover gracefully from stale BlueZ devices, stale cached objects, and transient D-Bus disconnect events without leaving the app in a silent broken state.
+- [ ] **PROD-05**: Publish explicit startup and shutdown lifecycle progress, failure, and completion events with bounded status details.
+- [ ] **PROD-06**: Version runtime event/API contracts and prevent duplicate reconnect workers for the same speaker.
 
-### Migration & Validation (MIG)
+### Security & Safe Execution (SAFE)
 
-- [ ] **MIG-01**: Deprecate MQTT `media_player` discovery while retaining MQTT only as an optional interoperability transport.
-- [ ] **MIG-02**: Surface native-integration installation and connection status in the Ingress UI and add-on diagnostics.
-- [ ] **MIG-03**: Verify the Logitech Bluetooth adapter appears as a native media player and can receive a real Home Assistant media command on the live Raspberry Pi.
+- [ ] **SAFE-01**: Validate all incoming device addresses, command payloads, and media URLs before any privileged BlueZ or subprocess action executes.
+- [ ] **SAFE-02**: Reject malformed or unsafe playback commands with explicit, user-visible validation errors.
+- [ ] **SAFE-03**: Ensure native auth and config tokens are never logged or exposed in support output.
+- [ ] **SAFE-04**: Enforce strict privileges and safe default behavior for runtime configuration, speaker control, and system integration points.
+- [ ] **SAFE-05**: Pin and scan runtime dependencies, with documented handling for supported stable and preview releases.
 
-## Out of Scope
+### Observability & Supportability (OBS)
 
-- **HFP/HSP Microphone Input for Voice Satellite**: V1 strictly targets high-quality A2DP stereo playback sinks; two-way microphone communication degrades codec quality to 8kHz/16kHz mono and is excluded.
-- **Custom Hardware Firmware Flashing**: BL-HAOS runs on standard HAOS Linux Bluetooth adapters without requiring custom hardware modifications.
+- [ ] **OBS-01**: Expose a bounded but useful diagnostics surface covering adapter state, speaker state, sink availability, and last known failure reasons.
+- [ ] **OBS-02**: Emit structured logs with speaker address, adapter context, and failure classification for reconnect and playback issues.
+- [ ] **OBS-03**: Provide an operational summary for support staff to diagnose a broken speaker, stale state, or restart loop without live SSH access.
+
+### Operator Support & Deterministic Validation (OPS)
+
+- [ ] **OPS-01**: Provide bounded, redacted support-bundle export containing diagnostics, lifecycle status, recent classified failures, and contract versions.
+- [ ] **OPS-02**: Provide guided recovery actions for common pairing, sink, reconnect, and native-integration failures.
+- [ ] **OPS-03**: Provide a deterministic demo/test mode that exercises UI and diagnostics without Bluetooth hardware or a live Home Assistant host.
+
+### Release Quality & Regression Gates (REL)
+
+- [ ] **REL-01**: Define release smoke checks for startup, connect, disconnect, reconnect, and playback failure paths.
+- [ ] **REL-02**: Add CI gates covering the most critical Bluetooth and HA state transitions.
+- [ ] **REL-03**: Verify each release with a reproducible regression matrix covering at least reconnect, auth, and degraded-mode scenarios.
+- [ ] **REL-04**: Define reproducible multi-architecture build, upgrade, rollback, compatibility, and release-evidence gates.
 
 ## Traceability
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NMP-01 | Phase 9 | Complete |
-| NMP-02 | Phase 9 | Complete |
-| NMP-03 | Phase 9 | Complete |
-| NMP-04 | Phase 9 | Complete |
-| NMP-05 | Phase 10 | Planned |
-| NMP-06 | Phase 10 | Planned |
-| NMP-07 | Phase 10 | Planned |
-| MIG-01 | Phase 11 | Planned |
-| MIG-02 | Phase 11 | Planned |
-| MIG-03 | Phase 11 | Planned |
+| SIL-03 | Phase 16 | Complete (16-01, 16-02) |
+| PROD-01 | Phase 17 | Planned |
+| PROD-02 | Phase 17 | Planned |
+| PROD-03 | Phase 17 | Planned |
+| PROD-04 | Phase 17 | Planned |
+| PROD-05 | Phase 17 | Planned |
+| PROD-06 | Phase 17 | Planned |
+| SAFE-01 | Phase 18 | Planned |
+| SAFE-02 | Phase 18 | Planned |
+| SAFE-03 | Phase 18 | Planned |
+| SAFE-04 | Phase 18 | Planned |
+| SAFE-05 | Phase 18 | Planned |
+| OBS-01 | Phase 19 | Planned |
+| OBS-02 | Phase 19 | Planned |
+| OBS-03 | Phase 19 | Planned |
+| OPS-01 | Phase 19 | Planned |
+| OPS-02 | Phase 19 | Planned |
+| OPS-03 | Phase 19 | Planned |
+| REL-01 | Phase 20 | Planned |
+| REL-02 | Phase 20 | Planned |
+| REL-03 | Phase 20 | Planned |
+| REL-04 | Phase 20 | Planned |
+
+## Out of Scope
+
+- **Microphone / HFP Voice Satellite Input**: Deferred beyond the current A2DP audio playback product scope.
+- **Custom Hardware / Driver Forks**: BL-HAOS targets standard supported Home Assistant OS hosts and off-the-shelf Bluetooth adapters.
 
 ---
-*Requirements defined: 2026-09-22*
+*Requirements updated: 2026-09-23 using Sendspin Bluetooth Bridge production lessons*
