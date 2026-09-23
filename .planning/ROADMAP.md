@@ -9,7 +9,7 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
 ## Production milestone
 
 - [x] **Phase 16: Automated Orchestration & Reporting**
-- [ ] **Phase 17: Production Runtime Stabilization**
+- [x] **Phase 17: Production Runtime Stabilization**
 - [ ] **Phase 18: Security & Safe Execution Hardening**
 - [ ] **Phase 19: Diagnostics, Supportability & Observability**
 - [ ] **Phase 20: Release Quality Gates & Go-Live**
@@ -91,4 +91,4 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
 Phases 1-15 remain the feature-delivery backbone: add-on foundation, audio stack, Bluetooth management, reconnect, API, UI, HA integration, multi-room, live verification, VM testing, and SIL coverage. Phase 16 closes the existing test-orchestration gap before Phases 17-20 harden the platform for production.
 
 ---
-*Roadmap updated: 2026-09-23 using Sendspin Bluetooth Bridge production lessons*
+*Roadmap updated: 2026-09-23 after completing Phase 17; Phase 18 is current*
