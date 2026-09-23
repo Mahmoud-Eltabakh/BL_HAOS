@@ -8,7 +8,7 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
 
 ## Production milestone
 
-- [ ] **Phase 16: Automated Orchestration & Reporting**
+- [x] **Phase 16: Automated Orchestration & Reporting**
 - [ ] **Phase 17: Production Runtime Stabilization**
 - [ ] **Phase 18: Security & Safe Execution Hardening**
 - [ ] **Phase 19: Diagnostics, Supportability & Observability**
@@ -41,8 +41,8 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
   5. Stale-device recovery is bounded, classified, and non-destructive by default.
   6. Runtime contracts are versioned at API, event, and any subprocess boundary.
 **Plans**:
-- [ ] 17-01: Lifecycle, health-state, event, and runtime-contract model
-- [ ] 17-02: Reconnect concurrency, stale-state recovery, and degraded-mode tests
+- [x] 17-01: Lifecycle, health-state, event, and runtime-contract model
+- [x] 17-02: Reconnect concurrency, stale-state recovery, and degraded-mode tests
 
 ### Phase 18: Security & Safe Execution Hardening
 **Goal**: Force user-controlled inputs and privileged actions through strict validation and safe default handling.
