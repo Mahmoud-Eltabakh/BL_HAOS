@@ -4,10 +4,13 @@ services:
   haos:
     image: qemux/qemu
     container_name: haos_vm
+    cap_add:
+      - NET_ADMIN
     environment:
       - BOOT=https://github.com/home-assistant/operating-system/releases/download/12.4/haos_ova-12.4.qcow2.xz
       - DISK_SIZE=32G
       - RAM_SIZE=2G
+      - USER_PORTS=8123,22222
       # Mount the CONFIG usb drive to provision SSH keys via virtual virtio drive
       - ARGUMENTS=-drive file=/config_usb/config.img,format=raw,if=virtio
     volumes:
