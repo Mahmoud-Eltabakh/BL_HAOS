@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-23T05:08:49Z",
+  "generated_at": "2026-09-23T10:07:00Z",
   "candidate": {
-    "version": "0.2.23",
+    "version": "0.2.24",
     "architecture": "amd64",
-    "build_identity": "modules/bridge config.yaml and build.yaml parity; local candidate; image digest unavailable"
+    "build_identity": "modules/bridge config.yaml and build.yaml parity; amd64/aarch64/armv7 all built and published by GitHub Actions run 35844833699 (commit 135d1918a24bdefd9aaada098ef15db4ea686b58)"
   },
   "required_reports": [
     "bridge-junit.xml",
@@ -16,10 +16,10 @@
   "gates": {
     "REGRESSION": {
       "status": "fail",
-      "exit_status": 2,
-      "timestamp": "2026-09-23T05:08:49Z",
-      "command": "python -m pytest tests/ -q",
-      "result": "collection blocked: playwright is unavailable"
+      "exit_status": 1,
+      "timestamp": "2026-09-23T10:03:00Z",
+      "command": "python -m pytest tests/ -q --ignore=tests/integration/tests/test_e2e_live_bridge.py",
+      "result": "playwright installed and no longer blocks collection (10 passed, 1 skipped); 12 failures remain: test_addon_e2e.py needs a live Home Assistant instance at localhost:8123 (same class as LIVE-HARDWARE/HAOS-PREFLIGHT); test_orchestration.py/test_release_contract.py/test_release_evidence.py reference tests/integration/{SMOKE-MATRIX,CI-GATES,RELEASE-GATES,RELEASE-RUNBOOK,GO-LIVE-READOUT}.md and root query_ha.py, which are currently relocated under .planning/ by unrelated pre-existing workspace state (see .planning/STATE.md); those files were intentionally left untouched this run and the path drift needs a doc-owner decision (restore paths or update the test references)"
     },
     "SIL-CONTRACT": {
       "status": "pass",
@@ -36,18 +36,18 @@
       "result": "bridge 6 passed; integration 5 passed; reports retained"
     },
     "DEPENDENCY-AUDIT": {
-      "status": "blocked",
-      "exit_status": 1,
-      "timestamp": "2026-09-23T05:08:49Z",
+      "status": "pass",
+      "exit_status": 0,
+      "timestamp": "2026-09-23T10:03:00Z",
       "command": "python3 -m pip_audit --strict --requirement backend/requirements.txt; npm --prefix web_ui audit --audit-level=high; trivy fs --severity HIGH,CRITICAL --exit-code 1 modules/bridge",
-      "result": "Trivy is unavailable on the Windows host; audit lane not proven"
+      "result": "pip-audit: no known vulnerabilities; npm audit: 0 vulnerabilities; trivy fs (installed via winget, AquaSecurity.Trivy 0.74.0): 0 HIGH/CRITICAL findings across backend/requirements.txt (pip) and web_ui/package-lock.json (npm)"
     },
     "ARCH-BUILD": {
-      "status": "blocked",
-      "exit_status": 1,
-      "timestamp": "2026-09-23T05:08:49Z",
-      "command": "Run the Home Assistant Builder workflow for aarch64, amd64, and armv7",
-      "result": "Architecture publishing requires Linux CI, QEMU, and registry credentials"
+      "status": "pass",
+      "exit_status": 0,
+      "timestamp": "2026-09-23T09:31:00Z",
+      "command": "Home Assistant Builder workflow (.github/workflows/builder.yaml) dispatched via push to main",
+      "result": "GitHub Actions run 35844833699 (https://github.com/Mahmoud-Eltabakh/BL-HAOS-Bridge/actions/runs/35844833699), commit 135d1918a24bdefd9aaada098ef15db4ea686b58: Bridge release gates, Build amd64, Build aarch64, Build armv7 all succeeded and published to ghcr.io"
     },
     "ARTIFACT-COMPAT": {
       "status": "pass",
@@ -93,9 +93,7 @@
     }
   },
   "blockers": [
-    {"gate": "REGRESSION", "owner": "QA owner", "rerun_command": "Install the declared test dependencies including playwright, then run python -m pytest tests/ -q"},
-    {"gate": "DEPENDENCY-AUDIT", "owner": "Security owner", "rerun_command": "Run the pinned pip-audit, npm audit, and Trivy commands from RELEASE-GATES.md on Linux CI"},
-    {"gate": "ARCH-BUILD", "owner": "Release engineer", "rerun_command": "Dispatch the builder workflow with registry credentials for aarch64, amd64, and armv7"},
+    {"gate": "REGRESSION", "owner": "QA owner", "rerun_command": "Restore tests/integration/{SMOKE-MATRIX,CI-GATES,RELEASE-GATES,RELEASE-RUNBOOK,GO-LIVE-READOUT}.md and root query_ha.py from .planning/ (or update the referencing tests), then start a local Home Assistant instance on :8123 and run python -m pytest tests/ -q"},
     {"gate": "DEEP-HAOS", "owner": "HAOS environment owner", "rerun_command": "Run the Deep HAOS compose command from RELEASE-RUNBOOK.md on Linux/KVM"},
     {"gate": "LIVE-HARDWARE", "owner": "Hardware owner", "rerun_command": "Set process-only HA_URL, HA_WS, HA_TOKEN and run test_full_pi_workflow.py with approved hardware"},
     {"gate": "HAOS-PREFLIGHT", "owner": "HAOS environment owner", "rerun_command": "Set process-only HA_URL, HA_WS, HA_TOKEN and run python query_ha.py preflight"},

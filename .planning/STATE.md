@@ -58,13 +58,12 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- Close the seven release blockers documented in `tests/integration/GO-LIVE-READOUT.md`.
-- Re-run the release evidence validator after authenticated HAOS, hardware, CI audit, and architecture evidence is available.
+- Close the five remaining release blockers documented in `.planning/GO-LIVE-READOUT.md` (REGRESSION, DEEP-HAOS, LIVE-HARDWARE, HAOS-PREFLIGHT, UPGRADE-ROLLBACK). DEPENDENCY-AUDIT and ARCH-BUILD passed with real evidence on 2026-09-23 (pip-audit/npm audit/Trivy all clean; GitHub Actions run 35844833699 built and published amd64/aarch64/armv7).
+- Re-run the release evidence validator after authenticated HAOS, hardware, and a live Home Assistant instance are available.
 
 ### Blockers/Concerns
 
-- Local `pip-audit` is unavailable; CI installs pinned `pip-audit==2.7.3` and treats high/critical findings as blocking.
-- The parent worktree contains unrelated dirty integration/submodule changes that must remain untouched.
+- The parent worktree contains unrelated dirty integration/submodule changes that must remain untouched, including tests/integration/{SMOKE-MATRIX,CI-GATES,RELEASE-GATES,RELEASE-RUNBOOK,GO-LIVE-READOUT}.md and root query_ha.py, which were relocated to `.planning/`. This breaks REGRESSION's static contract tests (test_orchestration.py, test_release_contract.py, test_release_evidence.py reference the old paths) and needs a doc-owner decision: restore the original paths, or update the tests to the new `.planning/` locations.
 
 ## Deferred Items
 
