@@ -20,17 +20,17 @@ See: [PROJECT.md](PROJECT.md) (updated 2026-09-23)
 
 ## Current Position
 
-Phase: 18 of 20 (Security & Safe Execution Hardening)
+Phase: 19 of 20 (Diagnostics, Supportability & Observability)
 Plan: 0 of 2 in current phase
-Status: Phase 17 complete; Phase 18 current
-Last activity: 2026-09-23 — Phase 17 complete — runtime health, reconnect ownership, BlueZ recovery, and full bridge regression tests passed. Phase 18 is now current.
+Status: Phase 18 complete; ready for Phase 19 planning
+Last activity: 2026-09-23 — Phase 18 security validation, secret redaction, dependency pinning, and frontend audit gates passed.
 
-Progress: [██░░░░░░░░░░░] 20%
+Progress: [██████░░░░░░] 60%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2 in the current milestone
+- Total plans completed: 6 in the current milestone
 - Average duration: pending
 - Total execution time: pending
 
@@ -40,15 +40,9 @@ Progress: [██░░░░░░░░░░░] 20%
 |-------|-------|-------|----------|
 | 16. Automated Orchestration & Reporting | 2/2 | Complete | 2026-09-23 |
 | 17. Production Runtime Stabilization | 2/2 | Complete | 2026-09-23 |
-| 18. Security & Safe Execution Hardening | 0/2 | Current | 2026-09-23 |
-| 19. Diagnostics, Supportability & Observability | 0/2 | pending | pending |
+| 18. Security & Safe Execution Hardening | 2/2 | Complete | 2026-09-23 |
+| 19. Diagnostics, Supportability & Observability | 0/2 | Ready | pending |
 | 20. Release Quality Gates & Go-Live | 0/2 | pending | pending |
-
-**Recent Trend:**
-- Last 5 plans: none
-- Trend: Initial milestone setup
-
-*Updated after each plan completion*
 
 ## Accumulated Context
 
@@ -57,19 +51,20 @@ Progress: [██░░░░░░░░░░░] 20%
 Decisions are logged in [PROJECT.md](PROJECT.md) Key Decisions table.
 Recent decisions affecting current work:
 
-- [Core]: Production quality is now the primary milestone objective; feature breadth no longer outranks runtime stability.
-- [Core]: Degraded-mode safety and honest health states are required for trust and supportability.
-- [Core]: Security hardening and safe validation of inputs must come before final release readiness.
-- [Core]: Observability and diagnostics are required to make runtime failures visible and actionable.
+- Production quality outranks feature expansion until release gates pass.
+- Degraded-mode safety and honest health states are required for trust.
+- Native authentication, secret redaction, strict input validation, and dependency audit gates are release blockers.
+- The native Home Assistant media-player boundary remains the product boundary; Sendspin is an operational reference only.
 
 ### Pending Todos
 
-- Define the validation, security, and support-bundle boundaries for all user-controlled inputs.
+- Define the diagnostics, telemetry, support-bundle, recovery-guidance, and deterministic demo contracts for Phase 19.
+- Resolve the local Python `pip-audit` tooling gap through the CI gate or a reproducible developer setup.
 
 ### Blockers/Concerns
 
-- Phase 16 Docker image build and SIL runner execution passed; both SIL suites produced required reports.
-- The production bar now includes deterministic demo validation, lifecycle/runtime contracts, guided recovery, and release evidence in addition to reliability and diagnostics.
+- Local `pip-audit` is unavailable; CI installs pinned `pip-audit==2.7.3` and treats high/critical findings as blocking.
+- The parent worktree contains unrelated dirty integration/submodule changes that must remain untouched.
 
 ## Deferred Items
 
@@ -80,5 +75,5 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-09-23
-Stopped at: Completed and validated Phase 17; begin Phase 18 planning.
+Stopped at: Completed Phase 18 security hardening; continue with Phase 19 planning.
 Resume file: None
