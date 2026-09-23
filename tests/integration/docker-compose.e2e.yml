@@ -1,0 +1,40 @@
+version: "3"
+
+# Full-stack E2E simulation: a real BL-HAOS bridge container (demo mode, no
+# physical Bluetooth/PipeWire hardware required) plus a runner container that
+# drives it over real HTTP/WebSocket exactly as the Home Assistant integration
+# would. See tests/integration/scripts/run-e2e-tests.sh for the orchestrator
+# and .github/skills/update-e2e-tests/SKILL.md for how to extend coverage.
+
+services:
+  bridge:
+    build:
+      context: ../../modules/bridge
+      dockerfile: Dockerfile
+    container_name: bl_haos_e2e_bridge
+    environment:
+      - BLHAOS_DEMO_MODE=1
+      - BLHAOS_DEMO_SCENARIO=${BLHAOS_DEMO_SCENARIO:-healthy}
+      - BLHAOS_NATIVE_TOKEN=${BLHAOS_NATIVE_TOKEN:-e2e-test-token}
+    ports:
+      - "8099:8099"
+
+  e2e-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    container_name: bl_haos_e2e_runner
+    depends_on:
+      - bridge
+    environment:
+      # BRIDGE_URL is overridden by run-e2e-tests.sh with the bridge container's
+      # raw IP (pytest-homeassistant-custom-component blocks DNS resolution of
+      # non-literal hostnames like "bridge", even for real-network tests).
+      - BRIDGE_URL=${BRIDGE_URL:-http://bridge:8099}
+      - BLHAOS_NATIVE_TOKEN=${BLHAOS_NATIVE_TOKEN:-e2e-test-token}
+      - BLHAOS_DEMO_SCENARIO=${BLHAOS_DEMO_SCENARIO:-healthy}
+    volumes:
+      - ../../:/workspace
+      - ./reports:/reports
+    working_dir: /workspace
+    command: ["sh", "/workspace/tests/integration/scripts/run-e2e-scenario.sh"]
