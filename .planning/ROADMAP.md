@@ -11,8 +11,8 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
 - [x] **Phase 16: Automated Orchestration & Reporting**
 - [x] **Phase 17: Production Runtime Stabilization**
 - [x] **Phase 18: Security & Safe Execution Hardening**
-- [ ] **Phase 19: Diagnostics, Supportability & Observability**
-- [ ] **Phase 20: Release Quality Gates & Go-Live**
+- [x] **Phase 19: Diagnostics, Supportability & Observability**
+- [>] **Phase 20: Release Quality Gates & Go-Live**
 
 ## Phase details
 
@@ -69,8 +69,10 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
   4. A redacted support bundle can be exported without tokens, credentials, or uncontrolled log volume.
   5. A deterministic demo mode exercises the UI and diagnostics without Bluetooth or HA hardware.
 **Plans**:
-- [ ] 19-01: Unified diagnostics, telemetry, lifecycle events, and support bundle
-- [ ] 19-02: Operator recovery guidance and deterministic demo/test mode
+**Plans:** 2 plans
+Plans:
+- [ ] 19-01-PLAN.md: Unified diagnostics, telemetry, lifecycle events, and support bundle
+- [ ] 19-02-PLAN.md: Operator recovery guidance and deterministic demo/test mode
 
 ### Phase 20: Release Quality Gates & Go-Live
 **Goal**: Create a release gate that proves the project is safe to ship and support.
@@ -91,4 +93,4 @@ The reference bar is the operational maturity demonstrated by Sendspin Bluetooth
 Phases 1-15 remain the feature-delivery backbone: add-on foundation, audio stack, Bluetooth management, reconnect, API, UI, HA integration, multi-room, live verification, VM testing, and SIL coverage. Phase 16 closes the existing test-orchestration gap before Phases 17-20 harden the platform for production.
 
 ---
-*Roadmap updated: 2026-09-23 after completing Phase 18; Phase 19 is ready*
+*Roadmap updated: 2026-09-23 after completing Phase 19; Phase 20 is current
