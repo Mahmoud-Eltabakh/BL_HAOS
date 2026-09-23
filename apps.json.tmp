@@ -1,0 +1,854 @@
+{
+  "user": {
+    "cb646a50_get": {
+      "options": {},
+      "version": "1.3.1",
+      "image": "ghcr.io/hacs/aarch64-addon-get",
+      "system_managed_config_entry": null,
+      "protected": true,
+      "ingress_token": "ZdV51VRnFySLd1rCThjZJsjizW7t0xSTKJUMUc4wggA",
+      "system_managed": false,
+      "uuid": "21c63bc4d55c4b00a16e68e29e74a831",
+      "ingress_panel": false,
+      "auto_update": false,
+      "watchdog": false,
+      "access_token": "de5a9cc8f4304972c10c86c85de4ee39f26c2a6b45cfbf84c12d693f90b520e21b7e218cbc64b4a35860bb8313d45fedb28628e7a14c0441",
+      "boot": "manual"
+    },
+    "core_configurator": {
+      "options": {},
+      "version": "6.1.0",
+      "image": "homeassistant/aarch64-addon-configurator",
+      "uuid": "c5dcbf15962b4ef3961f526007189a8d",
+      "system_managed_config_entry": null,
+      "ingress_panel": true,
+      "watchdog": true,
+      "protected": true,
+      "system_managed": false,
+      "auto_update": false,
+      "ingress_token": "fRmqDKslNNven0X8aZo3XCdRhzIG5clwkhr7AUeO9HI",
+      "access_token": "c897c42a41a22ae0a0a1ced40c3728dc8dfaaec99d228b8f69e692fe8c34c157957ff7573f3134b177578c9295dddf96a2057eca77b1a2f4",
+      "boot": "manual"
+    },
+    "core_ssh": {
+      "options": {},
+      "version": "10.5.0",
+      "image": "homeassistant/aarch64-addon-ssh",
+      "uuid": "be4c3813d2c5447386ce982e3c1a36e8",
+      "protected": true,
+      "ingress_token": "GnuFTfzJ4UZJqUz3IuA9qKuBABHvqRw9zMGve-s_bvg",
+      "system_managed_config_entry": null,
+      "auto_update": true,
+      "system_managed": false,
+      "ingress_panel": true,
+      "watchdog": true,
+      "access_token": "9d90f03bec70ce7c22a3bd1fe86aaddc91c18db1d50f4b9e7da0a233a7bd94025d57949270f46464644d3bd8ae3f5d2ecfd5c96259f4d9b0",
+      "boot": "manual"
+    },
+    "85b1ecde_sendspin_bt_bridge": {
+      "options": {
+        "sendspin_server": "auto",
+        "sendspin_port": 8927,
+        "bridge_name": "85b1ecde-sendspin-bt-bridge",
+        "ha_area_name_assist_enabled": true,
+        "tz": "Europe/Berlin",
+        "pulse_latency_msec": 600,
+        "startup_banner_grace_seconds": 5,
+        "recovery_banner_grace_seconds": 15,
+        "prefer_sbc_codec": false,
+        "disable_pa_rescue_streams": false,
+        "bt_check_interval": 10,
+        "bt_max_reconnect_fails": 0,
+        "ma_auto_silent_auth": true,
+        "bluetooth_devices": [
+          {
+            "mac": "EC:81:93:53:A9:16",
+            "player_name": "Logitech BT Adapter",
+            "required_lead_time_ms": 250,
+            "min_buffer_ms": 250,
+            "static_delay_source": "auto_pending",
+            "listen_host": "192.168.1.21",
+            "listen_port": 8928,
+            "preferred_format": "flac:44100:16:2"
+          }
+        ],
+        "bluetooth_adapters": [
+          {
+            "id": "hci0",
+            "mac": "B8:27:EB:36:34:54",
+            "name": "homeassistant"
+          }
+        ],
+        "ha_integration": {
+          "enabled": false,
+          "mode": "off",
+          "mqtt_broker": "auto",
+          "mqtt_port": 1883,
+          "mqtt_username": "",
+          "mqtt_password": "",
+          "mqtt_discovery_prefix": "homeassistant",
+          "mqtt_tls": false,
+          "advertise_mdns": true,
+          "supervisor_pair": true
+        }
+      },
+      "version": "2.75.0",
+      "image": "ghcr.io/trudenboy/sendspin-bt-bridge",
+      "ingress_token": "Ohg_BmLblj7PZniBADpAPaOceI0fb6R2_nyC7UpA5Nk",
+      "watchdog": true,
+      "system_managed": false,
+      "uuid": "83e501c461734d28afe3d12bb20ac460",
+      "auto_update": true,
+      "ingress_panel": true,
+      "system_managed_config_entry": null,
+      "protected": true,
+      "access_token": "15b169cae4521352a1bcb02760a2073194df40c91319dd91afa1eb8be0df48a8e0942184069854419f50a877043e83c80de825fea8fa72ca"
+    },
+    "d5369777_music_assistant": {
+      "options": {},
+      "version": "2.10.4",
+      "image": "ghcr.io/music-assistant/server",
+      "ingress_token": "xuRmVHfhO0SqEIC4E5EtTWG_QK7_qPCEiJLCpDQq7GU",
+      "watchdog": false,
+      "system_managed": false,
+      "uuid": "bf783af363de49dc88f765b20aab7361",
+      "auto_update": false,
+      "ingress_panel": false,
+      "system_managed_config_entry": null,
+      "protected": true
+    }
+  },
+  "system": {
+    "cb646a50_get": {
+      "name": "Get HACS",
+      "version": "1.3.1",
+      "slug": "get",
+      "image": "ghcr.io/hacs/{arch}-addon-get",
+      "description": "The easiest way to get HACS for Home Assistant",
+      "startup": "once",
+      "boot": "manual",
+      "url": "https://github.com/hacs/addons/tree/main/get",
+      "arch": [
+        "armhf",
+        "armv7",
+        "aarch64",
+        "amd64",
+        "i386"
+      ],
+      "init": false,
+      "schema": {
+        "channel": "list(current|development)?"
+      },
+      "map": [
+        {
+          "type": "homeassistant_config",
+          "read_only": false
+        }
+      ],
+      "hassio_role": "default",
+      "advanced": false,
+      "ingress_stream": false,
+      "usb": false,
+      "panel_admin": true,
+      "tmpfs": false,
+      "devicetree": false,
+      "auth_api": false,
+      "gpio": false,
+      "journald": false,
+      "host_ipc": false,
+      "docker_api": false,
+      "host_network": false,
+      "hassio_api": false,
+      "legacy": false,
+      "ingress": false,
+      "apparmor": true,
+      "audio": false,
+      "host_pid": false,
+      "kernel_modules": false,
+      "timeout": 10,
+      "realtime": false,
+      "homeassistant_api": false,
+      "udev": false,
+      "host_uts": false,
+      "stdin": false,
+      "backup": "hot",
+      "stage": "stable",
+      "breaking_versions": [],
+      "host_dbus": false,
+      "ingress_port": 8099,
+      "panel_icon": "mdi:puzzle",
+      "full_access": false,
+      "options": {},
+      "video": false,
+      "uart": false,
+      "repository": "cb646a50",
+      "translations": {
+        "en": {
+          "configuration": {
+            "channel": {
+              "name": "Channel",
+              "description": "What channel should be used to download HACS."
+            }
+          }
+        }
+      },
+      "ulimits": {}
+    },
+    "core_configurator": {
+      "version": "6.1.0",
+      "slug": "configurator",
+      "name": "File editor",
+      "description": "Simple browser-based file editor for Home Assistant",
+      "url": "https://github.com/home-assistant/addons/tree/master/configurator",
+      "arch": [
+        "aarch64",
+        "amd64"
+      ],
+      "homeassistant": "0.91.1",
+      "homeassistant_api": true,
+      "image": "homeassistant/{arch}-addon-configurator",
+      "ingress": true,
+      "init": false,
+      "map": [
+        {
+          "type": "all_app_configs",
+          "read_only": false
+        },
+        {
+          "type": "backup",
+          "read_only": false
+        },
+        {
+          "type": "homeassistant_config",
+          "read_only": false
+        },
+        {
+          "type": "media",
+          "read_only": false
+        },
+        {
+          "type": "share",
+          "read_only": false
+        },
+        {
+          "type": "ssl",
+          "read_only": false
+        }
+      ],
+      "options": {
+        "dirsfirst": false,
+        "enforce_basepath": true,
+        "git": true,
+        "ignore_pattern": [
+          "__pycache__",
+          ".cloud",
+          ".storage",
+          "deps"
+        ],
+        "ssh_keys": []
+      },
+      "panel_icon": "mdi:wrench",
+      "schema": {
+        "dirsfirst": "bool",
+        "enforce_basepath": "bool",
+        "git": "bool",
+        "ignore_pattern": [
+          "str"
+        ],
+        "ssh_keys": [
+          "str"
+        ]
+      },
+      "boot": "auto",
+      "auth_api": false,
+      "stage": "stable",
+      "ingress_stream": false,
+      "uart": false,
+      "host_pid": false,
+      "legacy": false,
+      "gpio": false,
+      "realtime": false,
+      "breaking_versions": [],
+      "kernel_modules": false,
+      "hassio_api": false,
+      "host_ipc": false,
+      "tmpfs": false,
+      "timeout": 10,
+      "journald": false,
+      "video": false,
+      "backup": "hot",
+      "udev": false,
+      "audio": false,
+      "full_access": false,
+      "host_uts": false,
+      "host_dbus": false,
+      "panel_admin": true,
+      "apparmor": true,
+      "advanced": false,
+      "devicetree": false,
+      "docker_api": false,
+      "startup": "application",
+      "ulimits": {},
+      "stdin": false,
+      "usb": false,
+      "ingress_port": 8099,
+      "host_network": false,
+      "hassio_role": "default",
+      "repository": "core",
+      "translations": {
+        "en": {
+          "configuration": {
+            "dirsfirst": {
+              "name": "Directories First",
+              "description": "This option allows you to list directories before files in the file browser tree."
+            },
+            "enforce_basepath": {
+              "name": "Enforce Basepath",
+              "description": "If set to `true`, access is limited to files within the `/config` directory."
+            },
+            "git": {
+              "name": "Git",
+              "description": "If set to `true`, the app will initialize git for directories that support it."
+            },
+            "ignore_pattern": {
+              "name": "Ignore Pattern",
+              "description": "This option allows you to hide files and folders from the file browser tree."
+            },
+            "ssh_keys": {
+              "name": "SSH Keys",
+              "description": "A list of filenames containing SSH private keys. These can be used to allow for access to remote git repositories."
+            }
+          }
+        }
+      }
+    },
+    "core_ssh": {
+      "version": "10.5.0",
+      "slug": "ssh",
+      "name": "Terminal & SSH",
+      "description": "Allow logging in remotely to Home Assistant using SSH",
+      "url": "https://github.com/home-assistant/addons/tree/master/ssh",
+      "arch": [
+        "aarch64",
+        "amd64"
+      ],
+      "audio": true,
+      "hassio_api": true,
+      "hassio_role": "manager",
+      "host_dbus": true,
+      "image": "homeassistant/{arch}-addon-ssh",
+      "ingress": true,
+      "init": false,
+      "map": [
+        {
+          "type": "local_apps",
+          "read_only": false
+        },
+        {
+          "type": "all_app_configs",
+          "read_only": false
+        },
+        {
+          "type": "backup",
+          "read_only": false
+        },
+        {
+          "type": "homeassistant_config",
+          "read_only": false
+        },
+        {
+          "type": "media",
+          "read_only": false
+        },
+        {
+          "type": "share",
+          "read_only": false
+        },
+        {
+          "type": "ssl",
+          "read_only": false
+        }
+      ],
+      "options": {
+        "authorized_keys": [],
+        "password": "",
+        "apks": [],
+        "server": {
+          "tcp_forwarding": false
+        }
+      },
+      "panel_icon": "mdi:console",
+      "panel_title": "Terminal",
+      "ports": {
+        "22/tcp": null
+      },
+      "schema": {
+        "authorized_keys": [
+          "str"
+        ],
+        "password": "password",
+        "apks": [
+          "str"
+        ],
+        "server": {
+          "tcp_forwarding": "bool"
+        }
+      },
+      "startup": "services",
+      "uart": true,
+      "boot": "auto",
+      "realtime": false,
+      "backup": "hot",
+      "host_network": false,
+      "ingress_stream": false,
+      "timeout": 10,
+      "tmpfs": false,
+      "usb": false,
+      "breaking_versions": [],
+      "auth_api": false,
+      "host_pid": false,
+      "homeassistant_api": false,
+      "stage": "stable",
+      "advanced": false,
+      "full_access": false,
+      "devicetree": false,
+      "udev": false,
+      "stdin": false,
+      "kernel_modules": false,
+      "journald": false,
+      "panel_admin": true,
+      "apparmor": true,
+      "video": false,
+      "gpio": false,
+      "host_ipc": false,
+      "legacy": false,
+      "ulimits": {},
+      "docker_api": false,
+      "ingress_port": 8099,
+      "host_uts": false,
+      "repository": "core",
+      "translations": {
+        "en": {
+          "configuration": {
+            "authorized_keys": {
+              "name": "Authorized Keys",
+              "description": "Your public keys that you wish to accept for login."
+            },
+            "password": {
+              "name": "Password",
+              "description": "Set a password for login. We do NOT recommend this variant."
+            },
+            "apks": {
+              "name": "Packages",
+              "description": "Additional Alpine packages to install in the app container."
+            },
+            "server": {
+              "name": "Server",
+              "description": "SSH Server configuration"
+            }
+          },
+          "network": {
+            "22/tcp": "SSH Port"
+          }
+        }
+      }
+    },
+    "85b1ecde_sendspin_bt_bridge": {
+      "name": "Sendspin Bluetooth Bridge",
+      "version": "2.75.0",
+      "slug": "sendspin_bt_bridge",
+      "description": "Bridge Music Assistant Sendspin protocol to Bluetooth speakers",
+      "url": "https://github.com/trudenboy/sendspin-bt-bridge",
+      "image": "ghcr.io/trudenboy/sendspin-bt-bridge",
+      "homeassistant": "2024.2.0",
+      "arch": [
+        "aarch64",
+        "amd64",
+        "armv7"
+      ],
+      "startup": "application",
+      "boot": "auto",
+      "host_network": true,
+      "host_dbus": true,
+      "hassio_api": true,
+      "hassio_role": "default",
+      "homeassistant_api": true,
+      "auth_api": true,
+      "privileged": [
+        "NET_ADMIN",
+        "NET_RAW"
+      ],
+      "devices": [
+        "/dev/bus/usb"
+      ],
+      "audio": true,
+      "services": [
+        "mqtt:want"
+      ],
+      "apparmor": true,
+      "init": false,
+      "ingress": true,
+      "ingress_port": 65193,
+      "panel_icon": "mdi:bluetooth-audio",
+      "panel_admin": false,
+      "tmpfs": true,
+      "backup_exclude": [
+        "__pycache__/*",
+        "*.pyc"
+      ],
+      "options": {
+        "sendspin_server": "auto",
+        "sendspin_port": 8927,
+        "bridge_name": "",
+        "ha_area_name_assist_enabled": true,
+        "tz": "",
+        "pulse_latency_msec": 600,
+        "startup_banner_grace_seconds": 5,
+        "recovery_banner_grace_seconds": 15,
+        "prefer_sbc_codec": false,
+        "disable_pa_rescue_streams": false,
+        "bt_check_interval": 10,
+        "bt_max_reconnect_fails": 0,
+        "log_level": "info",
+        "ma_api_url": "",
+        "ma_api_token": "",
+        "ma_auto_silent_auth": true,
+        "bluetooth_devices": [],
+        "bluetooth_adapters": [],
+        "ha_integration": {
+          "enabled": false,
+          "mode": "off",
+          "mqtt_broker": "auto",
+          "mqtt_port": 1883,
+          "mqtt_username": "",
+          "mqtt_password": "",
+          "mqtt_discovery_prefix": "homeassistant",
+          "mqtt_tls": false,
+          "advertise_mdns": true,
+          "supervisor_pair": true
+        }
+      },
+      "schema": {
+        "sendspin_server": "str",
+        "sendspin_port": "port",
+        "base_listen_port": "port?",
+        "bridge_name": "str?",
+        "ha_area_name_assist_enabled": "bool?",
+        "tz": "str?",
+        "pulse_latency_msec": "int?",
+        "startup_banner_grace_seconds": "int?",
+        "recovery_banner_grace_seconds": "int?",
+        "prefer_sbc_codec": "bool?",
+        "disable_pa_rescue_streams": "bool?",
+        "bt_check_interval": "int?",
+        "bt_max_reconnect_fails": "int?",
+        "log_level": "list(info|debug)?",
+        "ma_api_url": "str?",
+        "ma_api_token": "str?",
+        "ma_auto_silent_auth": "bool?",
+        "bluetooth_devices": [
+          {
+            "mac": "match(([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2})",
+            "player_name": "str",
+            "adapter": "str?",
+            "static_delay_ms": "int?",
+            "static_delay_source": "str?",
+            "static_delay_calibrated_at": "str?",
+            "static_delay_codec": "str?",
+            "required_lead_time_ms": "int?",
+            "min_buffer_ms": "int?",
+            "listen_host": "str?",
+            "listen_port": "port?",
+            "enabled": "bool?",
+            "preferred_format": "str?",
+            "keepalive_silence": "bool?",
+            "keepalive_interval": "int?",
+            "idle_disconnect_minutes": "int?",
+            "idle_mode": "str?",
+            "power_save_delay_minutes": "int?"
+          }
+        ],
+        "bluetooth_adapters": [
+          {
+            "id": "str",
+            "mac": "str?",
+            "name": "str?",
+            "device_class": "str?"
+          }
+        ],
+        "ha_integration": {
+          "enabled": "bool?",
+          "mode": "list(off|mqtt|rest)?",
+          "mqtt_broker": "str?",
+          "mqtt_port": "port?",
+          "mqtt_username": "str?",
+          "mqtt_password": "password?",
+          "mqtt_discovery_prefix": "str?",
+          "mqtt_tls": "bool?",
+          "advertise_mdns": "bool?",
+          "supervisor_pair": "bool?"
+        }
+      },
+      "map": [],
+      "realtime": false,
+      "backup": "hot",
+      "ingress_stream": false,
+      "timeout": 10,
+      "usb": false,
+      "breaking_versions": [],
+      "host_pid": false,
+      "stage": "stable",
+      "advanced": false,
+      "full_access": false,
+      "devicetree": false,
+      "udev": false,
+      "uart": false,
+      "stdin": false,
+      "kernel_modules": false,
+      "journald": false,
+      "video": false,
+      "gpio": false,
+      "host_ipc": false,
+      "legacy": false,
+      "ulimits": {},
+      "docker_api": false,
+      "host_uts": false,
+      "repository": "85b1ecde",
+      "translations": {
+        "en": {
+          "configuration": {
+            "sendspin_server": {
+              "name": "Music Assistant server",
+              "description": "Hostname or IP of the Music Assistant server (no scheme prefix, no port, no path — just `192.168.1.11` or `ma.local`). Use \"auto\" to discover the server automatically via mDNS (recommended for most setups)."
+            },
+            "sendspin_port": {
+              "name": "Sendspin port",
+              "description": "WebSocket port exposed by the Music Assistant Sendspin provider. The default 8927 matches the upstream MA default; only change it if your MA instance is bound to a non-standard port. Existing setups with the legacy 9000 still work — the bridge auto-detects and shifts to the actually open port at startup."
+            },
+            "base_listen_port": {
+              "name": "Base player listen port",
+              "description": "Starting port used for automatically assigned Sendspin player listeners. Leave empty to use the default range for this install. Individual Bluetooth devices can still override their own listen_port values."
+            },
+            "bridge_name": {
+              "name": "Bridge name",
+              "description": "Custom name for this bridge instance. Useful when running multiple bridges on the same network. Leave empty to use the default name."
+            },
+            "tz": {
+              "name": "Timezone",
+              "description": "IANA timezone name (e.g. \"Europe/Moscow\", \"America/New_York\"). Leave empty to automatically use the Home Assistant system timezone."
+            },
+            "pulse_latency_msec": {
+              "name": "PulseAudio latency (ms)",
+              "description": "Requested PulseAudio buffer latency in milliseconds. Larger values reduce audio dropouts on slow hardware at the cost of slightly higher latency. Default is 600 ms; reduce it on faster hardware if you want lower latency."
+            },
+            "startup_banner_grace_seconds": {
+              "name": "Startup finalizing grace period (sec)",
+              "description": "How long the web UI keeps the restart page in the finalizing state after the backend reports ready. Lower this if Save & Restart feels stuck near \"Startup 90%\". Set to 0 to unlock immediately."
+            },
+            "recovery_banner_grace_seconds": {
+              "name": "Recovery banner delay after unlock (sec)",
+              "description": "How long top-level recovery banners stay hidden after the restart page unlocks. Use this to give Bluetooth devices extra time to reconnect before attention banners appear."
+            },
+            "prefer_sbc_codec": {
+              "name": "Prefer SBC codec",
+              "description": "When enabled, the bridge attempts to switch the Bluetooth A2DP codec to SBC immediately after each device connects. SBC is the simplest mandatory A2DP codec and requires the least CPU for encoding. Useful on slow hardware (e.g. Celeron G1610T) with multiple simultaneous speakers. Has no effect if PulseAudio does not support send-message (PA < 15) or the device is already using SBC. Enable this alongside changing the Music Assistant audio format to PCM 44.1 kHz / 16-bit for maximum CPU savings."
+            },
+            "bt_check_interval": {
+              "name": "Bluetooth check interval",
+              "description": "Bluetooth reconnect check interval in seconds. The bridge polls each device at this rate and reconnects automatically if the connection drops. Default is 10 seconds."
+            },
+            "bt_max_reconnect_fails": {
+              "name": "Max reconnect failures",
+              "description": "Maximum consecutive reconnect failures before the bridge stops trying to reconnect a device. Set to 0 for unlimited retries (default)."
+            },
+            "auth_enabled": {
+              "name": "Enable authentication",
+              "description": "Enable password protection for the web UI. When enabled, users must log in before accessing the bridge dashboard. Set the password in the web UI after enabling this option."
+            },
+            "log_level": {
+              "name": "Log level",
+              "description": "Logging level for the bridge. Use \"info\" for normal operation or \"debug\" for detailed troubleshooting output. Debug mode produces significantly more log data."
+            },
+            "ma_api_url": {
+              "name": "Music Assistant API URL",
+              "description": "Music Assistant REST API URL for volume routing (e.g. http://192.168.1.100:8095). Required when \"Volume via MA\" is enabled. Leave empty if not using MA volume routing."
+            },
+            "ma_api_token": {
+              "name": "Music Assistant API token",
+              "description": "Authentication token for the Music Assistant REST API. Required only if your MA instance has authentication enabled. Leave empty otherwise."
+            },
+            "ma_auto_silent_auth": {
+              "name": "Auto-get MA token on UI open",
+              "description": "When enabled, the ingress web UI will try to create a long-lived Music Assistant token automatically using the current Home Assistant session as soon as the page opens. Applies to Home Assistant addon ingress mode only."
+            },
+            "volume_via_ma": {
+              "name": "Volume via Music Assistant",
+              "description": "Route volume changes through the Music Assistant API instead of direct PulseAudio control. Ensures MA stays in sync with actual speaker volume. Requires \"Music Assistant API URL\" to be set."
+            },
+            "bluetooth_devices": {
+              "name": "Bluetooth devices",
+              "description": "List of Bluetooth speakers to bridge. Each entry requires a MAC address and a player name that will appear in Music Assistant.",
+              "fields": {
+                "mac": {
+                  "name": "MAC address",
+                  "description": "Bluetooth MAC address of the speaker (format: AA:BB:CC:DD:EE:FF). Find it in bluetoothctl with \"devices\" after pairing."
+                },
+                "player_name": {
+                  "name": "Player name",
+                  "description": "Display name shown in Music Assistant for this speaker. Each device must have a unique name."
+                },
+                "adapter": {
+                  "name": "Bluetooth adapter",
+                  "description": "MAC address of the Bluetooth adapter to use for this device. Leave blank to use the system default adapter."
+                },
+                "static_delay_ms": {
+                  "name": "Static delay (ms)",
+                  "description": "Extra delay in milliseconds (0–5000) added on top of DAC-anchored sync. Default 0. Use small positive values (e.g. 50) only if audio plays slightly too late."
+                },
+                "listen_host": {
+                  "name": "Listen host",
+                  "description": "Override the network address this player listens on. Leave empty to use the default address. Only needed in advanced network setups."
+                },
+                "listen_port": {
+                  "name": "Listen port",
+                  "description": "Override the port this player listens on. Leave empty to use an automatically assigned port."
+                },
+                "enabled": {
+                  "name": "Enabled",
+                  "description": "Enable or disable this Bluetooth device. Disabled devices are not connected or bridged until re-enabled."
+                },
+                "preferred_format": {
+                  "name": "Preferred audio format",
+                  "description": "Preferred audio format string (e.g. \"pcm,44100,16,2\"). Leave empty to use the Music Assistant default format."
+                },
+                "keepalive_silence": {
+                  "name": "Keepalive silence",
+                  "description": "Send silent audio when idle to keep the Bluetooth connection alive. Prevents some speakers from auto-powering off."
+                },
+                "keepalive_interval": {
+                  "name": "Keepalive interval",
+                  "description": "Interval in seconds between keepalive silence packets. Only applies when \"Keepalive silence\" is enabled."
+                }
+              }
+            },
+            "bluetooth_adapters": {
+              "name": "Bluetooth adapters",
+              "description": "Optional list of Bluetooth adapters available on this system. Each entry needs an adapter ID (hci0, hci1 …) and optionally a MAC address. Leave empty for automatic detection.",
+              "fields": {
+                "id": {
+                  "name": "Adapter ID",
+                  "description": "Bluetooth adapter identifier (e.g. hci0, hci1). Used in the per-device \"adapter\" field and in the Ingress web UI dropdowns."
+                },
+                "mac": {
+                  "name": "Adapter MAC",
+                  "description": "MAC address of this Bluetooth adapter (optional, for display only)."
+                },
+                "name": {
+                  "name": "Adapter name",
+                  "description": "Display name for this Bluetooth adapter. Used in the web UI to help identify adapters. Leave empty to use the adapter ID."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "d5369777_music_assistant": {
+      "name": "Music Assistant",
+      "version": "2.10.4",
+      "slug": "music_assistant",
+      "description": "The Music Assistant server is a free, opensource Media library manager that connects to your streaming services and a wide range of connected speakers.",
+      "url": "https://music-assistant.io",
+      "arch": [
+        "amd64",
+        "aarch64"
+      ],
+      "homeassistant_api": true,
+      "discovery": [
+        "music_assistant"
+      ],
+      "auth_api": true,
+      "host_network": true,
+      "ingress": true,
+      "ingress_port": 8094,
+      "audio": true,
+      "panel_icon": "mdi:music-assistant",
+      "panel_title": "Music Assistant",
+      "panel_admin": false,
+      "uart": false,
+      "apparmor": true,
+      "map": [
+        {
+          "type": "media",
+          "read_only": false
+        },
+        {
+          "type": "ssl",
+          "read_only": true
+        }
+      ],
+      "init": false,
+      "backup_exclude": [
+        "cache.db",
+        "collage_images/*",
+        ".cache/*"
+      ],
+      "stage": "stable",
+      "image": "ghcr.io/music-assistant/server",
+      "tmpfs": true,
+      "options": {
+        "log_level": "info",
+        "safe_mode": false
+      },
+      "schema": {
+        "log_level": "list(debug|info|warning|error)",
+        "safe_mode": "bool"
+      },
+      "privileged": [
+        "SYS_ADMIN",
+        "DAC_READ_SEARCH"
+      ],
+      "boot": "auto",
+      "realtime": false,
+      "startup": "application",
+      "hassio_role": "default",
+      "backup": "hot",
+      "ingress_stream": false,
+      "timeout": 10,
+      "usb": false,
+      "breaking_versions": [],
+      "host_pid": false,
+      "hassio_api": false,
+      "advanced": false,
+      "host_dbus": false,
+      "full_access": false,
+      "devicetree": false,
+      "udev": false,
+      "stdin": false,
+      "kernel_modules": false,
+      "journald": false,
+      "video": false,
+      "gpio": false,
+      "host_ipc": false,
+      "legacy": false,
+      "ulimits": {},
+      "docker_api": false,
+      "host_uts": false,
+      "repository": "d5369777",
+      "translations": {
+        "en": {
+          "configuration": {
+            "log_level": {
+              "name": "Log Level",
+              "description": "Set the (global) log level (NOTE: only enable debug when needed)."
+            },
+            "safe_mode": {
+              "name": "Safe mode",
+              "description": "Start the Music Assistant server in safe mode where only the core controllers are started without any providers, to troubleshoot issues"
+            }
+          }
+        }
+      }
+    }
+  }
+}
