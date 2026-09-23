@@ -16,7 +16,7 @@ The modules are included here as Git submodules under `modules/bridge` and `modu
 1. Add `https://github.com/Mahmoud-Eltabakh/BL-HAOS-Bridge` to the Home Assistant Add-on Store.
 2. Install and start **BL-HAOS**.
 3. Add `https://github.com/Mahmoud-Eltabakh/BL-HAOS-Integration` as a custom HACS Integration repository.
-4. Install the integration, restart Home Assistant Core, and complete its config flow with the Bridge endpoint and matching bridge token.
+4. Install the integration and restart Home Assistant Core. It connects to the Bridge automatically via Supervisor discovery; only fall back to entering the Bridge endpoint and token manually if discovery doesn't complete the setup prompt.
 
 ## Development
 
