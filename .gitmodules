@@ -1,6 +1,6 @@
 [submodule "modules/bridge"]
 	path = modules/bridge
-	url = git@github.com:Mahmoud-Eltabakh/BL-HAOS-Bridge.git
+	url = https://github.com/Mahmoud-Eltabakh/BL-HAOS-Bridge.git
 [submodule "modules/integration"]
 	path = modules/integration
-	url = git@github.com:Mahmoud-Eltabakh/BL-HAOS-Integration.git
+	url = https://github.com/Mahmoud-Eltabakh/BL-HAOS-Integration.git
