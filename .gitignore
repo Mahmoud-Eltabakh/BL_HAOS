@@ -109,3 +109,6 @@ logs/
 /core/
 /frontend/
 /iOS/
+
+# Agent customizations
+.agents/

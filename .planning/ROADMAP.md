@@ -123,6 +123,17 @@ Plans:
 
 - [ ] TBD (run $gsd-plan-phase 21 to break down)
 
+### Phase 22: Make Home Assistant integration tests runnable on Windows
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 21
+**Plans:** 0 plans
+
+Plans:
+
+- [ ] TBD (run $gsd-plan-phase 22 to break down)
+
 ---
 *Roadmap updated: 2026-09-23 after completing Phase 19; Phase 20 is current
 
