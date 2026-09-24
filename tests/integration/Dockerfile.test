@@ -1,9 +1,0 @@
-FROM mcr.microsoft.com/playwright/python:v1.49.1-noble
-
-RUN apt-get update && apt-get install -y build-essential openssh-client curl jq && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /workspace
-
-COPY requirements-test.txt .
-RUN pip install -r requirements-test.txt
-RUN playwright install chromium

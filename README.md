@@ -28,17 +28,7 @@ Develop and release the Bridge and Integration from their own repositories. This
 
 ## Testing & Verification
 
-Use the [canonical smoke matrix](tests/integration/SMOKE-MATRIX.md) to select
-the deterministic, deep HAOS, or live Bluetooth validation lane. The
-[CI gate contract](tests/integration/CI-GATES.md) defines blocking behavior,
-required JUnit and coverage artifacts, and environment-qualified exceptions.
-
-The fast local checks are:
-
-```powershell
-pytest tests/integration/tests/test_orchestration.py -q
-pytest tests/ -q
-```
-
-The authoritative SIL evidence path requires Docker and is documented in the
-matrix; live credentials and Bluetooth hardware are not required for SIL.
+Run the module-local unit and system-level tests with `pytest tests/ -q`.
+For HAOS behavior, use a Home Assistant OS virtual machine with the add-on
+and integration installed; validate pairing, playback, ingress, recovery,
+and native `media_player` control against the live VM.

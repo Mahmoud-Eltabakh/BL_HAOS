@@ -51,5 +51,5 @@ Skip it for: test-only changes, CI workflow tweaks, pure refactors with no behav
 
 ## Non-goals
 
-- This skill does not cover test-suite documentation -- see `update-e2e-tests` for keeping `tests/integration/tests/test_e2e_live_bridge.py` and friends in sync with new features.
+- This skill does not cover test-suite documentation. Docker-based integration tests were retired; HAOS end-to-end behavior is validated in a Home Assistant OS virtual machine.
 - This skill does not require a doc update for internal-only refactors, dependency bumps, or CI workflow changes that have no user-visible effect.
