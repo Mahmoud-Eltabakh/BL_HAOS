@@ -18,10 +18,10 @@ jobs:
       run:
         working-directory: modules/bridge
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install pinned test dependencies
@@ -38,10 +38,10 @@ jobs:
       run:
         working-directory: modules/integration
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install client test dependencies
@@ -56,10 +56,10 @@ jobs:
       run:
         working-directory: modules/integration
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           # pytest-homeassistant-custom-component >= 0.13.317 requires Python >= 3.14
           # (matches the local dev venv, which runs 0.13.366 on CPython 3.14)
@@ -78,14 +78,14 @@ jobs:
       run:
         working-directory: modules/bridge/web_ui
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           # The E2E webServer boots the FastAPI backend in demo mode
           python-version: "3.12"
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
       - name: Install backend dependencies (for the E2E webServer)
