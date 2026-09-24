@@ -6,13 +6,17 @@ BL-HAOS is a Home Assistant OS Bluetooth audio platform combining BlueZ, PipeWir
 
 The reference bar is the operational maturity demonstrated by Sendspin Bluetooth Bridge: explicit lifecycle contracts, isolated failure domains, deterministic diagnostics, guided recovery, reproducible test modes, and release governance. BL-HAOS adopts those engineering lessons while retaining native Home Assistant control as its product boundary.
 
+## Real-Time Device Discovery milestone
+
+- [x] **Phase 23: Real-Time Device Discovery UI & API**
+
 ## Production milestone
 
 - [x] **Phase 16: Automated Orchestration & Reporting**
 - [x] **Phase 17: Production Runtime Stabilization**
 - [x] **Phase 18: Security & Safe Execution Hardening**
 - [x] **Phase 19: Diagnostics, Supportability & Observability**
-- [>] **Phase 20: Release Quality Gates & Go-Live**
+- [ ] **Phase 20: Release Quality Gates & Go-Live**
 
 ## Phase details
 
@@ -130,9 +134,18 @@ Plans:
 **Depends on:** Phase 21
 **Plans:** 0 plans
 
+- [ ] TBD (run $gsd-plan-phase 22 to break down)
+
+### Phase 23: Real-Time Device Discovery UI & API
+
+**Goal:** Show newly found Bluetooth devices in real time during a scan.
+**Requirements**: UX-01, UX-02
+**Depends on:** Phase 19
+**Plans:** 0 plans
+
 Plans:
 
-- [ ] TBD (run $gsd-plan-phase 22 to break down)
+- [ ] TBD (run $gsd-plan-phase 23 to break down)
 
 ---
 *Roadmap updated: 2026-09-23 after completing Phase 19; Phase 20 is current

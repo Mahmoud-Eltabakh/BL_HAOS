@@ -1,8 +1,15 @@
 # Requirements
 
 **Project:** BL-HAOS (Bluetooth Audio Adapter for Home Assistant OS)
-**Defined:** 2026-09-23
-**Milestone:** Production-Level Readiness
+**Defined:** 2026-09-24
+**Milestone:** Real-Time Device Discovery
+
+## Real-Time Discovery Requirements
+
+### User Experience (UX)
+
+- [x] **UX-01**: The UI must display discovered Bluetooth devices immediately as they are found during a scan, rather than waiting for the scan duration to complete.
+- [x] **UX-02**: The backend API must support streaming or polling of discovery results while a scan is actively running.
 
 ## Production Readiness Requirements
 

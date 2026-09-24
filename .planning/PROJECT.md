@@ -2,9 +2,9 @@
 
 ## Milestone Goal
 
-### Production-Level Readiness
+### Real-Time Device Discovery
 
-This milestone brings BL-HAOS from a feature-complete Bluetooth audio platform to a production-ready Home Assistant add-on. The focus is reliability, safe degraded-mode operation, strong runtime observability, explicit security boundaries, and repeatable release quality gates.
+This milestone focuses on improving the user experience during device discovery. When searching for new Bluetooth devices, the UI must show newly found devices in real time, rather than waiting for the entire search process to complete before displaying results.
 
 ## What This Is
 
