@@ -143,6 +143,8 @@ Plans:
 **Depends on:** Phase 19
 **Plans:** 0 plans
 
+**UI direction:** Convert the ingress dashboard and discovery flow to restrained Neumorphism. Use a cohesive base surface with paired light/dark shadows, raised cards, inset fields and sliders, and pressed states for actions. Keep semantic status colors (connected, warning, error, diagnostics) as accents rather than replacing them with decorative gradients. Preserve focus-visible outlines, keyboard operation, readable contrast, reduced-motion behavior, and responsive card geometry. The detailed design contract is in [23-CONTEXT.md](phases/23-real-time-device-discovery-ui-api/23-CONTEXT.md).
+
 Plans:
 
 - [ ] TBD (run $gsd-plan-phase 23 to break down)

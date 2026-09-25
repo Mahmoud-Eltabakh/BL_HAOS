@@ -69,6 +69,7 @@ Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `
 | PipeWire + WirePlumber Audio Backend | Modern, low-latency, modular audio engine with built-in codec support and audio routing | Accepted |
 | Snapcast for Multi-Room Sync | Proven open-source protocol for sample-accurate multi-room audio synchronization across multiple endpoints | Accepted |
 | Dynamic Ingress Web UI | Eliminates manual MAC address configuration in YAML, allowing non-technical users to discover and pair speakers visually | Accepted |
+| Neumorphic Ingress UI Direction | Replace the current flat dark-slate surface treatment with restrained Neumorphism for the Phase 23 discovery experience; retain semantic status colors, keyboard focus visibility, responsive layout, and WCAG contrast requirements | Accepted |
 | Aggressive Background Reconnection | Overcomes Bluetooth speaker auto-sleep/idle timeouts by continuously monitoring and restoring link states | Accepted |
 | Production-First Hardening | Reliability and observability are more important than adding extra feature surface before the runtime is stable | Accepted |
 | Degraded-Mode Safety | The system must remain honest about missing dependencies rather than falsely reporting healthy runtime state | Accepted |
