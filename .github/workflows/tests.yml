@@ -45,7 +45,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install client test dependencies
-        run: python -m pip install --disable-pip-version-check aiohttp pytest pytest-asyncio
+        # voluptuous is imported by config_flow.py, so the endpoint tests that
+        # drive it need it even without the Home Assistant runtime.
+        run: python -m pip install --disable-pip-version-check aiohttp pytest pytest-asyncio voluptuous
       - name: Run client unit tests (no HA runtime required)
         run: python -m pytest tests/unit tests/test_package_layout.py -q -p asyncio --asyncio-mode=auto
 
