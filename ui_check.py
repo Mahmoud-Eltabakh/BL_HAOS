@@ -8,7 +8,11 @@ Prints a pass/fail report for the surfaces an operator sees:
 
 Usage:
     set HATOK=<long-lived-token>
-    python ui_check.py [--host 192.168.1.21:8123] [--entity media_player.x]
+    python ui_check.py [--host homeassistant.local:8123] [--entity media_player.your_speaker]
+
+Host, entity, token, ingress session/URL, and the probe media URL come from
+arguments or environment variables; see the *_ENV_VAR constants below. The
+media-playback section is skipped, and says so, when the probe URL is unset.
 
 The script only reads state plus one short playback so the card can be
 inspected; it leaves nothing playing.
@@ -57,10 +61,18 @@ TTS_PROBE_MESSAGE = "UI check."
 TTS_PROBE_TIMEOUT_SECONDS = 8
 TTS_POLL_INTERVAL_SECONDS = 0.4
 HA_DEFAULT_PORT = 8123
-# Override per installation: ``BLHAOS_HOST`` / ``BLHAOS_ENTITY`` / ``BLHAOS_TTS``.
-DEFAULT_HOST = os.environ.get("BLHAOS_HOST", f"homeassistant.local:{HA_DEFAULT_PORT}")
-DEFAULT_ENTITY = os.environ.get("BLHAOS_ENTITY", "media_player.bl_haos_speaker")
-DEFAULT_TTS_ENTITY = os.environ.get("BLHAOS_TTS", "tts.google_translate_en_com")
+# Environment variables that override every installation-specific value, so no
+# host, entity, or probe URL has to be edited into this file.
+TOKEN_ENV_VAR = "HATOK"
+HOST_ENV_VAR = "BLHAOS_HOST"
+ENTITY_ENV_VAR = "BLHAOS_ENTITY"
+TTS_ENTITY_ENV_VAR = "BLHAOS_TTS"
+INGRESS_SESSION_ENV_VAR = "BLHAOS_INGRESS_SESSION"
+INGRESS_URL_ENV_VAR = "BLHAOS_INGRESS_URL"
+MEDIA_URL_ENV_VAR = "BLHAOS_UI_CHECK_MEDIA"
+DEFAULT_HOST = os.environ.get(HOST_ENV_VAR, f"homeassistant.local:{HA_DEFAULT_PORT}")
+DEFAULT_ENTITY = os.environ.get(ENTITY_ENV_VAR, "media_player.bl_haos_speaker")
+DEFAULT_TTS_ENTITY = os.environ.get(TTS_ENTITY_ENV_VAR, "tts.google_translate_en_com")
 # Strings that must have disappeared with the operator panels (bridge 0.2.50).
 REMOVED_FROM_UI = (
     "Export support bundle",
@@ -198,35 +210,35 @@ def check_card(host: str, token: str, entity: str) -> None:
     idle = attributes()
     check("idle card has no stale title", not idle.get("media_title"), repr(idle.get("media_title")))
 
-    media = os.environ.get(
-        "BLHAOS_UI_CHECK_MEDIA",
-        f"http://{host}/media/local/03.athan_fajr_Malek%20Chibat%20Al-Hamd.mp3",
-    )
-    result = ha_service(
-        host, token, "media_player", "play_media",
-        {"entity_id": entity, "media_content_type": "music", "media_content_id": media},
-    )
-    check("play_media accepted", result == "ok", result)
-    time.sleep(MEDIA_PROBE_SETTLE_SECONDS)  # let the background probe publish duration
+    media = os.environ.get(MEDIA_URL_ENV_VAR, "")
+    if not media:
+        print(f"  SKIP  media playback checks ({MEDIA_URL_ENV_VAR} is not set)")
+    else:
+        result = ha_service(
+            host, token, "media_player", "play_media",
+            {"entity_id": entity, "media_content_type": "music", "media_content_id": media},
+        )
+        check("play_media accepted", result == "ok", result)
+        time.sleep(MEDIA_PROBE_SETTLE_SECONDS)  # let the background probe publish duration
 
-    playing = attributes()
-    check("state is playing", playing.get("state") == HA_STATE_PLAYING, str(playing.get("state")))
-    check("card shows a title", bool(playing.get("media_title")), repr(playing.get("media_title")))
-    check("card shows the duration", isinstance(playing.get("media_duration"), int),
-          str(playing.get("media_duration")))
-    check("card shows the position", isinstance(playing.get("media_position"), int),
-          str(playing.get("media_position")))
-    check("card stamps the position", bool(playing.get("media_position_updated_at")))
+        playing = attributes()
+        check("state is playing", playing.get("state") == HA_STATE_PLAYING, str(playing.get("state")))
+        check("card shows a title", bool(playing.get("media_title")), repr(playing.get("media_title")))
+        check("card shows the duration", isinstance(playing.get("media_duration"), int),
+              str(playing.get("media_duration")))
+        check("card shows the position", isinstance(playing.get("media_position"), int),
+              str(playing.get("media_position")))
+        check("card stamps the position", bool(playing.get("media_position_updated_at")))
 
-    ha_service(host, token, "media_player", "media_pause", {"entity_id": entity})
-    paused = attributes()
-    time.sleep(PAUSE_SETTLE_SECONDS)
-    check("pause freezes the clock", paused.get("media_position") == attributes().get("media_position"))
-    check("pause is reflected in the card", paused.get("state") == HA_STATE_PAUSED, str(paused.get("state")))
+        ha_service(host, token, "media_player", "media_pause", {"entity_id": entity})
+        paused = attributes()
+        time.sleep(PAUSE_SETTLE_SECONDS)
+        check("pause freezes the clock", paused.get("media_position") == attributes().get("media_position"))
+        check("pause is reflected in the card", paused.get("state") == HA_STATE_PAUSED, str(paused.get("state")))
 
-    ha_service(host, token, "media_player", "media_stop", {"entity_id": entity})
-    stopped = attributes()
-    check("stop clears the card", stopped.get("state") == HA_STATE_IDLE and not stopped.get("media_title"))
+        ha_service(host, token, "media_player", "media_stop", {"entity_id": entity})
+        stopped = attributes()
+        check("stop clears the card", stopped.get("state") == HA_STATE_IDLE and not stopped.get("media_title"))
 
     print("\n[4] Text-to-speech labelling")
     tts = ha_service(
@@ -254,16 +266,16 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="BL-HAOS UI check")
     parser.add_argument("--host", default=DEFAULT_HOST)
     parser.add_argument("--entity", default=DEFAULT_ENTITY)
-    parser.add_argument("--session", default=os.environ.get("BLHAOS_INGRESS_SESSION", ""))
+    parser.add_argument("--session", default=os.environ.get(INGRESS_SESSION_ENV_VAR, ""))
     arguments = parser.parse_args()
 
-    token = os.environ.get("HATOK", "").strip()
+    token = os.environ.get(TOKEN_ENV_VAR, "").strip()
     if not token:
-        print("HATOK (long-lived Home Assistant token) is required", file=sys.stderr)
+        print(f"{TOKEN_ENV_VAR} (long-lived Home Assistant token) is required", file=sys.stderr)
         return 2
 
     session = arguments.session
-    ingress = os.environ.get("BLHAOS_INGRESS_URL", "")
+    ingress = os.environ.get(INGRESS_URL_ENV_VAR, "")
     version = "unknown"
     if not session or not ingress:
         session, info = asyncio.run(supervisor(arguments.host, token))
