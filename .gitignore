@@ -98,6 +98,25 @@ $RECYCLE.BIN/
 home-assistant.log*
 home-assistant_v2.db*
 
+# Supervisor / Home Assistant API captures. These embed live credentials (for
+# example add-on ingress tokens), so they must never be tracked - see the
+# repo-hygiene job in .github/workflows/tests.yml.
+apps.json*
+*-apps.json
+*.har
+
+# Generated verification output (Playwright, live checks)
+test-results/
+
+# Reports and analysis artifacts: reviews, threat models, validation reports and
+# implementation plans. They are outputs of a review or a test run rather than
+# sources of the product, so they are kept locally and out of version control.
+# Enforced by the repo-hygiene job in .github/workflows/tests.yml.
+*-report.md
+*-REPORT.md
+THREAT-MODEL.md
+implementation_plan.md
+
 # Logs
 *.log
 logs/

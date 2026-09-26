@@ -32,3 +32,14 @@ Run the module-local unit and system-level tests with `pytest tests/ -q`.
 For HAOS behavior, use a Home Assistant OS virtual machine with the add-on
 and integration installed; validate pairing, playback, ingress, recovery,
 and native `media_player` control against the live VM.
+
+## Security
+
+The Bridge add-on runs as **root with `full_access` and host D-Bus access**, because
+host Bluetooth and audio are the point of the product — treat it as host-root software
+and only deploy it where you are willing to grant that authority. Threat analysis for
+the add-on, the integration and the native transport is kept as an untracked review
+artifact (`THREAT-MODEL.md` in a working copy) rather than in source control.
+
+Report a vulnerability through GitHub's private vulnerability reporting on the module
+repositories (**Security → Report a vulnerability**) rather than in a public issue.

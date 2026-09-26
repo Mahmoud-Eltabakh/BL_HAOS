@@ -6,7 +6,7 @@ This repository ships three independently testable surfaces — the **bridge add
 
 | Layer | Scope | Command | Environment | Gate |
 |---|---|---|---|---|
-| **L0** Static contracts | `tsc` typecheck, frontend production build, manifest/S6/Dockerfile static tests (inside pytest) | `scripts/run-tests.ps1 -Layer L0` / `scripts/run-tests.sh L0` | any OS | exit 0 |
+| **L0** Static contracts | `tsc` typecheck, frontend production build, manifest/S6/Dockerfile static tests (inside pytest), tracked-file hygiene (CI job `repo-hygiene`) | `scripts/run-tests.ps1 -Layer L0` / `scripts/run-tests.sh L0` | any OS | exit 0 |
 | **L1** Unit / API regression | Bridge backend suite (`modules/bridge/tests`, 118+ tests), integration client unit tests (`modules/integration/tests/unit`), frontend vitest | `scripts/run-tests.ps1 -Layer L1` | any OS (Windows OK) | exit 0 |
 | **L2** Home Assistant SIL | `modules/integration/tests/test_ha_integration_sil.py` — real HA Core in-process | `scripts/run-tests.sh L2` | **Linux only** (CI or WSL2) | exit 0 |
 | **L3** Browser E2E | Playwright against the real backend in demo mode | `scripts/run-tests.ps1 -Layer L3` | any OS with Chromium | exit 0 |
@@ -75,7 +75,7 @@ Installed by both `builder.yaml` (release gate) and `tests.yml` (PR/push CI). Pi
 
 | Workflow | Trigger | Jobs |
 |---|---|---|
-| `.github/workflows/tests.yml` | push to `main`, PRs | `bridge-unit` (L1), `integration-unit` (L1), `integration-sil` (L2), `frontend` (L3: vitest → build → Playwright) |
+| `.github/workflows/tests.yml` | push to `main`, PRs | `repo-hygiene` (L0), `bridge-unit` (L1), `integration-unit` (L1), `integration-sil` (L2), `frontend` (L3: vitest → build → Playwright) |
 | `modules/bridge/.github/workflows/builder.yaml` | push/tags | release gates (bridge L1 + frontend build + audits) → multi-arch add-on image build |
 
 ## Writing tests
@@ -85,6 +85,34 @@ Installed by both `builder.yaml` (release gate) and `tests.yml` (PR/push CI). Pi
 - **HA SIL behaviors** (config flows, entity registry, diagnostics redaction) still belong in `test_ha_integration_sil.py` — they need the real runtime.
 - **Frontend unit**: colocate as `*.test.ts(x)` next to the component; `vitest.config.ts` picks up `src/**/*.test.{ts,tsx}`.
 - **Browser E2E**: add specs to `modules/bridge/web_ui/e2e/specs/`; the Playwright `webServer` recipe boots the backend in `BLHAOS_DEMO_MODE=true` automatically (override the target with `BLHAOS_E2E_URL`).
+- **Never abandon a coroutine.** Both `pytest.ini` files escalate `RuntimeWarning`, so a coroutine that is created but never awaited fails the suite instead of scrolling past as a warning. Schedule it (`asyncio.create_task` behind a "is a loop running?" guard) or close it; a bare `asyncio.create_task` on a synchronous code path both loses the work and trips this gate.
+
+## Live verification scripts
+
+Two operator-facing scripts validate a real installation. Both take every
+installation-specific value from the environment, so no host, entity, or
+credential is stored in the repository.
+
+| Script | Purpose | Usage |
+|---|---|---|
+| `ui_check.py` | Ingress dashboard, the bridge API behind it, and the Home Assistant `media_player` card | `set HATOK=<token>` then `python ui_check.py --host host[:port]` |
+| `ingress_probe.py` | Resolve the add-on Ingress URL and session through `supervisor/api` | `set HA_TOKEN=<token>` then `python ingress_probe.py --host host[:port]` |
+
+`ui_check.py` discovers the native entity from the attributes the bridge
+publishes (`bluetooth_address`, `adapter`), so it is correct on any
+installation; override with `--entity` / `BLHAOS_ENTITY`. Checks the environment
+cannot evaluate are reported as `SKIP`, never as a failure: playback without
+`BLHAOS_UI_CHECK_MEDIA`, and playback plus text-to-speech while the speaker is
+disconnected (`media_player` state `off`). Exit codes: `0` pass (skips allowed),
+`1` failed check, `2` unusable invocation (no token, or an unresolvable entity /
+Ingress URL). Set `BLHAOS_UI_CHECK_MEDIA` to a short audio URL to assert the
+playback timeline too, and `--tts` / `BLHAOS_TTS` to choose the TTS entity.
+
+`ingress_probe.py` exists because Home Assistant no longer exposes an Ingress
+panel WebSocket command (`ingress/list` answers `unknown_command` on 2026.9); it
+uses the supported `supervisor/api` command instead and reports the session as
+"acquired" rather than echoing the credential. Exit codes: `0` resolved, `1`
+failed, `2` no token.
 
 ## Coverage
 

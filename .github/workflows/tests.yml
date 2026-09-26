@@ -11,6 +11,38 @@ permissions:
   contents: read
 
 jobs:
+  repo-hygiene:
+    name: Repo hygiene (tracked scratch and credential files)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Reject tracked scratch files
+        run: |
+          set -euo pipefail
+          offenders=$(git ls-files | grep -E '(^|/)(apps\.json.*|.*\.tmp|.*\.log|\.env.*|secrets\.ya?ml)$' || true)
+          if [ -n "$offenders" ]; then
+            echo "::error::scratch or secret files are tracked in git; untrack them and extend .gitignore:"
+            echo "$offenders"
+            exit 1
+          fi
+      - name: Reject tracked report artifacts
+        run: |
+          set -euo pipefail
+          offenders=$(git ls-files | grep -E '(^|/)([^/]*-[Rr]eport\.md|THREAT-MODEL\.md|implementation_plan\.md)$' || true)
+          if [ -n "$offenders" ]; then
+            echo "::error::review and analysis artifacts are tracked; keep them in the working copy, not in history:"
+            echo "$offenders"
+            exit 1
+          fi
+      - name: Reject committed Supervisor credentials
+        run: |
+          set -euo pipefail
+          # This workflow contains the pattern below, so it is excluded from the scan.
+          if git grep -n -I -F '"ingress_token"' -- . ':(exclude).github/workflows/tests.yml'; then
+            echo "::error::Supervisor ingress credentials are committed; remove the file, rotate the tokens, and purge history"
+            exit 1
+          fi
+
   bridge-unit:
     name: Bridge unit / API (L1)
     runs-on: ubuntu-latest
