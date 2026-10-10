@@ -4,9 +4,9 @@
   "milestone": "v1.0",
   "phases": [],
   "next": {
-    "command": "/gsd:discuss-phase",
-    "label": "Discuss the first phase",
-    "reason": "Project initialized — plan your first phase"
+    "command": "/gsd:progress --next",
+    "label": "Advance to the next step (plan phase 24)",
+    "reason": "Phase 24 of 3 — needs a plan"
   },
-  "updated_at": "2026-10-10T21:41:50.694Z"
+  "updated_at": "2026-10-10T23:22:56.200Z"
 }
