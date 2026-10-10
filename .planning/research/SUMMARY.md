@@ -68,6 +68,13 @@ The system employs an event-driven design around the BlueZ D-Bus ObjectManager. 
 9. **Phase 9: Multi-Adapter Routing & Audio Polish**: Adapter-to-speaker assignment, AVRCP volume sync, and latency calibration.
 10. **Phase 10: End-to-End Verification & HAOS Packaging**: Full system validation, release packaging, documentation, and installation testing.
 
+### Milestone v1.0: Playlist Playback & Management
+
+- Reuse Home Assistant's documented `BROWSE_MEDIA` and media-source resolution path for provider browsing; the current integration resolves media-source IDs but does not expose browsing.
+- Keep saved playlists as ordered Home Assistant media references and resolve items when played; the ingress frontend currently has no HA media-source/auth connection.
+- The bridge plays one URL at a time and returns to idle when a process exits, so sequential playlists need explicit queue ownership, natural-completion handling, and cancellation/failure behavior.
+- Detailed evidence and unresolved design points are recorded in [V1.0-PLAYLIST-SUMMARY.md](V1.0-PLAYLIST-SUMMARY.md) and its linked research files. Confidence is medium because the official media-player page is marked incomplete and the ingress catalog path still needs validation.
+
 ### Sources
 
 - PipeWire Official Documentation & SPA Bluetooth Architecture
