@@ -1,85 +1,58 @@
-# Requirements
+# Requirements: BL-HAOS Playlist Playback & Management
 
-**Project:** BL-HAOS (Bluetooth Audio Adapter for Home Assistant OS)
-**Defined:** 2026-09-24
-**Milestone:** Real-Time Device Discovery
+**Defined:** 2026-10-10
+**Milestone:** v1.0 Playlist Playback & Management
+**Core Value:** Effortless, reliable Home Assistant media playback to Bluetooth speakers.
 
-## Real-Time Discovery Requirements
+## v1 Requirements
 
-### User Experience (UX)
+### Home Assistant Media Browsing
 
-- [x] **UX-01**: The UI must display discovered Bluetooth devices immediately as they are found during a scan, rather than waiting for the scan duration to complete.
-- [x] **UX-02**: The backend API must support streaming or polling of discovery results while a scan is actively running.
+- [ ] **PL-01**: Each BL-HAOS media-player entity exposes supported Home Assistant audio sources and provider playlists through the native Browse Media experience.
+- [ ] **PL-02**: A supported Home Assistant media item or provider playlist selected for a connected speaker resolves through Home Assistant and starts playback on that speaker.
+- [ ] **PL-03**: The ingress UI can browse the Home Assistant media catalog and launch provider playlists through an authenticated HA-owned interface without exposing HA credentials to add-on storage or logs.
 
-## Production Readiness Requirements
+### Saved Playlists
 
-### Runtime Reliability & Health (PROD)
+- [ ] **PL-04**: Users can create, rename, reorder, edit, and delete custom ingress playlists containing ordered Home Assistant media references.
+- [ ] **PL-05**: Users can save existing Home Assistant provider playlist references in the BL-HAOS playlist library.
+- [ ] **PL-06**: Saved playlist definitions persist across Home Assistant and add-on restarts; unavailable or stale media references are identified to the user.
 
-- [x] **PROD-01**: Define a canonical runtime health state for the add-on, the Bluetooth manager, PipeWire, Snapcast, and each tracked speaker.
-- [x] **PROD-02**: Detect and report degraded and unavailable states when BlueZ, PipeWire, or the sink path is missing or unhealthy.
-- [x] **PROD-03**: Ensure each Bluetooth speaker has a deterministic state transition model from `unknown` through `connected`, `disconnected`, `reconnecting`, and `unavailable`.
-- [x] **PROD-04**: Recover gracefully from stale BlueZ devices, stale cached objects, and transient D-Bus disconnect events without leaving the app in a silent broken state.
-- [x] **PROD-05**: Publish explicit startup and shutdown lifecycle progress, failure, and completion events with bounded status details.
-- [x] **PROD-06**: Version runtime event/API contracts and prevent duplicate reconnect workers for the same speaker.
+### Playback and Queue Controls
 
-### Security & Safe Execution (SAFE)
+- [ ] **PL-07**: Starting a saved playlist on a selected speaker plays its items in order and advances only after the current item completes successfully.
+- [ ] **PL-08**: Users can view the active playlist and item, and control playback with next, previous, shuffle, repeat, play, pause, and stop in the ingress UI and supported native Home Assistant controls.
+- [ ] **PL-09**: Stop, replacement playback, or speaker loss cancels queued work so late process-completion events cannot advance a stale playlist.
+- [ ] **PL-10**: Media resolution or playback failures expose an explicit state and do not silently skip the failed item.
 
-- [ ] **SAFE-01**: Validate all incoming device addresses, command payloads, and media URLs before any privileged BlueZ or subprocess action executes.
-- [ ] **SAFE-02**: Reject malformed or unsafe playback commands with explicit, user-visible validation errors.
-- [ ] **SAFE-03**: Ensure native auth and config tokens are never logged or exposed in support output.
-- [ ] **SAFE-04**: Enforce strict privileges and safe default behavior for runtime configuration, speaker control, and system integration points.
-- [ ] **SAFE-05**: Pin and scan runtime dependencies, with documented handling for supported stable and preview releases.
+### Data Safety
 
-### Observability & Supportability (OBS)
+- [ ] **PL-11**: Saved playlists store Home Assistant media references and required display/order metadata, not resolved playback URLs or provider credentials.
 
-- [ ] **OBS-01**: Expose a bounded but useful diagnostics surface covering adapter state, speaker state, sink availability, and last known failure reasons.
-- [ ] **OBS-02**: Emit structured logs with speaker address, adapter context, and failure classification for reconnect and playback issues.
-- [ ] **OBS-03**: Provide an operational summary for support staff to diagnose a broken speaker, stale state, or restart loop without live SSH access.
+## Future Requirements
 
-### Operator Support & Deterministic Validation (OPS)
+- **PL-12**: Resume an in-progress playlist and queue position after Home Assistant or add-on restart.
+- **PL-13**: Synchronize one playlist queue across multiple Bluetooth speakers.
 
-- [ ] **OPS-01**: Provide bounded, redacted support-bundle export containing diagnostics, lifecycle status, recent classified failures, and contract versions.
-- [ ] **OPS-02**: Provide guided recovery actions for common pairing, sink, reconnect, and native-integration failures.
-- [ ] **OPS-03**: Provide a deterministic demo/test mode that exercises UI and diagnostics without Bluetooth hardware or a live Home Assistant host.
+## Out of Scope
 
-### Release Quality & Regression Gates (REL)
-
-- [ ] **REL-01**: Define release smoke checks for startup, connect, disconnect, reconnect, and playback failure paths.
-- [ ] **REL-02**: Add CI gates covering the most critical Bluetooth and HA state transitions.
-- [ ] **REL-03**: Verify each release with a reproducible regression matrix covering at least reconnect, auth, and degraded-mode scenarios.
-- [ ] **REL-04**: Define reproducible multi-architecture build, upgrade, rollback, compatibility, and release-evidence gates.
+| Feature | Reason |
+|---------|--------|
+| Direct provider-specific API clients or credentials | Home Assistant media sources remain the catalog and authentication boundary. |
+| Importing arbitrary raw URLs as custom playlist entries | This milestone stores HA media references so provider resolution and access remain HA-owned. |
+| Synchronized multi-speaker queues | The approved v1.0 workflow targets playback on a selected speaker; synchronized queue semantics need separate design. |
+| Restoring the active queue after restart | Playlist definitions persist, but in-progress playback recovery is deferred. |
 
 ## Traceability
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SIL-03 | Phase 16 | Complete (16-01, 16-02) |
-| PROD-01 | Phase 17 | Complete (17-01, 17-02) |
-| PROD-02 | Phase 17 | Complete (17-01, 17-02) |
-| PROD-03 | Phase 17 | Complete (17-01, 17-02) |
-| PROD-04 | Phase 17 | Complete (17-01, 17-02) |
-| PROD-05 | Phase 17 | Complete (17-01, 17-02) |
-| PROD-06 | Phase 17 | Complete (17-01, 17-02) |
-| SAFE-01 | Phase 18 | Planned |
-| SAFE-02 | Phase 18 | Planned |
-| SAFE-03 | Phase 18 | Planned |
-| SAFE-04 | Phase 18 | Planned |
-| SAFE-05 | Phase 18 | Planned |
-| OBS-01 | Phase 19 | Planned |
-| OBS-02 | Phase 19 | Planned |
-| OBS-03 | Phase 19 | Planned |
-| OPS-01 | Phase 19 | Planned |
-| OPS-02 | Phase 19 | Planned |
-| OPS-03 | Phase 19 | Planned |
-| REL-01 | Phase 20 | Planned |
-| REL-02 | Phase 20 | Planned |
-| REL-03 | Phase 20 | Planned |
-| REL-04 | Phase 20 | Planned |
 
-## Out of Scope
-
-- **Microphone / HFP Voice Satellite Input**: Deferred beyond the current A2DP audio playback product scope.
-- **Custom Hardware / Driver Forks**: BL-HAOS targets standard supported Home Assistant OS hosts and off-the-shelf Bluetooth adapters.
+**Coverage:**
+- v1 requirements: 11 total
+- Mapped to phases: 0
+- Unmapped: 11
 
 ---
-*Requirements updated: 2026-09-23 using Sendspin Bluetooth Bridge production lessons*
+*Requirements defined: 2026-10-10*
+*Last updated: 2026-10-10 after starting milestone v1.0*
