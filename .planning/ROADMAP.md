@@ -6,6 +6,8 @@ BL-HAOS is a Home Assistant OS Bluetooth audio platform combining BlueZ, PipeWir
 
 The reference bar is the operational maturity demonstrated by Sendspin Bluetooth Bridge: explicit lifecycle contracts, isolated failure domains, deterministic diagnostics, guided recovery, reproducible test modes, and release governance. BL-HAOS adopts those engineering lessons while retaining native Home Assistant control as its product boundary.
 
+The current milestone, v1.0 Playlist Playback & Management, adds Home Assistant media browsing, saved playlists, and ordered queue playback while preserving HA as the media-source and authentication boundary.
+
 ## Real-Time Device Discovery milestone
 
 - [x] **Phase 23: Real-Time Device Discovery UI & API**
@@ -157,3 +159,63 @@ Plans:
 **Plans:** complete. **Milestone:** hold (not complete).
 
 Go-live blockers: missing full Playwright regression; missing pip-audit/Trivy evidence; incomplete registry/architecture publishing; missing HAOS image and authenticated Home Assistant validation; and no approved hardware. See the Phase 20 summaries, GO-LIVE-READOUT.md, RELEASE-RUNBOOK.md, and release evidence for the validation record and exit criteria.
+
+## Playlist Playback & Management milestone (v1.0)
+
+**Goal:** Let users browse and play Home Assistant provider playlists, create and manage BL-HAOS playlists of Home Assistant media references, and play them sequentially through Bluetooth speakers.
+**Depends on:** Phase 23; prior release hold and open Phase 21-22 work remain recorded above.
+**Requirements:** PL-01 through PL-11
+
+### Phase 24: HA Media Catalog & Provider Playback
+
+**Goal:** Expose supported Home Assistant media sources and provider playlists through native media players and a secure ingress catalog path.
+**Depends on:** Phase 23
+**Requirements:** PL-01, PL-02, PL-03
+**Success Criteria:**
+
+1. A connected BL-HAOS media-player entity exposes supported audio media and provider playlists through Home Assistant Browse Media.
+2. Selecting a supported provider item or playlist resolves through Home Assistant and begins playback on the selected speaker, with resolution failures reported.
+3. The ingress UI can browse the supported HA catalog and launch provider playlists through a secure HA-owned interface; HA credentials are not copied into add-on storage, browser persistence, or logs.
+4. Integration and ingress tests cover catalog browsing, provider resolution, unavailable items, and denied/expired access.
+
+### Phase 25: Saved Playlist Library
+
+**Goal:** Let users create and maintain persistent BL-HAOS playlists from Home Assistant media references and save provider playlist references.
+**Depends on:** Phase 24
+**Requirements:** PL-04, PL-05, PL-06, PL-11
+**Success Criteria:**
+
+1. Users can create, rename, reorder, edit, and delete custom playlists of ordered Home Assistant media references in the ingress UI.
+2. Users can save an existing provider playlist reference and launch it from the BL-HAOS library.
+3. Playlist definitions survive Home Assistant and add-on restarts; stale media references are identified rather than shown as playable.
+4. Persisted records contain media references and required display/order metadata, never resolved playback URLs or provider credentials.
+
+### Phase 26: Sequential Playback & Queue Controls
+
+**Goal:** Play saved playlists in order with automatic advancement, full queue controls, and truthful failure/cancellation state.
+**Depends on:** Phase 25
+**Requirements:** PL-07, PL-08, PL-09, PL-10
+**Success Criteria:**
+
+1. Starting a playlist on a selected speaker plays items in order and advances only after successful natural completion of the current item.
+2. Users can view the active playlist/item and use next, previous, shuffle, repeat, play, pause, and stop controls in the ingress UI and supported native Home Assistant controls.
+3. Stop, replacement playback, or speaker loss cancels queued work; stale process-completion events cannot start another playlist item.
+4. Resolution and playback failures are visible, and the queue does not silently skip an item that failed.
+
+## v1.0 Requirement Traceability
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| PL-01 | Phase 24 | Pending |
+| PL-02 | Phase 24 | Pending |
+| PL-03 | Phase 24 | Pending |
+| PL-04 | Phase 25 | Pending |
+| PL-05 | Phase 25 | Pending |
+| PL-06 | Phase 25 | Pending |
+| PL-07 | Phase 26 | Pending |
+| PL-08 | Phase 26 | Pending |
+| PL-09 | Phase 26 | Pending |
+| PL-10 | Phase 26 | Pending |
+| PL-11 | Phase 25 | Pending |
+
+**Coverage:** 11 of 11 v1 requirements mapped; 0 unmapped.

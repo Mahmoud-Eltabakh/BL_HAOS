@@ -47,11 +47,22 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
+| PL-01 | Phase 24 | Pending |
+| PL-02 | Phase 24 | Pending |
+| PL-03 | Phase 24 | Pending |
+| PL-04 | Phase 25 | Pending |
+| PL-05 | Phase 25 | Pending |
+| PL-06 | Phase 25 | Pending |
+| PL-07 | Phase 26 | Pending |
+| PL-08 | Phase 26 | Pending |
+| PL-09 | Phase 26 | Pending |
+| PL-10 | Phase 26 | Pending |
+| PL-11 | Phase 25 | Pending |
 
 **Coverage:**
 - v1 requirements: 11 total
-- Mapped to phases: 0
-- Unmapped: 11
+- Mapped to phases: 11
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-10-10*
