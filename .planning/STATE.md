@@ -1,8 +1,12 @@
 ---
-gsd_state_version: '1.0'
-status: milestone_active
+gsd_state_version: "1.0"
+milestone: v1.0
+milestone_name: Playlist Playback & Management
+status: planning
+last_updated: "2026-10-10T21:41:50.690Z"
+last_activity: 2026-10-10
 progress:
-  total_phases: 1
+  total_phases: 0
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -20,12 +24,10 @@ See: [PROJECT.md](PROJECT.md) (updated 2026-09-24)
 
 ## Current Position
 
-Phase: 23 of 23 (Real-Time Device Discovery UI & API)
-Plan: 0 of 0 in current phase
-Status: Not started
-Last activity: 2026-09-24 — New milestone started
-
-Progress: [░░░░░░░░░░░░] 0%
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-10-10 — Milestone v1.0 started
 
 ## Performance Metrics
 
