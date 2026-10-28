@@ -6,7 +6,7 @@ LAYER="${1:-all}"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BRIDGE="$REPO_ROOT/modules/bridge"
 INTEGRATION="$REPO_ROOT/modules/integration"
-WEBUI="$BRIDGE/web_ui"
+PANEL_UI="$INTEGRATION/panel_ui"
 PYTHON="${PYTHON:-python}"
 
 export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
@@ -24,16 +24,13 @@ run_sil() {
 }
 
 run_frontend_unit() {
-  (cd "$WEBUI" && npm test)
+  (cd "$PANEL_UI" && npm test)
 }
 
 run_frontend_build() {
-  (cd "$WEBUI" && npm run build)
+  (cd "$PANEL_UI" && npm run build)
 }
 
-run_frontend_e2e() {
-  (cd "$WEBUI" && npm run test:e2e)
-}
 
 case "$LAYER" in
   L0) run_frontend_build ;;
@@ -45,7 +42,7 @@ case "$LAYER" in
   L2) run_sil ;;
   L3)
     run_frontend_unit
-    run_frontend_e2e
+    run_frontend_build
     ;;
   all)
     run_bridge

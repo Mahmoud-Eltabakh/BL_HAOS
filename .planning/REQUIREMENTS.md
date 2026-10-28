@@ -67,8 +67,8 @@ Requirements for closing the audited v1.0 packaging, CI, security, host-acceptan
 - [ ] **NUX-01**: Shuffle and repeat succeed on an active queue and are disabled or harmless when no queue exists; failed queue commands show a safe, specific reason.
 - [ ] **NUX-02**: Playlist creation/editing and browse-and-play are available in the integration's native HA UI.
 - [ ] **NUX-03**: Pairing, speaker management and settings are available in the integration (config/options flow, services, panel).
-- [ ] **NUX-04**: The add-on runs as a headless service and its ingress web UI is retired with documented migration notes.
-- [ ] **NUX-05**: Add-on/integration version compatibility is checked and reported clearly in HA.
+- [x] **NUX-04**: The add-on runs as a headless service and its ingress web UI is retired with documented migration notes (locally verified; candidate not published/deployed).
+- [x] **NUX-05**: Add-on/integration version compatibility is checked and reported clearly in HA (locally verified; candidate not published/deployed).
 - [ ] **NUX-06**: v1.2 passes CI and authorized live acceptance, with an explicit go/no-go after evidence review.
 
 Decision: add-on and integration stay separate packages (the add-on needs privileged BlueZ/D-Bus/audio access that Core cannot provide); only the UI moves.
@@ -122,8 +122,8 @@ Decision: add-on and integration stay separate packages (the add-on needs privil
 | NUX-01 | Phase 35 | Pending |
 | NUX-02 | Phase 36 | Pending |
 | NUX-03 | Phase 37 | Pending |
-| NUX-04 | Phase 38 | Pending |
-| NUX-05 | Phase 38 | Pending |
+| NUX-04 | Phase 38 | Locally verified; candidate not published/deployed |
+| NUX-05 | Phase 38 | Locally verified; candidate not published/deployed |
 | NUX-06 | Phase 39 | Pending |
 
 **Coverage:**

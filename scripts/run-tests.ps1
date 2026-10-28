@@ -3,7 +3,7 @@
   One-command local test runner for BL-HAOS layers.
 .PARAMETER Layer
   L0 = static contracts; L1 = unit/API regression; L2 = HA SIL (Linux/WSL2 only);
-  L3 = frontend unit + build + E2E; all = everything runnable on this OS.
+  L3 = native panel unit + build; all = everything runnable on this OS.
 #>
 param(
     [Parameter(Position = 0)]
@@ -15,7 +15,7 @@ $ErrorActionPreference = 'Stop'
 $RepoRoot = Split-Path -Parent $PSScriptRoot
 $Bridge = Join-Path $RepoRoot 'modules\bridge'
 $Integration = Join-Path $RepoRoot 'modules\integration'
-$WebUi = Join-Path $Bridge 'web_ui'
+$PanelUi = Join-Path $Integration 'panel_ui'
 $Python = Join-Path $RepoRoot '.venv\Scripts\python.exe'
 if (-not (Test-Path $Python)) { $Python = 'python' }
 
@@ -27,22 +27,17 @@ function Invoke-BridgePytest {
 }
 
 function Invoke-FrontendUnit {
-    Push-Location $WebUi
+    Push-Location $PanelUi
     try { npm test; if ($LASTEXITCODE -ne 0) { throw "Frontend unit tests failed" } }
     finally { Pop-Location }
 }
 
 function Invoke-FrontendBuild {
-    Push-Location $WebUi
+    Push-Location $PanelUi
     try { npm run build; if ($LASTEXITCODE -ne 0) { throw "Frontend build failed" } }
     finally { Pop-Location }
 }
 
-function Invoke-FrontendE2E {
-    Push-Location $WebUi
-    try { npm run test:e2e; if ($LASTEXITCODE -ne 0) { throw "Frontend E2E failed" } }
-    finally { Pop-Location }
-}
 
 function Invoke-BridgeStatic {
     Write-Host "==> Bridge static contracts are covered inside the pytest suite" -ForegroundColor Cyan
@@ -81,7 +76,7 @@ switch ($Layer) {
     }
     'L3' {
         Invoke-FrontendUnit
-        Invoke-FrontendE2E
+        Invoke-FrontendBuild
     }
     'all' {
         Push-Location $Bridge; try { Invoke-BridgePytest } finally { Pop-Location }

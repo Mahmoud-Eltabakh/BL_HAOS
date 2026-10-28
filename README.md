@@ -8,7 +8,7 @@ or physical audio. Deployment requires separate authorization; the temporary
 contract probe was removed after its one permitted restart.
 
 After authorized installation, use **Native Browse Media** on a speaker or
-**Open Media Catalog** beside Home Assistant Native integration in Ingress.
+**Open Media Catalog** in the Home Assistant-native media panel.
 The link opens HA's **BL-HAOS Media** panel at `/bl-haos-media`. In **Play on**,
 select exactly one connected BL-HAOS speaker, browse the audio provider hierarchy
 and press **Play** on an item or playlist. The original opaque reference reaches
@@ -40,6 +40,17 @@ BL-HAOS is the umbrella project for Bluetooth audio playback on Home Assistant O
 
 The modules are included here as Git submodules under `modules/bridge` and `modules/integration`.
 
+## Phase 38 candidate and migration
+
+The local bridge 0.2.71 and integration 0.2.22 candidates retire the add-on
+Ingress UI; the Home Assistant-native media and Speakers panels remain. Update
+the integration first, back up existing configuration/data, then update the bridge
+and check HA Repairs. Pairing, settings, and adapter controls use the integration
+Speakers view, services, or options flow. The supported candidate pair is 0.2.71
+/ 0.2.22; the integration minimum add-on version is 0.2.70. These versions are
+not published or deployed. See module migration instructions; Phase 39 separately
+gates publication, installation, deployment and live acceptance.
+
 ## Install
 
 1. Add `https://github.com/Mahmoud-Eltabakh/BL-HAOS-Bridge` to the Home Assistant Add-on Store.
@@ -59,8 +70,8 @@ Develop and release the Bridge and Integration from their own repositories. This
 
 Run the module-local unit and system-level tests with `pytest tests/ -q`.
 For HAOS behavior, use a Home Assistant OS virtual machine with the add-on
-and integration installed; validate pairing, playback, ingress, recovery,
-and native `media_player` control against the live VM.
+and integration installed; validate pairing, playback, recovery, and native
+`media_player` control against the live VM. The add-on Ingress UI is retired.
 
 ## Security
 

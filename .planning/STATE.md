@@ -116,3 +116,5 @@ Resume file: .planning/v1.0-MILESTONE-AUDIT.md
 
 ## Update 2026-10-28
 v1.2 Phases 35-37 shipped: bridge 0.2.70 (GHCR build green) and integration 0.2.21 deployed to 192.168.1.18; add-on started, event stream restored. Live user authorization for host actions recorded in chat. Pending: Phase 38 (headless add-on), live evidence for Phases 30-34 and 39.
+
+Phase 38 built locally (bridge 0.2.71, integration 0.2.22; not committed/deployed). Host SSH evidence recorded in phases/30-.../30-HOST-SSH-EVIDENCE.md: native auth 401s, no log leakage; new finding: legacy /api/devices and /api/settings unauthenticated on internal network (fixed by Phase 38 once deployed). T-24-15/T-24-16 still open (need human/provider evidence).

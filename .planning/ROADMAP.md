@@ -2,7 +2,7 @@
 
 ## Overview
 
-BL-HAOS is a Home Assistant OS Bluetooth audio platform combining BlueZ, PipeWire, Snapcast, a native Home Assistant media-player integration, and an Ingress UI. The current milestone moves the project from feature completeness to production trustworthiness.
+BL-HAOS is a Home Assistant OS Bluetooth audio platform combining BlueZ, PipeWire, Snapcast, a native Home Assistant media-player integration; speaker controls are moving fully into Home Assistant. The current milestone moves the project from feature completeness to production trustworthiness.
 
 The reference bar is the operational maturity demonstrated by Sendspin Bluetooth Bridge: explicit lifecycle contracts, isolated failure domains, deterministic diagnostics, guided recovery, reproducible test modes, and release governance. BL-HAOS adopts those engineering lessons while retaining native Home Assistant control as its product boundary.
 
@@ -471,7 +471,12 @@ Plans:
   2. Add-on/integration version compatibility is checked and reported clearly in HA.
   3. Upgrade notes cover moving from the old UI to the integration.
 
-**Plans**: 0 (TBD)
+**Plans**: 3 plans
+
+Plans:
+- [x] 38-01-PLAN.md — Retire ingress UI/static assets and UI-only routes; preserve native/operational contracts and local gates.
+- [x] 38-02-PLAN.md — Add authenticated version metadata, shared compatibility checks, HA repairs/diagnostics and recovery tests.
+- [x] 38-03-PLAN.md — Document staged migration, bump local candidates to bridge 0.2.71/integration 0.2.22, and verify docs/version parity.
 
 ### Phase 39: v1.2 Verification & Release Gates
 
@@ -492,7 +497,7 @@ Plans:
 | 35. Queue Control Fix & Real Error Reasons | 1/1 (inline) | Locally complete: bridge 359 passed; SIL assertion added, awaits CI; not deployed | 2026-10-28 |
 | 36. Native Playlist & Browse-and-Play UI | 1/1 | Locally complete: vitest 74, WSL SIL 48, parity 12 passed; not deployed | 2026-10-28 |
 | 37. Native Pairing, Speaker & Settings UI | 3/3 | Locally complete: bridge 369, integration unit 92, WSL SIL 97, vitest 76, parity 12 passed; not deployed; `default_codec` has no known playback consumer | 2026-10-28 |
-| 38. Headless Add-on & Ingress UI Retirement | 0/TBD | Not planned | - |
+| 38. Headless Add-on & Ingress UI Retirement | 3/3 | Locally complete: bridge 366 passed/1 skipped; integration unit/package/docs 120 passed; WSL SIL 179 passed; panel Vitest 76 passed/build/parity passed. Candidate only; not published/deployed; Phase 39 authority gates remain | 2026-10-28 |
 | 39. v1.2 Verification & Release Gates | 0/TBD | Blocked behind Phase 34 and authorization | - |
 
 ## v1.1 Progress

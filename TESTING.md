@@ -1,6 +1,6 @@
 # BL-HAOS Testing Guide
 
-This repository ships three independently testable surfaces — the **bridge add-on** (`modules/bridge`), the **Home Assistant integration** (`modules/integration`), and the **Ingress web UI** (`modules/bridge/web_ui`). Tests are organized into layers with explicit environment requirements so that every developer, on any OS, has a fast feedback loop and CI enforces the same gates.
+This repository ships three independently testable surfaces — the **bridge add-on** (`modules/bridge`), the **Home Assistant integration** (`modules/integration`), and the **Home Assistant-native panel** (`modules/integration/panel_ui`). Tests are organized into layers with explicit environment requirements so that every developer, on any OS, has a fast feedback loop and CI enforces the same gates.
 
 ## The five-layer pyramid
 
@@ -88,8 +88,8 @@ wsl.exe -d Ubuntu --cd /mnt/f/Workspace/BL-HAOS/modules/integration env BLHAOS_R
 wsl.exe -d Ubuntu --cd /mnt/f/Workspace/BL-HAOS/modules/integration env PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONDONTWRITEBYTECODE=1 /home/mse/.venvs/bl-haos-sil-2026.10.3/bin/python -m pytest tests/unit -q -p asyncio --asyncio-mode=auto --tb=short --show-capture=no
 npm --prefix modules/integration/panel_ui test
 npm --prefix modules/integration/panel_ui run build
-npm --prefix modules/bridge/web_ui test
-npm --prefix modules/bridge/web_ui run build
+npm --prefix modules/integration/panel_ui test
+npm --prefix modules/integration/panel_ui run build
 ./scripts/run-tests.ps1 -Layer L1
 ```
 
@@ -180,7 +180,7 @@ implemented. Retired Docker E2E is not an acceptance path.
 - **Integration client**: put tests in `modules/integration/tests/unit/`; use the `FakeSession` from `tests/conftest.py` (`session.command_response`, `session.command_status`, then assert on `session.commands`).
 - **HA SIL behaviors** (config flows, entity registry, diagnostics redaction) still belong in `test_ha_integration_sil.py` — they need the real runtime.
 - **Frontend unit**: colocate as `*.test.ts(x)` next to the component; `vitest.config.ts` picks up `src/**/*.test.{ts,tsx}`.
-- **Browser E2E**: add specs to `modules/bridge/web_ui/e2e/specs/`; the Playwright `webServer` recipe boots the backend in `BLHAOS_DEMO_MODE=true` automatically (override the target with `BLHAOS_E2E_URL`).
+- **Native panel mock E2E**: panel-only mock Playwright coverage lives under `modules/integration/panel_ui/e2e/` and does not boot the bridge or contact a live HA host. Real-HA browser checks require separate authorization.
 - **Never abandon a coroutine.** Both `pytest.ini` files escalate `RuntimeWarning`, so a coroutine that is created but never awaited fails the suite instead of scrolling past as a warning. Schedule it (`asyncio.create_task` behind a "is a loop running?" guard) or close it; a bare `asyncio.create_task` on a synchronous code path both loses the work and trips this gate.
 
 ## Live verification scripts
@@ -191,8 +191,8 @@ credential is stored in the repository.
 
 | Script | Purpose | Usage |
 |---|---|---|
-| `ui_check.py` | Ingress dashboard, the bridge API behind it, and the Home Assistant `media_player` card | `set HATOK=<token>` then `python ui_check.py --host host[:port]` |
-| `ingress_probe.py` | Resolve the add-on Ingress URL and session through `supervisor/api` | `set HA_TOKEN=<token>` then `python ingress_probe.py --host host[:port]` |
+| `ui_check.py` | Retained operational/API probes and Home Assistant `media_player` checks; not an ingress UI check | `set HATOK=<token>` then `python ui_check.py --host host[:port]` (authorized host only) |
+| `ingress_probe.py` | Historical pre-retirement probe; not a current headless add-on UI check | Do not use for current Phase 38 candidate acceptance |
 
 `ui_check.py` discovers the native entity from the attributes the bridge
 publishes (`bluetooth_address`, `adapter`), so it is correct on any
@@ -200,15 +200,13 @@ installation; override with `--entity` / `BLHAOS_ENTITY`. Checks the environment
 cannot evaluate are reported as `SKIP`, never as a failure: playback without
 `BLHAOS_UI_CHECK_MEDIA`, and playback plus text-to-speech while the speaker is
 disconnected (`media_player` state `off`). Exit codes: `0` pass (skips allowed),
-`1` failed check, `2` unusable invocation (no token, or an unresolvable entity /
-Ingress URL). Set `BLHAOS_UI_CHECK_MEDIA` to a short audio URL to assert the
-playback timeline too, and `--tts` / `BLHAOS_TTS` to choose the TTS entity.
+`1` failed check, `2` unusable invocation (no token or an unresolvable entity).
+Set `BLHAOS_UI_CHECK_MEDIA` to a short audio URL to assert the playback timeline
+too, and `--tts` / `BLHAOS_TTS` to choose the TTS entity.
 
-`ingress_probe.py` exists because Home Assistant no longer exposes an Ingress
-panel WebSocket command (`ingress/list` answers `unknown_command` on 2026.9); it
-uses the supported `supervisor/api` command instead and reports the session as
-"acquired" rather than echoing the credential. Exit codes: `0` resolved, `1`
-failed, `2` no token.
+`ingress_probe.py` is a historical tool from before the Phase 38 UI retirement.
+It may resolve Supervisor Ingress metadata but does not restore the retired UI or
+prove current add-on functionality. Do not treat it as a current acceptance path.
 
 ## Coverage
 
@@ -231,7 +229,7 @@ To enable reliable, non-blocking autonomous execution (`/gsd-autonomous`) across
   - **L0**: Types (`tsc`), linter, and static file hygiene.
   - **L1**: Bridge backend tests (`modules/bridge/tests`, 323+ tests, >=85% coverage) + integration client unit tests (`modules/integration/tests/unit` with `ha_stubs`) + frontend Vitest suites.
   - **L2**: Linux/WSL Home Assistant SIL (`modules/integration/tests/test_ha_integration_sil.py` and `test_panel_registration.py`, 127+ tests) running against real Home Assistant Core 2026.10.3 in-process with `pytest-homeassistant-custom-component`.
-  - **L3**: Headless Playwright browser tests using deterministic mock/demo harnesses (Bridge Ingress UI via `BLHAOS_DEMO_MODE=true` and Panel UI via mock-HA shell harness).
+  - **L3**: Headless Playwright browser tests for the retained native panel using the mock-HA shell harness; the retired bridge Ingress UI and demo harness are not built or tested.
 - **Physical Hardware & Live Host Deferral**: Live host acceptance requiring operator authorization, credentials, physical Bluetooth speakers, or host restarts (e.g., Plan 24-06 live target playback, Phase 27 physical speaker soak, and Phase 20 live Pi/VM go-live) is formally staged and deferred to a dedicated post-milestone live verification phase. Automated synthetic mocks and SIL tests serve as the acceptance criteria for milestone feature completion.
 
 ### 2. Mocking Boundaries & Fidelity Levels
@@ -242,4 +240,4 @@ To enable reliable, non-blocking autonomous execution (`/gsd-autonomous`) across
 
 ## Historical note
 
-The Docker-Compose live-bridge test harness was retired (see `.github/skills/update-e2e-tests/SKILL.md`); deep validation now flows through L1/L3 locally, L2 in CI, and L4 in the HAOS VM. The former ad-hoc Playwright specs under `.planning/runtime-validation/` have been promoted into `modules/bridge/web_ui/e2e/`.
+The Docker-Compose live-bridge test harness was retired (see `.github/skills/update-e2e-tests/SKILL.md`); deep validation now flows through L1/L3 locally, L2 in CI, and L4 in the HAOS VM. The retired bridge ingress app and demo Playwright harness are removed; the distinct Home Assistant-native panel mock harness remains. Real-HA browser acceptance belongs to the authorized HAOS VM workflow.
