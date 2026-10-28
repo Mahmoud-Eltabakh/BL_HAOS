@@ -4,6 +4,8 @@
 **Domain:** Home Assistant custom integration media browsing, authenticated custom panels, and native Bluetooth playback
 **Confidence:** MEDIUM
 
+**Historical baseline:** The original 2026-10-11 research below retains its 2026.9.4 URLs and version-specific claims. The approved 2026.10.3 addendum at the end governs the active target; it does not reverify the original frontend/provider/host claims.
+
 <user_constraints>
 ## User Constraints (from CONTEXT.md)
 
@@ -386,3 +388,23 @@ No project-local `copilot-instructions.md` exists. Project planning rules requir
 
 **Research date:** 2026-10-11
 **Valid until:** 2026-11-10, subject to Home Assistant Core/frontend version changes.
+
+## Approved 2026.10.3 Rebaseline Addendum - 2026-10-24
+
+**Decision:** The user explicitly approved moving the active phase 24 Core contract from 2026.9.4 to 2026.10.3. Original research, including the older frontend type references, is historical evidence rather than proof of the new host. No architecture or authentication fallback is authorized.
+
+### Sources Consulted for This Rebaseline
+
+- https://contributors.home-assistant.io/core/development/testing/ - official current Core testing guidance, fetched successfully (HTTP 200, "Running the tests").
+- https://pypi.org/pypi/pytest-homeassistant-custom-component/0.13.374/json - exact helper metadata: Python `>=3.14`, `homeassistant==2026.10.3`, `pytest==9.0.3`; artifact origin `files.pythonhosted.org`.
+- https://pypi.org/pypi/homeassistant/2026.10.3/json - exact Core metadata: Python `>=3.14.2`, `aiohttp==3.14.5`; artifact origin `files.pythonhosted.org`.
+- https://raw.githubusercontent.com/home-assistant/core/2026.10.3/homeassistant/components/panel_custom/__init__.py - fetched HTTP 200; `async_register_panel` exposes `module_url: str | None = None`.
+- https://raw.githubusercontent.com/home-assistant/core/2026.10.3/homeassistant/components/http/server.py - fetched HTTP 200; exposes `StaticPathConfig` and `async_register_static_paths`.
+
+### Measured Compatibility and Limits
+
+The separate Ubuntu WSL environment `/home/mse/.venvs/bl-haos-sil-2026.10.3` uses existing Python 3.14.4 and exact pins helper 0.13.374 / Core 2026.10.3 / aiohttp 3.14.5 / pytest 9.0.3. Resolver evidence required changing aiohttp from 3.14.3; pytest was preserved. Public-index dry-run and install succeeded; `pip check` found no broken requirements.
+
+The required Linux panel/static plus integration SIL gate collected and passed all 24 tests in 4.06s, without skips or test-contract repairs. See 24-VALIDATION.md for exact commands and parent-provided RED evidence. This verifies only the exercised local runtime contracts, not every original research claim or live frontend/provider behavior.
+
+**Still blocking:** Task 24-01-02 requires all six public-host observations on Core/HAOS 2026.10.3, including actual serving/module load, injected authenticated browse/play calls, and denied/expired rejection. No live host operation or panel implementation occurred; Plan 01 and phase acceptance remain incomplete.

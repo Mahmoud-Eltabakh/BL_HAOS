@@ -1,0 +1,17 @@
+TAP version 13
+1..1
+not ok 1 - src/playlist-library.test.tsx # time=64.49ms {
+    1..1
+    not ok 1 - saved playlist library tracer # time=62.86ms {
+        1..1
+        not ok 1 - opens Library first and creates an empty custom playlist through HA # time=62.58ms
+            ---
+            error:
+                name: "AssertionError"
+                message: "expected null not to be null"
+            at: "F:/Workspace/BL-HAOS/modules/integration/panel_ui/src/playlist-library.test.tsx:24:75"
+            actual: "null"
+            expected: "null"
+            ...
+    }
+}

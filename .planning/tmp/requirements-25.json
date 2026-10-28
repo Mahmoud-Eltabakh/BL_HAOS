@@ -1,0 +1,6 @@
+[
+  {"id":"PL-04","text":"Users can create, rename, reorder, edit, and delete custom ingress playlists containing ordered Home Assistant media references."},
+  {"id":"PL-05","text":"Users can save existing Home Assistant provider playlist references in the BL-HAOS playlist library."},
+  {"id":"PL-06","text":"Saved playlist definitions persist across Home Assistant and add-on restarts; unavailable or stale media references are identified to the user."},
+  {"id":"PL-11","text":"Saved playlists store Home Assistant media references and required display/order metadata, not resolved playback URLs or provider credentials."}
+]

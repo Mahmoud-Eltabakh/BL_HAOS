@@ -15,6 +15,12 @@ This phase covers PL-01, PL-02, and PL-03 only. Persistent BL-HAOS playlist CRUD
 <decisions>
 ## Implementation Decisions
 
+### Approved Core Target Rebaseline (2026-10-24)
+
+- The user explicitly approved Core 2026.10.3 in place of the former 2026.9.4 target; this approval is limited to the version contract, not the autonomous product defaults below.
+- Use exact SIL pins helper 0.13.374 / Core 2026.10.3 / aiohttp 3.14.5 / pytest 9.0.3 in a separate Linux/WSL2 environment. The aiohttp change is required by Core metadata and resolver evidence.
+- Task 24-01-02 remains a blocking public-host checkpoint before any panel source or build harness. The version approval and local 24-test pass do not satisfy host observations or complete Plan 01.
+
 ### HA Media Catalog (autonomous defaults)
 
 - Browse only audio-capable media and provider playlists; this product outputs A2DP audio, not video or images.

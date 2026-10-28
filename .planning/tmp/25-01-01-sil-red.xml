@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1.039" timestamp="2026-10-25T02:51:24.280964+02:00" hostname="IdeapadPro5"><testcase classname="tests.test_ha_integration_sil" name="test_playlist_library_create_list_through_authenticated_websocket" time="0.627"><failure message="assert False is True">hass = &lt;HomeAssistant RUNNING&gt;
+bridge_session = &lt;conftest.FakeSession object at 0x7ca71317dbe0&gt;
+hass_ws_client = &lt;function hass_ws_client.&lt;locals&gt;.create_client at 0x7ca713727a00&gt;
+socket_enabled = None
+
+    async def test_playlist_library_create_list_through_authenticated_websocket(
+        hass, bridge_session, hass_ws_client, socket_enabled
+    ):
+        """An authenticated HA user can create an empty playlist through the shared library."""
+        await async_setup_component(hass, "websocket_api", {})
+        await _setup_entry(hass, bridge_session)
+    
+        record_id = "c3f8941d-7e2b-4a11-8b3f-5c6d7e8f9012"
+        async with await hass_ws_client() as websocket:
+            await websocket.send_json_auto_id({"type": "bl_haos/playlist_library/list"})
+            listed = await websocket.receive_json()
+&gt;           assert listed["success"] is True
+E           assert False is True
+
+tests/test_ha_integration_sil.py:64: AssertionError</failure></testcase></testsuite></testsuites>

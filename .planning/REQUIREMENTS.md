@@ -29,7 +29,14 @@
 
 - [ ] **PL-11**: Saved playlists store Home Assistant media references and required display/order metadata, not resolved playback URLs or provider credentials.
 
-## Future Requirements
+## Scoped Bluetooth Reliability Follow-Up
+
+- [x] **PROD-04**: One bounded connection attempt shares adapter ownership across automatic and operator requests, releasing ownership on failure, timeout and cancellation. Locally verified in phase 27; hardware soak pending.
+- [x] **PROD-05**: Reconnect recovery preserves pairing and conservative failure pacing without nested retries or automatic link resets. Locally verified in phase 27; hardware soak pending.
+
+These scoped reliability requirements do not mark any playlist requirement complete.
+
+## Future Playlist Requirements
 
 - **PL-12**: Resume an in-progress playlist and queue position after Home Assistant or add-on restart.
 - **PL-13**: Synchronize one playlist queue across multiple Bluetooth speakers.
@@ -58,6 +65,8 @@
 | PL-09 | Phase 26 | Pending |
 | PL-10 | Phase 26 | Pending |
 | PL-11 | Phase 25 | Pending |
+| PROD-04 | Phase 27 | Locally verified; hardware soak pending |
+| PROD-05 | Phase 27 | Locally verified; hardware soak pending |
 
 **Coverage:**
 - v1 requirements: 11 total
@@ -66,4 +75,4 @@
 
 ---
 *Requirements defined: 2026-10-10*
-*Last updated: 2026-10-10 after starting milestone v1.0*
+*Last updated: 2026-10-24 after phase 27 local verification; playlist requirements unchanged*

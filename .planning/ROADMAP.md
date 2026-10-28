@@ -171,6 +171,8 @@ Go-live blockers: missing full Playwright regression; missing pip-audit/Trivy ev
 **Goal:** Expose supported Home Assistant media sources and provider playlists through native media players and a secure ingress catalog path.
 **Depends on:** Phase 23
 **Requirements:** PL-01, PL-02, PL-03
+**Plans:** 6/6 plans complete
+**Status:** Complete for user-approved local mock progression (2026-10-24). Mock-HA Playwright scenarios and responsive captures passed. This does not verify real-provider authentication, actual session expiry, physical playback, or HA-shell accessibility. PL-01/02/03 remain production-pending; T-24-15 remains OPEN/HIGH and blocks release. Live acceptance is deferred to post-milestone verification.
 **Success Criteria:**
 
 1. A connected BL-HAOS media-player entity exposes supported audio media and provider playlists through Home Assistant Browse Media.
@@ -178,23 +180,44 @@ Go-live blockers: missing full Playwright regression; missing pip-audit/Trivy ev
 3. The ingress UI can browse the supported HA catalog and launch provider playlists through a secure HA-owned interface; HA credentials are not copied into add-on storage, browser persistence, or logs.
 4. Integration and ingress tests cover catalog browsing, provider resolution, unavailable items, and denied/expired access.
 
+Plans:
+- [x] 24-01-PLAN.md: SIL Core 2026.10.3 pins and single-restart public-host probe
+- [x] 24-02-PLAN.md: Custom media panel shell and Home Assistant registration
+- [x] 24-03-PLAN.md: Panel catalog browsing and media resolution
+- [x] 24-04-PLAN.md: Target speaker selection and single-attempt playback
+- [x] 24-05-PLAN.md: Ingress navigation entry and session boundary hardening
+- [x] 24-06-PLAN.md: Headless mock-HA Playwright browser acceptance, responsive captures, and quality gates
+
 ### Phase 25: Saved Playlist Library
 
 **Goal:** Let users create and maintain persistent BL-HAOS playlists from Home Assistant media references and save provider playlist references.
 **Depends on:** Phase 24
 **Requirements:** PL-04, PL-05, PL-06, PL-11
+**Status:** Complete for user-approved local/mock progression (2026-10-27; 69/69 verifier score). Production/live HA acceptance remains pending and release-blocking.
 **Success Criteria:**
 
-1. Users can create, rename, reorder, edit, and delete custom playlists of ordered Home Assistant media references in the ingress UI.
-2. Users can save an existing provider playlist reference and launch it from the BL-HAOS library.
+1. Users can create, rename, reorder, edit, and delete custom playlists of ordered Home Assistant media references in the existing authenticated HA panel.
+2. Users can save an existing provider playlist reference as a BL-HAOS library shortcut; launching it is owned by Phase 26.
 3. Playlist definitions survive Home Assistant and add-on restarts; stale media references are identified rather than shown as playable.
 4. Persisted records contain media references and required display/order metadata, never resolved playback URLs or provider credentials.
+
+**Plans:** 7 plans
+
+Plans:
+- [x] 25-01-PLAN.md — HA-owned custom-playlist create/list tracer and persistence
+- [x] 25-02-PLAN.md — Bounded schema and pure migration tests, concurrency, and fail-closed storage
+- [x] 25-03-PLAN.md — Custom playlist editor, ordering, and confirmation flows
+- [x] 25-04-PLAN.md — Validated, idempotent provider playlist shortcut persistence
+- [x] 25-05-PLAN.md — Provider shortcut save, rename, and local removal UI
+- [x] 25-06-PLAN.md — Explicit browse-based availability checks
+- [x] 25-07-PLAN.md — Mock-only end-to-end, responsive, and keyboard acceptance
 
 ### Phase 26: Sequential Playback & Queue Controls
 
 **Goal:** Play saved playlists in order with automatic advancement, full queue controls, and truthful failure/cancellation state.
 **Depends on:** Phase 25
 **Requirements:** PL-07, PL-08, PL-09, PL-10
+**Status:** Complete for user-approved local/mock progression (5/5 plans; 10/10 scoped truths verified). PL-07 through PL-10 remain production-pending; T-24-15/T-24-16, release, and deployment remain blocked. The generated `panel_static` bundle is unchanged and requires a separately authorized packaging step before HA serves the updated panel source.
 **Success Criteria:**
 
 1. Starting a playlist on a selected speaker plays items in order and advances only after successful natural completion of the current item.
@@ -202,7 +225,38 @@ Go-live blockers: missing full Playwright regression; missing pip-audit/Trivy ev
 3. Stop, replacement playback, or speaker loss cancels queued work; stale process-completion events cannot start another playlist item.
 4. Resolution and playback failures are visible, and the queue does not silently skip an item that failed.
 
+**Plans:** 5 plans
+
+Plans:
+- [x] 26-01-PLAN.md — Bridge queue session and process lifecycle tracer
+- [x] 26-02-PLAN.md — Bounded native/ingress transport, shared snapshot, and capability contract
+- [x] 26-03-PLAN.md — HA resolve-all playlist launch and capability-gated native entity
+- [x] 26-04-PLAN.md — Authenticated Library launch and ingress queue controls
+- [x] 26-05-PLAN.md — Local mock acceptance, API coverage, and user-facing documentation
+
+### Phase 27: Bluetooth Reconnect Reliability
+
+**Goal:** Prevent reconnect storms by removing nested connection retries, sharing connection ownership across automatic and operator requests, and preserving conservative backoff through failure and recovery.
+**Requirements**: PROD-04, PROD-05
+**Depends on:** Phase 23
+**Success Criteria:**
+
+1. One scheduled reconnect performs one bounded connection attempt; busy or failed BlueZ calls cannot trigger immediate nested retries or destructive stale-link recovery.
+2. Manual and automatic connection requests share adapter ownership, including cleanup after cancellation and failure; pairing is preserved.
+3. Repeated failures use longer exponential backoff and a meaningful circuit-breaker cooldown; recovery, presence events, and busy responses cannot erase accumulated backoff.
+4. Deterministic module-local tests verify call counts, concurrent requests, cancellation, backoff, and breaker behavior, with existing Bluetooth and API regressions passing.
+5. Release notes and operator documentation describe the change, with real-host soak validation explicitly pending until deployment is authorized.
+
+**Execution scope:** Dedicated autonomous run, phase 27 only. Playlist phases 24-26 remain paused. No live deployment, Bluetooth reset, pairing deletion, branch creation, or commits are authorized by this run.
+**Plans:** 1/1 plans complete
+**Status:** Locally complete 2026-10-24. Independent review clean; 280 passed, one existing platform skip. HAOS deployment and hardware soak deferred.
+
+Plans:
+- [x] 27-01-PLAN.md: Bounded shared connection ownership, conservative scheduler pacing, regression tests and version 0.2.68 guidance.
+
 ## v1.0 Requirement Traceability
+
+**Milestone audit:** `gaps_found` in [v1.0-MILESTONE-AUDIT.md](v1.0-MILESTONE-AUDIT.md). Local phase plans are complete, but PL-07 is not available in the unchanged packaged `panel_static` bundle, production requirements remain pending, T-24-15/T-24-16 remain open, and Phase 27 hardware soak is deferred. Do not complete/archive or claim release readiness until separately authorized gates pass.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|

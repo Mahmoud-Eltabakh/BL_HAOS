@@ -1,0 +1,301 @@
+TAP version 13
+1..1
+not ok 1 - src/playlist-library.test.tsx # time=1035.88ms {
+    1..1
+    not ok 1 - saved playlist library tracer # time=1034.25ms {
+        1..1
+        not ok 1 - opens Library first and creates an empty custom playlist through HA # time=1033.96ms
+            ---
+            error:
+                name: "TestingLibraryElementError"
+                message: "Unable to find role=\"heading\" and name \"Your playlists\"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m\"neu-page\"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m\"catalog-header\"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m\"catalog-heading\"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m\"Back\"[39m
+            [33mclass[39m=[32m\"neu-button icon-button\"[39m
+            [33mdisabled[39m=[32m\"\"[39m
+            [33mtitle[39m=[32m\"Back\"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m\"true\"[39m
+              [33mclass[39m=[32m\"lucide lucide-arrow-left \"[39m
+              [33mfill[39m=[32m\"none\"[39m
+              [33mheight[39m=[32m\"20\"[39m
+              [33mstroke[39m=[32m\"currentColor\"[39m
+              [33mstroke-linecap[39m=[32m\"round\"[39m
+              [33mstroke-linejoin[39m=[32m\"round\"[39m
+              [33mstroke-width[39m=[32m\"2\"[39m
+              [33mviewBox[39m=[32m\"0 0 24 24\"[39m
+              [33mwidth[39m=[32m\"20\"[39m
+              [33mxmlns[39m=[32m\"http://www.w3.org/2000/svg\"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m\"m12 19-7-7 7-7\"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m\"M19 12H5\"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+          [36m<div>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m\"eyebrow\"[39m
+            [36m>[39m
+              [0mBL-HAOS[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mMedia Catalog[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m\"target-control\"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m\"catalog-target\"[39m
+          [36m>[39m
+            [0mPlay on[0m
+          [36m</label>[39m
+          [36m<select[39m
+            [33mclass[39m=[32m\"neu-inset\"[39m
+            [33mid[39m=[32m\"catalog-target\"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m\"\"[39m
+            [36m>[39m
+              [0mSelect a connected speaker[0m
+            [36m</option>[39m
+          [36m</select>[39m
+        [36m</div>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m\"Close catalog\"[39m
+          [33mclass[39m=[32m\"neu-button icon-button close-catalog\"[39m
+          [33mhref[39m=[32m\"/\"[39m
+          [33mtitle[39m=[32m\"Close catalog\"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m\"true\"[39m
+            [33mclass[39m=[32m\"lucide lucide-x \"[39m
+            [33mfill[39m=[32m\"none\"[39m
+            [33mheight[39m=[32m\"20\"[39m
+            [33mstroke[39m=[32m\"currentColor\"[39m
+            [33mstroke-linecap[39m=[32m\"round\"[39m
+            [33mstroke-linejoin[39m=[32m\"round\"[39m
+            [33mstroke-width[39m=[32m\"2\"[39m
+            [33mviewBox[39m=[32m\"0 0 24 24\"[39m
+            [33mwidth[39m=[32m\"20\"[39m
+            [33mxmlns[39m=[32m\"http://www.w3.org/2000/svg\"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m\"M18 6 6 18\"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m\"m6 6 12 12\"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</a>[39m
+      [36m</header>[39m
+      [36m<p[39m
+        [33maria-atomic[39m=[32m\"true\"[39m
+        [33maria-live[39m=[32m\"polite\"[39m
+        [33mclass[39m=[32m\"status\"[39m
+        [33mrole[39m=[32m\"status\"[39m
+      [36m/>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m\"Catalog path\"[39m
+        [33mclass[39m=[32m\"catalog-path\"[39m
+      [36m>[39m
+        [36m<span[39m
+          [33maria-current[39m=[32m\"page\"[39m
+        [36m>[39m
+          [0mMedia sources[0m
+        [36m</span>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-busy[39m=[32m\"false\"[39m
+        [33maria-label[39m=[32m\"Media sources\"[39m
+        [33mclass[39m=[32m\"neu-surface\"[39m
+      [36m>[39m
+        [36m<h2>[39m
+          [0mMedia sources[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m\"catalog-body\"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m\"empty-state\"[39m
+          [36m>[39m
+            [36m<h3>[39m
+              [0mNo audio sources are available[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mHome Assistant did not return a playable audio source. Check the media provider and try again.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<ul[39m
+            [33maria-label[39m=[32m\"Catalog items\"[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m\"neu-page\"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m\"catalog-header\"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m\"catalog-heading\"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33maria-label[39m=[32m\"Back\"[39m
+            [33mclass[39m=[32m\"neu-button icon-button\"[39m
+            [33mdisabled[39m=[32m\"\"[39m
+            [33mtitle[39m=[32m\"Back\"[39m
+          [36m>[39m
+            [36m<svg[39m
+              [33maria-hidden[39m=[32m\"true\"[39m
+              [33mclass[39m=[32m\"lucide lucide-arrow-left \"[39m
+              [33mfill[39m=[32m\"none\"[39m
+              [33mheight[39m=[32m\"20\"[39m
+              [33mstroke[39m=[32m\"currentColor\"[39m
+              [33mstroke-linecap[39m=[32m\"round\"[39m
+              [33mstroke-linejoin[39m=[32m\"round\"[39m
+              [33mstroke-width[39m=[32m\"2\"[39m
+              [33mviewBox[39m=[32m\"0 0 24 24\"[39m
+              [33mwidth[39m=[32m\"20\"[39m
+              [33mxmlns[39m=[32m\"http://www.w3.org/2000/svg\"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m\"m12 19-7-7 7-7\"[39m
+              [36m/>[39m
+              [36m<path[39m
+                [33md[39m=[32m\"M19 12H5\"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</button>[39m
+          [36m<div>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m\"eyebrow\"[39m
+            [36m>[39m
+              [0mBL-HAOS[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mMedia Catalog[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m\"target-control\"[39m
+        [36m>[39m
+          [36m<label[39m
+            [33mfor[39m=[32m\"catalog-target\"[39m
+          [36m>[39m
+            [0mPlay on[0m
+          [36m</label>[39m
+          [36m<select[39m
+            [33mclass[39m=[32m\"neu-inset\"[39m
+            [33mid[39m=[32m\"catalog-target\"[39m
+          [36m>[39m
+            [36m<option[39m
+              [33mvalue[39m=[32m\"\"[39m
+            [36m>[39m
+              [0mSelect a connected speaker[0m
+            [36m</option>[39m
+          [36m</select>[39m
+        [36m</div>[39m
+        [36m<a[39m
+          [33maria-label[39m=[32m\"Close catalog\"[39m
+          [33mclass[39m=[32m\"neu-button icon-button close-catalog\"[39m
+          [33mhref[39m=[32m\"/\"[39m
+          [33mtitle[39m=[32m\"Close catalog\"[39m
+        [36m>[39m
+          [36m<svg[39m
+            [33maria-hidden[39m=[32m\"true\"[39m
+            [33mclass[39m=[32m\"lucide lucide-x \"[39m
+            [33mfill[39m=[32m\"none\"[39m
+            [33mheight[39m=[32m\"20\"[39m
+            [33mstroke[39m=[32m\"currentColor\"[39m
+            [33mstroke-linecap[39m=[32m\"round\"[39m
+            [33mstroke-linejoin[39m=[32m\"round\"[39m
+            [33mstroke-width[39m=[32m\"2\"[39m
+            [33mviewBox[39m=[32m\"0 0 24 24\"[39m
+            [33mwidth[39m=[32m\"20\"[39m
+            [33mxmlns[39m=[32m\"http://www.w3.org/2000/svg\"[39m
+          [36m>[39m
+            [36m<path[39m
+              [33md[39m=[32m\"M18 6 6 18\"[39m
+            [36m/>[39m
+            [36m<path[39m
+              [33md[39m=[32m\"m6 6 12 12\"[39m
+            [36m/>[39m
+          [36m</svg>[39m
+        [36m</a>[39m
+      [36m</header>[39m
+      [36m<p[39m
+        [33maria-atomic[39m=[32m\"true\"[39m
+        [33maria-live[39m=[32m\"polite\"[39m
+        [33mclass[39m=[32m\"status\"[39m
+        [33mrole[39m=[32m\"status\"[39m
+      [36m/>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m\"Catalog path\"[39m
+        [33mclass[39m=[32m\"catalog-path\"[39m
+      [36m>[39m
+        [36m<span[39m
+          [33maria-current[39m=[32m\"page\"[39m
+        [36m>[39m
+          [0mMedia sources[0m
+        [36m</span>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33maria-busy[39m=[32m\"false\"[39m
+        [33maria-label[39m=[32m\"Media sources\"[39m
+        [33mclass[39m=[32m\"neu-surface\"[39m
+      [36m>[39m
+        [36m<h2>[39m
+          [0mMedia sources[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m\"catalog-body\"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m\"empty-state\"[39m
+          [36m>[39m
+            [36m<h3>[39m
+              [0mNo audio sources are available[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mHome Assistant did not return a playable audio source. Check the media provider and try again.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+          [36m<ul[39m
+            [33maria-label[39m=[32m\"Catalog items\"[39m
+          [36m/>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m"
+            at: "F:/Workspace/BL-HAOS/modules/integration/panel_ui/node_modules/@testing-library/dom/dist/wait-for.js:163:27"
+            ...
+    }
+}

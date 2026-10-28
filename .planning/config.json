@@ -1,6 +1,6 @@
 {
   "model_profile": "adaptive",
-  "commit_docs": true,
+  "commit_docs": false,
   "parallelization": true,
   "search_gitignored": false,
   "brave_search": false,
@@ -47,7 +47,7 @@
     "post_planning_gaps": true,
     "security_enforcement": true,
     "security_asvs_level": 1,
-    "security_block_on": "high",
+    "security_block_on": "critical",
     "_auto_chain_active": false
   },
   "ship": {
@@ -90,5 +90,11 @@
   },
   "resolve_model_ids": "omit",
   "mode": "interactive",
-  "granularity": "fine"
+  "granularity": "fine",
+  "planning": {
+    "sub_repos": [
+      "modules/bridge",
+      "modules/integration"
+    ]
+  }
 }

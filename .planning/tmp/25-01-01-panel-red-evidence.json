@@ -1,0 +1,10 @@
+{
+  "command": "npm --prefix modules/integration/panel_ui run --silent test -- --run src/playlist-library.test.tsx -t \"opens Library first and creates an empty custom playlist through HA\" --reporter=tap",
+  "exitCode": 1,
+  "output": "TAP version 13\n1..1\nnot ok 1 - src/playlist-library.test.tsx # time=64.49ms {\n    1..1\n    not ok 1 - saved playlist library tracer # time=62.86ms {\n        1..1\n        not ok 1 - opens Library first and creates an empty custom playlist through HA # time=62.58ms\n            ---\n            error:\n                name: \"AssertionError\"\n                message: \"expected null not to be null\"\n            at: \"F:/Workspace/BL-HAOS/modules/integration/panel_ui/src/playlist-library.test.tsx:24:75\"\n            actual: \"null\"\n            expected: \"null\"\n            ...\n    }\n}",
+  "targetTest": "opens Library first and creates an empty custom playlist through HA",
+  "targetFile": "modules/integration/panel_ui/src/playlist-library.test.tsx",
+  "expected": "The panel exposes the Your playlists heading and accepts a create request for an empty named custom playlist.",
+  "actual": "The target assertion expected a non-null Your playlists heading but received null; the current panel renders Media Catalog.",
+  "semanticAssessment": "TAP reports the target test as not ok due to the planned assertion with actual null. Test collection/setup succeeded and the failure is intentional RED evidence for the missing Library UI."
+}

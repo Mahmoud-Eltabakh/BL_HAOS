@@ -27,7 +27,7 @@ Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `
 - [x] **High-Fidelity Codec Suite**: Support for SBC, SBC-XQ, AAC, aptX, aptX HD, and LDAC audio codecs with low-latency tuning.
 - [x] **Native Home Assistant Media Player**: Automatic exposure of connected Bluetooth speakers as standard Home Assistant `media_player` entities for TTS, local media browser, and web radio playback.
 - [x] **Multi-Room & Synchronized Playback**: Snapcast integration enabling grouped and sample-synchronized playback across multiple Bluetooth speakers and standard Snapcast clients.
-- [x] **Aggressive Auto-Reconnect Engine**: Background daemon actively monitoring speaker presence, connection state, and restoring links when speakers wake from standby or re-enter range.
+- [x] **Bounded Auto-Reconnect Engine**: Background reconnect scheduling with shared adapter ownership, persistent exponential backoff and non-destructive recovery. Phase 27 locally verified; authorized HAOS soak remains pending.
 - [x] **Volume & Audio Control**: Per-speaker software volume normalization, hardware volume sync (AVRCP), and mute controls.
 - [x] **Native Media Player Bridge**: A bundled Home Assistant custom integration that uses the add-on REST/WebSocket API as its primary control plane and exposes connected speakers as native `media_player` entities.
 - [x] **Automated Deep Testing Pipeline**: Docker Compose stack that launches an isolated HAOS VM-in-Docker alongside test runners (Pytest, Playwright) and mocked Bluetooth layers for deep, end-to-end integration testing.
@@ -75,7 +75,7 @@ Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `
 | Snapcast for Multi-Room Sync | Proven open-source protocol for sample-accurate multi-room audio synchronization across multiple endpoints | Accepted |
 | Dynamic Ingress Web UI | Eliminates manual MAC address configuration in YAML, allowing non-technical users to discover and pair speakers visually | Accepted |
 | Neumorphic Ingress UI Direction | Replace the current flat dark-slate surface treatment with restrained Neumorphism for the Phase 23 discovery experience; retain semantic status colors, keyboard focus visibility, responsive layout, and WCAG contrast requirements | Accepted |
-| Aggressive Background Reconnection | Overcomes Bluetooth speaker auto-sleep/idle timeouts by continuously monitoring and restoring link states | Accepted |
+| Conservative Background Reconnection | One bounded connection per scheduled attempt, shared adapter ownership and retained backoff reduce retry pressure without deleting bonds | Locally verified in phase 27; HAOS soak pending |
 | Production-First Hardening | Reliability and observability are more important than adding extra feature surface before the runtime is stable | Accepted |
 | Degraded-Mode Safety | The system must remain honest about missing dependencies rather than falsely reporting healthy runtime state | Accepted |
 | Security by Validation | All user-controlled inputs and commands must be validated before privileged operations execute | Accepted |
@@ -101,4 +101,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-10-10 for the Playlist Playback & Management milestone*
+*Last updated: 2026-10-24 after phase 27 local verification; playlist milestone remains open*

@@ -1,0 +1,13 @@
+{
+  "command": "wsl.exe -d Ubuntu --cd /mnt/f/Workspace/BL-HAOS/modules/integration env BLHAOS_RUN_SIL=1 PYTHONDONTWRITEBYTECODE=1 /home/mse/.venvs/bl-haos-sil-2026.10.3/bin/python -m pytest tests/test_playlist_library_sil.py -q -p asyncio --asyncio-mode=auto -k playlist_library_create --junitxml=../../.planning/tmp/25-01-01-sil-red-isolated.xml",
+  "exitCode": 1,
+  "output": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"1\" skipped=\"0\" tests=\"1\" time=\"0.951\" timestamp=\"2026-10-25T02:59:40.676761+02:00\" hostname=\"IdeapadPro5\"><testcase classname=\"tests.test_playlist_library_sil\" name=\"test_playlist_library_create_list_through_authenticated_websocket\" time=\"0.671\"><failure message=\"assert False is True\">hass = &lt;HomeAssistant RUNNING&gt;\nbridge_session = &lt;conftest.FakeSession object at 0x79bddf28cd70&gt;\nhass_ws_client = &lt;function hass_ws_client.&lt;locals&gt;.create_client at 0x79bddf26f5e0&gt;\nsocket_enabled = None\n\n    async def test_playlist_library_create_list_through_authenticated_websocket(\n        hass, bridge_session, hass_ws_client, socket_enabled\n    ):\n        \"\"\"An authenticated HA user can create an empty playlist through the shared library.\"\"\"\n        await async_setup_component(hass, \"websocket_api\", {})\n        await _setup_entry(hass, bridge_session)\n    \n        record_id = \"c3f8941d-7e2b-4a11-8b3f-5c6d7e8f9012\"\n        async with await hass_ws_client() as websocket:\n            await websocket.send_json_auto_id({\"type\": \"bl_haos/playlist_library/list\"})\n            listed = await websocket.receive_json()\n&gt;           assert listed[\"success\"] is True\nE           assert False is True\n\ntests/test_playlist_library_sil.py:48: AssertionError</failure></testcase></testsuite></testsuites>",
+  "reportPath": ".planning/tmp/25-01-01-sil-red-isolated.xml",
+  "runStartedAt": "2026-10-25T00:59:40.676761Z",
+  "reportModifiedAt": "2026-10-25T00:59:41Z",
+  "targetTest": "tests.test_playlist_library_sil#test_playlist_library_create_list_through_authenticated_websocket",
+  "targetFile": "modules/integration/tests/test_playlist_library_sil.py",
+  "expected": "The authenticated list command succeeds and returns an empty versioned library.",
+  "actual": "The target assertion listed[\"success\"] is True failed after Home Assistant returned success=false and logged Received unknown command: bl_haos/playlist_library/list.",
+  "semanticAssessment": "The named target executed and failed on the intended list-success assertion; setup, fixtures, imports, and collection succeeded. This is valid RED evidence for the missing HA integration-global command."
+}

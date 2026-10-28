@@ -17,7 +17,7 @@ The deterministic detector returned `detected: true` for the roadmap Phase 24 se
 | Entity-side media source resolution | INTEGRATE | Resolve the opaque reference inside the selected native entity through Home Assistant. |
 | Denied and expired session handling | INTEGRATE | Surface bounded reconnect or permission errors with no alternate authentication path. |
 | Unavailable and unresolvable media handling | INTEGRATE | Preserve the selected reference and report failure without fallback, skip, or automatic retry. |
-| Target Core panel lifecycle validation | INTEGRATE | Validate registration, serving, injected calls, unload, and partial failure on Core 2026.9.4. |
+| Target Core panel lifecycle validation | INTEGRATE | Validate registration, serving, injected calls, unload, and partial failure on user-approved Core 2026.10.3. Local 24-test SIL passed; Task 24-01-02 host gate remains pending. |
 | Browser-side media source resolution | OPT-OUT | Exposes resolved URLs to browser state and violates the HA-owned late-resolution boundary. |
 | Browser or add-on HA token storage | OPT-OUT | The current injected HA session is the only approved authentication authority. |
 | Bridge media catalog or provider endpoints | OPT-OUT | The bridge is not a catalog proxy and must not receive HA or provider credentials. |
