@@ -6,7 +6,7 @@ BL-HAOS is a Home Assistant OS Bluetooth audio platform combining BlueZ, PipeWir
 
 The reference bar is the operational maturity demonstrated by Sendspin Bluetooth Bridge: explicit lifecycle contracts, isolated failure domains, deterministic diagnostics, guided recovery, reproducible test modes, and release governance. BL-HAOS adopts those engineering lessons while retaining native Home Assistant control as its product boundary.
 
-The current milestone, v1.0 Playlist Playback & Management, adds Home Assistant media browsing, saved playlists, and ordered queue playback while preserving HA as the media-source and authentication boundary.
+The current milestone is v1.1 Production Readiness & Release. The preceding v1.0 Playlist Playback & Management milestone ended at Phase 27 with a `gaps_found` audit; it is not complete. Its local/mock implementation history remains below, and no local/mock result is treated as production acceptance.
 
 ## Real-Time Device Discovery milestone
 
@@ -152,7 +152,7 @@ Plans:
 - [ ] TBD (run $gsd-plan-phase 23 to break down)
 
 ---
-*Roadmap updated: 2026-09-23 after completing Phase 19; Phase 20 is current
+*Historical roadmap snapshot updated: 2026-09-23 after Phase 19; Phase 20 was current at that time.*
 
 ## Phase 20 — Release quality gates and go-live: HOLD
 
@@ -273,3 +273,156 @@ Plans:
 | PL-11 | Phase 25 | Pending |
 
 **Coverage:** 11 of 11 v1 requirements mapped; 0 unmapped.
+
+## v1.1 Production Readiness & Release (Current)
+
+**Goal:** Make the audited v1.0 media, playlist, queue, and reconnect capabilities safely shippable through verified packaging, reproducible non-publishing CI, security closure, and explicitly authorized production acceptance.
+**Depends on:** Phase 27; the v1.0 milestone remains `gaps_found` and incomplete.
+**Requirements:** PRD-01 through PRD-08
+**Status:** In progress. Phase 28 is complete for local package/SIL scope; Phase 29 is active with one plan. No production acceptance or release-ready claim is made.
+
+This roadmap is planning only. It does **not** authorize deployment, package or image publication, release-artifact publication, host changes, Home Assistant Core restarts, physical playback, provider or session manipulation, or hardware tests. Local planning and non-publishing checks do not grant any of those permissions. Any live acceptance requires separate explicit authorization and a recorded phase checkpoint defining the approved host, actions, limits, and rollback/stop conditions. Without that authorization, the live phase remains blocked and must not be reported complete.
+
+No `.planning/MILESTONES.md` or completed milestone record exists in this workspace. The v1.0 history and incomplete status above are retained from the existing roadmap and [v1.0-MILESTONE-AUDIT.md](v1.0-MILESTONE-AUDIT.md); no completion record is inferred or fabricated.
+
+## Phases
+
+- [x] **Phase 28: Package Panel Bundle Parity** - Generate and verify the integration-served panel bundle against the reviewed queue UI source. (completed 2026-10-28)
+- [x] **Phase 29: PR-Safe Root, Bridge & Integration CI** - Local declared-runtime gates passed; hosted Node 22 pull_request evidence remains deferred until a separate authorized PR check is available.
+- [ ] **Phase 30: Security Gate & Finding Closure** - Blocked pending explicit security evidence review and release-threshold authorization.
+- [ ] **Phase 31: Authorized HA & Provider Playback Acceptance** - Blocked pending explicit host, provider, and playback authorization.
+- [ ] **Phase 32: HA-Shell Accessibility & Responsive Acceptance** - Blocked pending explicit shell-inspection authorization.
+- [ ] **Phase 33: Authorized Reconnect Hardware Soak** - Blocked pending explicit support-hardware authorization and soak checkpoint.
+- [ ] **Phase 34: Release Candidate Evidence & Go/No-Go Preparation** - Blocked pending completion of the earlier authorized evidence gates.
+
+## Phase Details
+
+### Phase 28: Package Panel Bundle Parity
+
+**Goal**: Home Assistant serves the reviewed panel source as a generated bundle containing the saved-playlist launch and queue controls.
+**Depends on**: Phase 27
+**Requirements**: PRD-01
+**Success Criteria** (what must be TRUE):
+  1. The integration package serves a generated bundle produced from the reviewed panel source, not a stale hand-maintained artifact.
+  2. Package-layout checks confirm the served bundle contains saved-playlist launch and queue-control behavior.
+  3. A reproducible local build/check identifies source-to-bundle drift and fails when the packaged artifact is stale.
+
+**Plans:** 1/1 plans complete
+
+Plans:
+- [x] 28-01-PLAN.md - Reviewed panel source to generated-bundle parity and HA serving verification
+
+**UI hint**: yes
+
+### Phase 29: PR-Safe Root, Bridge & Integration CI
+
+**Goal**: Contributors can validate root, bridge, and integration changes through passing pull-request gates without publishing release artifacts.
+**Depends on**: Phase 28
+**Requirements**: PRD-02
+**Success Criteria** (what must be TRUE):
+  1. The root CI gate passes on its declared runtime and required checks.
+  2. Bridge and integration CI gates pass on their declared runtimes and required checks.
+  3. Pull-request validation can run without publishing add-on images, packages, or release artifacts.
+
+**Plans:** 1/1 plans executed
+
+Plans:
+- [x] 29-01-PLAN.md - Root PR-safe gates, required panel parity, and declared-runtime verification
+
+### Phase 30: Security Gate & Finding Closure
+
+**Goal**: Release enforcement applies the production high threshold, and the audited security findings have reviewed closure evidence.
+**Depends on**: Phase 29
+**Requirements**: PRD-03
+**Success Criteria** (what must be TRUE):
+  1. The effective production security threshold is `high` in the release-enforced configuration.
+  2. T-24-15 and T-24-16 are closed with reviewed evidence recorded against each finding.
+  3. No local or CI override weakens the release security enforcement below `high`.
+
+**Plans**: 0 (TBD)
+
+Plans:
+- [ ] TBD (run $gsd-plan-phase 30 to break down)
+
+### Phase 31: Authorized HA & Provider Playback Acceptance
+
+**Goal**: On an explicitly authorized HAOS test host, users can browse and play saved Home Assistant media safely, including when access or media is unavailable.
+**Depends on**: Phase 30
+**Requirements**: PRD-04, PRD-05
+**Success Criteria** (what must be TRUE):
+  1. Before live host, provider, session, or playback actions, a separate explicit authorization and scoped checkpoint records the approved host, test identities, actions, limits, and stop conditions; absent this, no live test is run or marked complete.
+  2. On the authorized host, native media browsing, saved-playlist resolution, queue launch, and audible playback succeed on one explicitly selected connected speaker.
+  3. Authorized denial, unavailable-reference, and expired-session cases fail safely without leaking credentials, provider data, or playable URLs.
+  4. Those negative cases do not modify the shared Home Assistant session or use unapproved provider/session manipulation.
+
+**Plans**: 0 (TBD)
+
+Plans:
+- [ ] TBD (run $gsd-plan-phase 31 to break down)
+
+**UI hint**: yes
+
+### Phase 32: HA-Shell Accessibility & Responsive Acceptance
+
+**Goal**: The packaged panel is accessible and usable in the actual Home Assistant shell at the required viewport sizes.
+**Depends on**: Phase 31
+**Requirements**: PRD-06
+**Success Criteria** (what must be TRUE):
+  1. Before actual HA-shell acceptance, a separate explicit authorization and checkpoint identifies the host, allowed inspection, and evidence capture; absent this, live acceptance is not performed or marked complete.
+  2. At 375, 768, and 1440 pixels, recorded actual-shell evidence shows responsive layout, readable contrast, and no blocking overflow.
+  3. Keyboard operation, visible focus, labels, announcements, and reduced-motion behavior pass the agreed acceptance checks in the packaged panel.
+
+**Plans**: 0 (TBD)
+
+Plans:
+- [ ] TBD (run $gsd-plan-phase 32 to break down)
+
+**UI hint**: yes
+
+### Phase 33: Authorized Reconnect Hardware Soak
+
+**Goal**: Authorized HAOS hardware demonstrates bounded reconnect recovery, pairing retention, and stable playback across the supported matrix.
+**Depends on**: Phase 32
+**Requirements**: PRD-07
+**Success Criteria** (what must be TRUE):
+  1. Before deployment, link-loss simulation, or physical playback, separate explicit authorization and a checkpoint name the host, hardware, duration, actions, and rollback/stop conditions; absent this, no hardware test is run or marked complete.
+  2. The approved soak records bounded retry pacing, recovery after link loss, and retained pairing without destructive recovery.
+  3. Stable playback and reconnect results are recorded for each approved supported-hardware target, with failures and unavailable targets clearly distinguished.
+
+**Plans**: 0 (TBD)
+
+Plans:
+- [ ] TBD (run $gsd-plan-phase 33 to break down)
+
+### Phase 34: Release Candidate Evidence & Go/No-Go Preparation
+
+**Goal**: A release decision can be made from synchronized candidate versions, complete reviewed evidence, passed gates, and a tested rollback plan.
+**Depends on**: Phase 33
+**Requirements**: PRD-08
+**Success Criteria** (what must be TRUE):
+  1. Candidate add-on and integration versions are synchronized and verified against the candidate being assessed.
+  2. Required security, build, and test gates pass, and a reviewer accepts an evidence bundle linking each release claim to its result.
+  3. A rollback plan is rehearsed and its recovery evidence is included with the candidate record.
+  4. An explicit go/no-go decision is recorded only after the evidence review; this planning and decision record do not authorize deployment or package/release publication.
+
+**Plans**: 0 (TBD)
+
+Plans:
+- [ ] TBD (run $gsd-plan-phase 34 to break down)
+
+## v1.1 Progress
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 28. Package Panel Bundle Parity | 1/1 | Complete (local scope) | 2026-10-28 |
+| 29. PR-Safe Root, Bridge & Integration CI | 1/1 | Local execution passed; hosted Node 22 PR evidence deferred | 2026-10-28 |
+| 30. Security Gate & Finding Closure | 0/TBD | Blocked pending explicit security-evidence authorization | - |
+| 31. Authorized HA & Provider Playback Acceptance | 0/TBD | Blocked pending explicit host and provider authorization | - |
+| 32. HA-Shell Accessibility & Responsive Acceptance | 0/TBD | Blocked pending explicit shell-review authorization | - |
+| 33. Authorized Reconnect Hardware Soak | 0/TBD | Blocked pending explicit hardware authorization | - |
+| 34. Release Candidate Evidence & Go/No-Go Preparation | 0/TBD | Blocked pending completion of earlier authorized gates | - |
+
+**v1.1 coverage:** PRD-01 through PRD-08 are each assigned to exactly one phase. PRD-01 is locally verified; PRD-02 has local evidence and a deferred hosted PR gate; PRD-03 through PRD-08 remain blocked behind explicit authorization and reviewer-approved evidence. Phase 28 and the local execution of Phase 29 are complete for their scoped evidence, while Phases 30-34 remain intentionally blocked rather than reported as complete.
+
+---
+*Roadmap updated: 2026-10-28 after Phase 29 local CI gates; hosted PR evidence remains deferred and v1.0 remains `gaps_found`.*

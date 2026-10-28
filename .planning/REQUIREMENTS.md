@@ -1,10 +1,10 @@
-# Requirements: BL-HAOS Playlist Playback & Management
+# Requirements: BL-HAOS Production Readiness & Release
 
-**Defined:** 2026-10-10
-**Milestone:** v1.0 Playlist Playback & Management
+**Defined:** 2026-10-28
+**Milestone:** v1.1 Production Readiness & Release (closing audited v1.0 gaps)
 **Core Value:** Effortless, reliable Home Assistant media playback to Bluetooth speakers.
 
-## v1 Requirements
+## v1.0 Feature Requirements
 
 ### Home Assistant Media Browsing
 
@@ -36,10 +36,31 @@
 
 These scoped reliability requirements do not mark any playlist requirement complete.
 
-## Future Playlist Requirements
+## Deferred Playlist Requirements
 
 - **PL-12**: Resume an in-progress playlist and queue position after Home Assistant or add-on restart.
 - **PL-13**: Synchronize one playlist queue across multiple Bluetooth speakers.
+
+## v1.1 Requirements: Production Readiness & Release
+
+Requirements for closing the audited v1.0 packaging, CI, security, host-acceptance, and hardware gaps. Live host/provider, publication, restart, and physical-playback actions require separate explicit authorization; planning these gates does not authorize executing them.
+
+### Packaging and CI
+
+- [x] **PRD-01**: The Home Assistant integration package serves a generated panel bundle built from the reviewed panel source, and package-layout checks verify the queue launch and control UI is present.
+- [ ] **PRD-02**: Root, bridge, and integration CI gates pass on their declared runtimes; pull-request validation can run without publishing add-on images or release artifacts.
+
+### Security and Production Acceptance
+
+- [ ] **PRD-03**: The production security threshold is `high`, T-24-15 and T-24-16 are closed with reviewed evidence, and no local override weakens release enforcement.
+- [ ] **PRD-04**: On an explicitly authorized HAOS test host, native media browsing, saved playlist resolution, queue launch, and audible playback work on one explicitly selected connected speaker.
+- [ ] **PRD-05**: Authorized denial, unavailable-reference, and expired-session cases fail safely without credential, provider, or playable-URL leakage or modification of the shared HA session.
+- [ ] **PRD-06**: The packaged panel passes actual HA-shell keyboard, focus, labeling, announcements, contrast, reduced-motion, and responsive acceptance at 375, 768, and 1440 pixels.
+
+### Hardware and Release
+
+- [ ] **PRD-07**: An authorized HAOS reconnect soak verifies bounded retries, pairing retention, recovery after link loss, and stable playback on the supported hardware matrix.
+- [ ] **PRD-08**: A release candidate has synchronized versions, passed security/build/test gates, a reviewed evidence bundle, and a tested rollback plan before an explicit go/no-go decision.
 
 ## Out of Scope
 
@@ -51,6 +72,8 @@ These scoped reliability requirements do not mark any playlist requirement compl
 | Restoring the active queue after restart | Playlist definitions persist, but in-progress playback recovery is deferred. |
 
 ## Traceability
+
+### v1.0 (unchanged)
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
@@ -68,11 +91,28 @@ These scoped reliability requirements do not mark any playlist requirement compl
 | PROD-04 | Phase 27 | Locally verified; hardware soak pending |
 | PROD-05 | Phase 27 | Locally verified; hardware soak pending |
 
+### v1.1 Production Readiness & Release
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| PRD-01 | Phase 28 | Locally verified; package parity and SIL passed |
+| PRD-02 | Phase 29 | Pending |
+| PRD-03 | Phase 30 | Pending |
+| PRD-04 | Phase 31 | Pending |
+| PRD-05 | Phase 31 | Pending |
+| PRD-06 | Phase 32 | Pending |
+| PRD-07 | Phase 33 | Pending |
+| PRD-08 | Phase 34 | Pending |
+
 **Coverage:**
-- v1 requirements: 11 total
-- Mapped to phases: 11
-- Unmapped: 0
+- v1.0 requirements: 11 total
+- v1.0 mapped to phases: 11
+- v1.1 production-readiness requirements: 8 total
+- v1.1 mapped to phases: 8
+- v1.1 mappings: PRD-01 -> Phase 28; PRD-02 -> Phase 29; PRD-03 -> Phase 30; PRD-04 and PRD-05 -> Phase 31; PRD-06 -> Phase 32; PRD-07 -> Phase 33; PRD-08 -> Phase 34
+- Unmapped or multiply mapped v1.1 requirements: 0
 
 ---
-*Requirements defined: 2026-10-10*
-*Last updated: 2026-10-24 after phase 27 local verification; playlist requirements unchanged*
+*v1.0 requirements defined: 2026-10-10*
+*v1.1 requirements defined: 2026-10-28*
+*Last updated: 2026-10-28 after Phase 28 local package and SIL verification*

@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Reject tracked scratch files
         run: |
           set -euo pipefail
@@ -53,6 +55,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+          persist-credentials: false
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -73,13 +76,25 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+          persist-credentials: false
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
       - name: Install client test dependencies
         # voluptuous is imported by config_flow.py, so the endpoint tests that
         # drive it need it even without the Home Assistant runtime.
         run: python -m pip install --disable-pip-version-check aiohttp pytest pytest-asyncio voluptuous
+      - name: Install panel build dependencies
+        run: npm ci --prefix panel_ui --ignore-scripts
+      - name: Require panel parity toolchain
+        run: |
+          node --version
+          npm --version
+          test -f panel_ui/node_modules/vite/package.json
+          test -f panel_ui/node_modules/typescript/package.json
       - name: Run client unit tests (no HA runtime required)
         run: python -m pytest tests/unit tests/test_package_layout.py -q -p asyncio --asyncio-mode=auto
 
@@ -93,6 +108,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+          persist-credentials: false
       - uses: actions/setup-python@v6
         with:
           # pytest-homeassistant-custom-component >= 0.13.317 requires Python >= 3.14
@@ -115,6 +131,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+          persist-credentials: false
       - uses: actions/setup-python@v6
         with:
           # The E2E webServer boots the FastAPI backend in demo mode

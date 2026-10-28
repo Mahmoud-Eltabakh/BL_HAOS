@@ -1,13 +1,13 @@
 # BL-HAOS (Bluetooth Audio Adapter for Home Assistant OS)
 
-## Current Milestone: v1.0 Playlist Playback & Management
+## Current Milestone: v1.1 Production Readiness & Release
 
-**Goal:** Let users browse and play Home Assistant provider playlists, and create and manage BL-HAOS playlists made from ordered references to HA media items, with sequential playback through Bluetooth speakers.
+**Goal:** Make the v1.0 media, playlist, queue, and reconnect capabilities safely shippable through complete packaging, reproducible CI, security closure, and explicitly authorized production acceptance.
 
 **Target features:**
-- Browse and play provider media and playlists through the native Home Assistant media-player experience.
-- Create, edit, reorder, save, and delete BL-HAOS playlists from the ingress UI using Home Assistant media references.
-- Play all items in a saved playlist in order and advance automatically.
+- Package the current HA panel source and prove the installed bundle matches the tested source.
+- Restore release security gates, close or formally disposition open threats, and pass repository CI/build gates.
+- Complete real HA/provider, HA-shell accessibility, audible-playback, and reconnect hardware acceptance only after the required explicit authorization.
 
 ## What This Is
 
@@ -44,6 +44,7 @@ Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `
 - [ ] **Operator Recovery**: Provide guided recovery actions, redacted support bundles, and a deterministic demo mode for support and development.
 - [ ] **Native Playlist Browsing**: Browse Home Assistant media sources and provider playlists from BL-HAOS media-player entities.
 - [ ] **Saved Playlist Playback**: Create and manage ordered playlists of Home Assistant media references in the ingress UI and play them sequentially through a selected speaker.
+- [ ] **Production Readiness**: Deliver a reproducible packaged panel, pass non-publishing CI/release gates, close security findings, and complete explicitly authorized HAOS/provider/audio, accessibility, and reconnect-hardware acceptance before release.
 
 ### Out of Scope
 
@@ -82,6 +83,7 @@ Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `
 | Sendspin Operational Lessons | Adopt explicit lifecycle contracts, versioned runtime boundaries, operator recovery, deterministic demo validation, and release evidence from the Sendspin BT Bridge project without taking on its Music Assistant dependency | Accepted |
 | Native HA Product Boundary | BL-HAOS remains a native Home Assistant media-player platform; Sendspin is an engineering reference, not a required transport or product dependency | Accepted |
 | Home Assistant Media References | Saved BL-HAOS playlists reference Home Assistant media items instead of storing independent media URLs, preserving provider ownership and resolution | Accepted |
+| Production Readiness Gate | v1.0 media/queue features remain unaccepted for release until packaged panel parity, CI, security closure, authorized host/provider/audio checks, and reconnect hardware soak have evidence | Pending v1.1 |
 
 ## Evolution
 
@@ -101,4 +103,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-10-24 after phase 27 local verification; playlist milestone remains open*
+*Last updated: 2026-10-28 after starting v1.1 Production Readiness & Release*
