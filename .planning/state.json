@@ -1,12 +1,48 @@
 {
   "contract": "1.0.0",
   "flavor": "core",
-  "milestone": "v1.0",
-  "phases": [],
+  "milestone": "v1.1 — Production Readiness & Release (Current)",
+  "phases": [
+    {
+      "number": "28",
+      "name": "Package Panel Bundle Parity",
+      "status": "complete"
+    },
+    {
+      "number": "29",
+      "name": "PR-Safe Root, Bridge & Integration CI",
+      "status": "human_needed"
+    },
+    {
+      "number": "30",
+      "name": "Security Gate & Finding Closure",
+      "status": "pending"
+    },
+    {
+      "number": "31",
+      "name": "Authorized HA & Provider Playback Acceptance",
+      "status": "pending"
+    },
+    {
+      "number": "32",
+      "name": "HA-Shell Accessibility & Responsive Acceptance",
+      "status": "pending"
+    },
+    {
+      "number": "33",
+      "name": "Authorized Reconnect Hardware Soak",
+      "status": "pending"
+    },
+    {
+      "number": "34",
+      "name": "Release Candidate Evidence & Go/No-Go Preparation",
+      "status": "pending"
+    }
+  ],
   "next": {
     "command": "/gsd-progress --next",
-    "label": "Advance to the next step",
-    "reason": "Phase 8 of 10 · 50% · executing"
+    "label": "Advance to the next step (verify)",
+    "reason": "Phase 8 of 13 · 14% · human verification needed"
   },
-  "updated_at": "2026-10-25T00:43:54.129Z"
+  "updated_at": "2026-10-28T07:25:33.223Z"
 }
