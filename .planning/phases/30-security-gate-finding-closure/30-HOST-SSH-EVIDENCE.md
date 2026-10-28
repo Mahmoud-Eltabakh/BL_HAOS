@@ -25,3 +25,8 @@ Legacy UI routes are **unauthenticated** on the internal network: `GET /api/devi
 - Phase 39 go/no-go.
 
 Neither finding is closed.
+
+## Post-Phase-38 re-check (add-on 0.2.71, integration 0.2.22 deployed)
+
+- Legacy /api/devices, /api/settings, /api/adapters now 404 (finding closed); ingress: false; /api/native/speakers still 401 without token; /api/health 200.
+- Core log bl_haos errors: 0. GHCR pull needed three attempts (IPv6 connection resets) but succeeded.
