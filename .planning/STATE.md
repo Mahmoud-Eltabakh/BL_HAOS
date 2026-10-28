@@ -23,7 +23,7 @@ progress:
 See: [PROJECT.md](PROJECT.md) (updated 2026-10-28)
 
 **Core value:** Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `media_player` playback to any Bluetooth speaker with rock-solid background auto-reconnection, safe degraded-mode behavior, and production-grade operational visibility.
-**Current focus:** Phase 29 — PR-Safe Root, Bridge & Integration CI; local gates passed, hosted Node 22 verification pending.
+**Current focus:** Phase 29 — PR-Safe Root, Bridge & Integration CI; local gates and hosted Node 22 PR #1 checks (L1, L2, L3, hygiene) all passed. Phase 30 remains blocked on authorization.
 
 ## Current Position
 
@@ -50,7 +50,7 @@ Progress: [███████░░░] 29%
 | 26. Sequential Playback & Queue Controls | 5/5 | 10/10 local/mock truths verified; panel bundle packaging and production acceptance deferred | Complete (local/mock) |
 | 27. Bluetooth Reconnect Reliability | 1/1 | Locally complete; shared docs fingerprint requires refresh | Hardware soak pending |
 | 28. Package Panel Bundle Parity | 1/1 | Complete (local scope) | Complete 2026-10-28 |
-| 29. PR-Safe Root, Bridge & Integration CI | 1/1 | Verification deferred (hosted Node 22 PR pending) | Pending |
+| 29. PR-Safe Root, Bridge & Integration CI | 1/1 | Hosted Node 22 PR #1 checks all green (2026-10-28) | Complete |
 
 ## Accumulated Context
 
@@ -113,3 +113,6 @@ Recent decisions affecting current work:
 Last session: 2026-10-27T19:00:00Z
 Current: v1.1 is paused at Phase 29 human verification. Its plan executed and local Python 3.12/3.14 plus Node 24 gates passed; the hosted Node 22 PR check requires separate commit/push/PR authorization. Do not advance to dependent Phase 30 until Phase 29 verification passes. Phase 28 is complete for local package/SIL scope. v1.0 remains `gaps_found`; live acceptance, package/release publication, deployment, host changes, Core restart, playback, provider/session actions, and hardware tests require separate authorization. Do not stage or commit.
 Resume file: .planning/v1.0-MILESTONE-AUDIT.md
+
+## Update 2026-10-28
+v1.2 Phases 35-37 shipped: bridge 0.2.70 (GHCR build green) and integration 0.2.21 deployed to 192.168.1.18; add-on started, event stream restored. Live user authorization for host actions recorded in chat. Pending: Phase 38 (headless add-on), live evidence for Phases 30-34 and 39.

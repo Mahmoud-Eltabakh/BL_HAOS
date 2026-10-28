@@ -410,12 +410,97 @@ Plans:
 Plans:
 - [ ] TBD (run $gsd-plan-phase 34 to break down)
 
+## v1.2 Native HA UX (Phases 35-39, planned; runs alongside open v1.1)
+
+**Goal:** All user-facing UI lives in the Home Assistant integration, and the add-on becomes a headless Bluetooth/audio service. v1.1 stays open; its live evidence gates (Phases 30-34) are unchanged and no archiving was done.
+**Requirements:** NUX-01 through NUX-06 (see REQUIREMENTS.md)
+**Authorization:** Planning only. Deploys, restarts, playback and hardware tests need the same per-action authorization as v1.1.
+
+- [ ] **Phase 35: Queue Control Fix & Real Error Reasons** - Shuffle/repeat work or are disabled when no queue exists; the bridge and integration surface the real failure reason instead of "Native playback command failed".
+- [ ] **Phase 36: Native Playlist & Browse-and-Play UI** - Playlist creation/editing and browse-and-play live in the integration's native HA UI.
+- [ ] **Phase 37: Native Pairing, Speaker & Settings UI** - Pairing, speaker management and settings move into the integration (config/options flow, services, panel).
+- [ ] **Phase 38: Headless Add-on & Ingress UI Retirement** - The add-on exposes only the service API; its ingress web UI is removed with a documented migration.
+- [ ] **Phase 39: v1.2 Verification & Release Gates** - Local/SIL parity checks, then authorized live acceptance and go/no-go, after Phase 34.
+
+### Phase 35: Queue Control Fix & Real Error Reasons
+
+**Goal**: Shuffle and repeat never fail opaquely.
+**Depends on**: Phase 29
+**Requirements**: NUX-01
+**Success Criteria** (what must be TRUE):
+  1. `media_player.shuffle_set` and `repeat_set` succeed on an active queue.
+  2. With no queue (single `play_media`), the integration disables or hides shuffle/repeat, or applies them to the next queue, without raising an error.
+  3. A failed queue command shows its safe, specific reason (for example "No active queue") in HA instead of the generic message.
+  4. Bridge and integration tests cover the no-queue and active-queue paths.
+
+**Plans**: 0 (TBD)
+
+### Phase 36: Native Playlist & Browse-and-Play UI
+
+**Goal**: Users create playlists and browse-and-play from the integration without the add-on UI.
+**Depends on**: Phase 35
+**Requirements**: NUX-02
+**Success Criteria** (what must be TRUE):
+  1. Playlist create, rename, edit and delete work in the integration's native UI.
+  2. Browse-and-play uses HA media sources from the integration.
+  3. Existing saved playlists remain readable and unchanged.
+
+**Plans**: 0 (TBD)
+**UI hint**: yes
+
+### Phase 37: Native Pairing, Speaker & Settings UI
+
+**Goal**: Pairing, speaker management and settings are available in the integration.
+**Depends on**: Phase 36
+**Requirements**: NUX-03
+**Success Criteria** (what must be TRUE):
+  1. A speaker can be scanned, paired, connected, removed and renamed from HA.
+  2. Settings previously changed in the add-on UI are editable via options flow or services.
+  3. Every action has a bridge API endpoint and a test.
+
+**Plans**: 0 (TBD)
+**UI hint**: yes
+
+### Phase 38: Headless Add-on & Ingress UI Retirement
+
+**Goal**: The add-on is a headless service with a stable API.
+**Depends on**: Phase 37
+**Requirements**: NUX-04, NUX-05
+**Success Criteria** (what must be TRUE):
+  1. The add-on ships without its ingress web UI and with no UI-only endpoints required by users.
+  2. Add-on/integration version compatibility is checked and reported clearly in HA.
+  3. Upgrade notes cover moving from the old UI to the integration.
+
+**Plans**: 0 (TBD)
+
+### Phase 39: v1.2 Verification & Release Gates
+
+**Goal**: v1.2 is verified locally, then accepted live under explicit authorization.
+**Depends on**: Phase 34, Phase 38
+**Requirements**: NUX-06
+**Success Criteria** (what must be TRUE):
+  1. Bridge, integration, SIL and frontend gates pass in CI.
+  2. Authorized live acceptance covers the native UI, pairing, playback, shuffle and repeat.
+  3. An explicit go/no-go is recorded after evidence review.
+
+**Plans**: 0 (TBD)
+
+## v1.2 Progress
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 35. Queue Control Fix & Real Error Reasons | 1/1 (inline) | Locally complete: bridge 359 passed; SIL assertion added, awaits CI; not deployed | 2026-10-28 |
+| 36. Native Playlist & Browse-and-Play UI | 1/1 | Locally complete: vitest 74, WSL SIL 48, parity 12 passed; not deployed | 2026-10-28 |
+| 37. Native Pairing, Speaker & Settings UI | 3/3 | Locally complete: bridge 369, integration unit 92, WSL SIL 97, vitest 76, parity 12 passed; not deployed; `default_codec` has no known playback consumer | 2026-10-28 |
+| 38. Headless Add-on & Ingress UI Retirement | 0/TBD | Not planned | - |
+| 39. v1.2 Verification & Release Gates | 0/TBD | Blocked behind Phase 34 and authorization | - |
+
 ## v1.1 Progress
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 28. Package Panel Bundle Parity | 1/1 | Complete (local scope) | 2026-10-28 |
-| 29. PR-Safe Root, Bridge & Integration CI | 1/1 | Local execution passed; hosted Node 22 PR evidence deferred | 2026-10-28 |
+| 29. PR-Safe Root, Bridge & Integration CI | 1/1 | Local execution passed; hosted Node 22 PR #1 checks all green | 2026-10-28 |
 | 30. Security Gate & Finding Closure | 0/TBD | Blocked pending explicit security-evidence authorization | - |
 | 31. Authorized HA & Provider Playback Acceptance | 0/TBD | Blocked pending explicit host and provider authorization | - |
 | 32. HA-Shell Accessibility & Responsive Acceptance | 0/TBD | Blocked pending explicit shell-review authorization | - |
