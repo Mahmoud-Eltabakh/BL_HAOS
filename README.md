@@ -1,5 +1,34 @@
 # BL-HAOS
 
+## Phase 24 Media Catalog (Local, Undeployed)
+
+The integrated bridge release 0.2.69 and production panel are undeployed.
+Local Core 2026.10.3 tests do not prove actual provider layout, session expiry
+or physical audio. Deployment requires separate authorization; the temporary
+contract probe was removed after its one permitted restart.
+
+After authorized installation, use **Native Browse Media** on a speaker or
+**Open Media Catalog** beside Home Assistant Native integration in Ingress.
+The link opens HA's **BL-HAOS Media** panel at `/bl-haos-media`. In **Play on**,
+select exactly one connected BL-HAOS speaker, browse the audio provider hierarchy
+and press **Play** on an item or playlist. The original opaque reference reaches
+native `media_player.play_media` unchanged;
+HA owns provider authentication and reference resolution. A provider playlist
+stays one reference, not a local queue. Submission does not prove audible playback.
+
+The panel does not store browser/add-on HA/provider credentials, proxy a bridge
+catalog, call providers directly, or accept raw playback URLs. Existing native
+direct-URL support is not a catalog fallback. The local Phase 25 candidate uses
+the authenticated panel and HA-owned storage for custom playlists of ordered
+Home Assistant media references and one-reference provider shortcuts; provider
+tracks are not copied. Explicit availability checks browse the exact HA media
+reference only; they do not resolve or play media and never rewrite saved IDs.
+This remains local/mock behavior: Phase 24 production requirements are pending,
+T-24-15 remains OPEN/HIGH, and T-24-16 remains OPEN/MEDIUM. Phase 26 owns
+playback and queue controls. Release and deployment are not approved. See
+[TESTING.md](TESTING.md) for local versus separately authorized host checks.
+Retired Docker E2E and demo fixtures are not host proof.
+
 BL-HAOS is the umbrella project for Bluetooth audio playback on Home Assistant OS. It is split into two independently versioned modules.
 
 ## Modules
