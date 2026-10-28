@@ -414,7 +414,7 @@ Plans:
 
 **Goal:** All user-facing UI lives in the Home Assistant integration, and the add-on becomes a headless Bluetooth/audio service. v1.1 stays open; its live evidence gates (Phases 30-34) are unchanged and no archiving was done.
 **Requirements:** NUX-01 through NUX-06 (see REQUIREMENTS.md)
-**Authorization:** Planning only. Deploys, restarts, playback and hardware tests need the same per-action authorization as v1.1.
+**Authorization:** The user subsequently authorized host actions and deployment to 192.168.1.18 in chat. Phases 35-38 are deployed as bridge 0.2.71 and integration 0.2.22. This does not substitute for provider/session evidence, human acceptance, hardware soak, rollback rehearsal or release go/no-go.
 
 - [ ] **Phase 35: Queue Control Fix & Real Error Reasons** - Shuffle/repeat work or are disabled when no queue exists; the bridge and integration surface the real failure reason instead of "Native playback command failed".
 - [ ] **Phase 36: Native Playlist & Browse-and-Play UI** - Playlist creation/editing and browse-and-play live in the integration's native HA UI.
@@ -494,11 +494,11 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 35. Queue Control Fix & Real Error Reasons | 1/1 (inline) | Locally complete: bridge 359 passed; SIL assertion added, awaits CI; not deployed | 2026-10-28 |
-| 36. Native Playlist & Browse-and-Play UI | 1/1 | Locally complete: vitest 74, WSL SIL 48, parity 12 passed; not deployed | 2026-10-28 |
-| 37. Native Pairing, Speaker & Settings UI | 3/3 | Locally complete: bridge 369, integration unit 92, WSL SIL 97, vitest 76, parity 12 passed; not deployed; `default_codec` has no known playback consumer | 2026-10-28 |
-| 38. Headless Add-on & Ingress UI Retirement | 3/3 | Locally complete: bridge 366 passed/1 skipped; integration unit/package/docs 120 passed; WSL SIL 179 passed; panel Vitest 76 passed/build/parity passed. Candidate only; not published/deployed; Phase 39 authority gates remain | 2026-10-28 |
-| 39. v1.2 Verification & Release Gates | 0/TBD | Blocked behind Phase 34 and authorization | - |
+| 35. Queue Control Fix & Real Error Reasons | 1/1 (inline) | Implemented and deployed; live queue/no-queue acceptance pending | 2026-10-28 |
+| 36. Native Playlist & Browse-and-Play UI | 1/1 | Implemented and deployed; local vitest/SIL/parity passed; live acceptance pending | 2026-10-28 |
+| 37. Native Pairing, Speaker & Settings UI | 3/3 | Implemented and deployed; local gates passed; live acceptance pending; `default_codec` has no known playback consumer | 2026-10-28 |
+| 38. Headless Add-on & Ingress UI Retirement | 3/3 | Published/deployed: bridge 0.2.71, integration 0.2.22. Local bridge 366 passed/1 skipped; integration 120, WSL SIL 179, Vitest 76 passed; build/parity passed. Host ingress off, legacy routes 404, native auth 401; full live acceptance pending | 2026-10-28 |
+| 39. v1.2 Verification & Release Gates | 0/TBD | Blocked behind Phase 34 and reviewed live acceptance evidence | - |
 
 ## v1.1 Progress
 
@@ -506,13 +506,13 @@ Plans:
 |-------|----------------|--------|-----------|
 | 28. Package Panel Bundle Parity | 1/1 | Complete (local scope) | 2026-10-28 |
 | 29. PR-Safe Root, Bridge & Integration CI | 1/1 | Local execution passed; hosted Node 22 PR #1 checks all green | 2026-10-28 |
-| 30. Security Gate & Finding Closure | 0/TBD | Blocked pending explicit security-evidence authorization | - |
-| 31. Authorized HA & Provider Playback Acceptance | 0/TBD | Blocked pending explicit host and provider authorization | - |
-| 32. HA-Shell Accessibility & Responsive Acceptance | 0/TBD | Blocked pending explicit shell-review authorization | - |
-| 33. Authorized Reconnect Hardware Soak | 0/TBD | Blocked pending explicit hardware authorization | - |
+| 30. Security Gate & Finding Closure | 0/1 accepted | Human needed: T-24-15/T-24-16 live evidence and reviewer acceptance outstanding; host authorization recorded | - |
+| 31. Authorized HA & Provider Playback Acceptance | 0/1 accepted | Depends on Phase 30; provider/queue/audio/negative-case evidence pending | - |
+| 32. HA-Shell Accessibility & Responsive Acceptance | 0/1 accepted | Depends on Phase 31; partial real-shell captures at 375/768/1440 collected. Integration 0.2.23 thumbnail fix deployed; all eight images verified at each width without overrides. Full accessibility acceptance pending | - |
+| 33. Authorized Reconnect Hardware Soak | 0/1 accepted | Depends on Phase 32; scoped hardware soak and recovery evidence pending | - |
 | 34. Release Candidate Evidence & Go/No-Go Preparation | 0/TBD | Blocked pending completion of earlier authorized gates | - |
 
-**v1.1 coverage:** PRD-01 through PRD-08 are each assigned to exactly one phase. PRD-01 is locally verified; PRD-02 has local evidence and a deferred hosted PR gate; PRD-03 through PRD-08 remain blocked behind explicit authorization and reviewer-approved evidence. Phase 28 and the local execution of Phase 29 are complete for their scoped evidence, while Phases 30-34 remain intentionally blocked rather than reported as complete.
+**v1.1 coverage:** PRD-01 through PRD-08 are each assigned to exactly one phase. PRD-01 is locally verified; PRD-02 has passing hosted PR evidence. PRD-03 through PRD-08 remain pending reviewed live evidence. Host/deployment approval was recorded in chat; Phases 30-34 are not complete.
 
 ---
 *Roadmap updated: 2026-10-28 after Phase 29 local CI gates; hosted PR evidence remains deferred and v1.0 remains `gaps_found`.*

@@ -4,10 +4,10 @@ milestone: v1.1
 milestone_name: Production Readiness & Release (Current)
 current_phase: 30
 current_phase_name: Security Gate & Finding Closure
-status: blocked_authorization_required
-last_updated: "2026-10-28T10:00:00.000Z"
+status: human_needed
+last_updated: "2026-10-28T23:19:22.849Z"
 last_activity: 2026-10-28
-last_activity_desc: Phase 29 local execution passed; remaining v1.1 phases are documented and gated behind explicit live-authority approval.
+last_activity_desc: Integration 0.2.23 thumbnail fix committed, pushed and deployed; all eight images verified live at three widths. Phase 30 still needs provider/session and human acceptance evidence.
 progress:
   total_phases: 7
   completed_phases: 1
@@ -23,14 +23,14 @@ progress:
 See: [PROJECT.md](PROJECT.md) (updated 2026-10-28)
 
 **Core value:** Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `media_player` playback to any Bluetooth speaker with rock-solid background auto-reconnection, safe degraded-mode behavior, and production-grade operational visibility.
-**Current focus:** Phase 29 — PR-Safe Root, Bridge & Integration CI; local gates and hosted Node 22 PR #1 checks (L1, L2, L3, hygiene) all passed. Phase 30 remains blocked on authorization.
+**Current focus:** Phase 30 - Security Gate & Finding Closure. Phase 29 hosted checks passed. Phases 35-38 are implemented and deployed; current host versions are bridge 0.2.71 and integration 0.2.23 after the verified thumbnail fix. Full live acceptance remains pending.
 
 ## Current Position
 
-Phase: 30 (Security Gate & Finding Closure) — BLOCKED, awaits explicit security evidence review and authorization
-Plan: 0 of 1 planned
-Status: Blocked by authorization requirements; no production security override or live acceptance is approved.
-Last activity: 2026-10-28 — Phase 29 local gates passed; Phases 30-34 are documented and intentionally blocked until live-authority checkpoints are explicitly approved.
+Phase: 30 (Security Gate & Finding Closure) - HUMAN NEEDED
+Plan: 01 prepared; closure not accepted
+Status: Host actions and deployment were authorized in chat. T-24-15/T-24-16 still need reviewed live evidence; general authorization does not establish acceptance.
+Last activity: 2026-10-28 - Integration 0.2.23 deployed and thumbnails verified in the real HA shell without override; bridge 0.2.71 remains started. SSH and partial HA-shell evidence are recorded, but provider/session, audio, full accessibility, hardware soak and rollback evidence remain incomplete.
 
 Progress: [███████░░░] 29%
 
@@ -79,9 +79,23 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-- Complete Phase 29 local verification artifacts; hosted PR evidence remains deferred until a separate authorized PR/check run is available.
+- Obtain and review Phase 30 live evidence for T-24-15/T-24-16; preserve the high security threshold and do not infer acceptance from deployment or clean log searches.
 
 ### Blockers/Concerns
+
+Current blocker (2026-10-28): T-24-15/T-24-16 remain open. The user authorized host checks and deployment; remaining blockers are evidence and reviewer acceptance. Earlier authorization/deployment restrictions below describe historical scopes, not the current deployment state. See `phases/30-security-gate-finding-closure/30-HOST-SSH-EVIDENCE.md`.
+
+Phase 30 retry checkpoint (2026-10-28): user approved real playback on `media_player.logitech_bt_adapter` and read-only observation of a separate disposable expired fixture. Host-runner prerequisites are not satisfied: both supplied storage-state values were the same HTTP origin, not distinct external session files; provider and playlist references were the same local MP3. No host browser test, playback or session manipulation was performed in this retry. Obtain valid fixtures and distinct provider/playlist references before retrying production acceptance; a local MP3 alone does not establish provider or queue acceptance.
+
+Host-runner readiness: `modules/integration/panel_ui/e2e/catalog.spec.ts` still asserts Core 2026.10.3, while the deployed host is Core 2026.10.4. Reconcile this approved host baseline and the current native panel selectors before treating the runner as ready. Creating an active browser fixture alone does not resolve expiry/provider prerequisites.
+
+Fixture setup progress: the user saved an active Playwright session outside Git at `C:\Users\melta\BLHAOS-private\ha-active.json`. File existence and cookies/origins array structure were verified without printing credentials. Live authentication validity has not yet been checked. The user confirms no expired fixture exists; expiry acceptance remains pending, as do distinct provider/playlist inputs. Never commit or copy the session fixture into the repository.
+
+Read-only browser retry completed: the active session authenticated successfully on Core 2026.10.4. Library, Browse media and Speakers were captured at 375/768/1440 px (nine screenshots). Horizontal panel fit and bounded control-name checks passed; Browse media had eight broken thumbnails at each width. See `phases/32-ha-shell-accessibility-responsive-acceptance/32-READONLY-HOST-EVIDENCE.md`. This is partial supporting evidence only; no playback, settings, pairing or session mutation occurred. T-24-15/T-24-16, full accessibility, hardware soak, rollback and go/no-go remain open.
+
+Thumbnail repair requested by user: plain `/api/brands/` image requests returned 403. Local integration changes use injected HA authenticated fetch with temporary blob images, cancellation/revocation and explicit unavailable-artwork indicators. Panel tests 83 passed; TypeScript/build and package/parity 12 passed. A browser-only candidate module override on the real HA shell verified all eight images decoded at 375/768/1440 with zero broken images. Source, generated bundle and README are uncommitted; deployed 0.2.22 is unchanged. Candidate evidence is separate from deployed baseline evidence.
+
+Thumbnail deployment completed after explicit user approval: integration commit `1d3ef97` (0.2.23) pushed to main and installed. Initial disk-version check unexpectedly found 0.2.19 and stopped before modifying host files; the user instructed deployment without backup. Core check and restart passed. Fresh real-shell verification without route overrides decoded all eight thumbnails at 375/768/1440, with zero broken images and all recorded artwork responses 200. Bridge remains started at 0.2.71. Detailed evidence/screenshots are local only; no provider/session, playback, full accessibility, soak or rollback gate was closed.
 
 - Phase 24 Task 24-01-01 rebaselined under Ubuntu WSL Python 3.14.4 in the separate /home/mse/.venvs/bl-haos-sil-2026.10.3 environment: Core 2026.10.3, helper 0.13.374; panel/static and integration SIL passed 24 tests in 4.06s, no skips. Public PyPI metadata verified; corrected resolver dry-run, isolated install, and pip check succeeded. Earlier 2026.9.4 evidence remains historical in 24-VALIDATION.md.
 - Phase 24 Task 24-01-02 accepted: All six public-host observations passed on Core 2026.10.3 and were accepted by the user. Actual session expiration was not forced; denied/invalid-session rejection was observed. Probe entry/entity/panel/files were removed and module returned 404 with the active session connected. Plan 24-01 summary records the accepted evidence. Task 24-02-01 final production contract is now approved for local implementation; deployment remains gated.
@@ -100,18 +114,13 @@ Recent decisions affecting current work:
 
 | Phase | State | Resume |
 |-------|-------|--------|
-| 29 | verification_deferred_human | `/gsd:verify-work 29` after a hosted Node 22 pull_request run is authorized and passes |
-
-## Deferred Verification
-
-| Phase | State | Resume |
-|-------|-------|--------|
-| 29 | verification_deferred_human | `/gsd:verify-work 29` after a hosted Node 22 pull_request run is authorized and passes |
+| 30 | human_needed | Review real provider/session evidence, attested-fixture rejection and human acceptance; then `/gsd-autonomous --from 30` |
+| 39 | pending_dependencies | Requires Phase 34 evidence review and live acceptance of deployed Phases 35-38; not complete merely because deployed |
 
 ## Session Continuity
 
-Last session: 2026-10-27T19:00:00Z
-Current: v1.1 is paused at Phase 29 human verification. Its plan executed and local Python 3.12/3.14 plus Node 24 gates passed; the hosted Node 22 PR check requires separate commit/push/PR authorization. Do not advance to dependent Phase 30 until Phase 29 verification passes. Phase 28 is complete for local package/SIL scope. v1.0 remains `gaps_found`; live acceptance, package/release publication, deployment, host changes, Core restart, playback, provider/session actions, and hardware tests require separate authorization. Do not stage or commit.
+Last session: 2026-10-28T22:31:17.330Z
+Current: v1.1 is paused at Phase 30 evidence review. Phase 29 hosted checks passed; Phases 35-38 shipped under explicit user approval. Host 192.168.1.18 runs bridge 0.2.71 and integration 0.2.23. The thumbnail fix is verified on the actual deployed panel, not just a local override. Do not close Phase 30, advance dependent release gates, or archive either milestone without the missing reviewed evidence. Do not manipulate the shared provider session to manufacture expiry evidence.
 Resume file: .planning/v1.0-MILESTONE-AUDIT.md
 
 ## Update 2026-10-28
