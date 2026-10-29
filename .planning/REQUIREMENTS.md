@@ -71,6 +71,7 @@ Requirements for closing the audited v1.0 packaging, CI, security, host-acceptan
 - [x] **NUX-05**: Add-on/integration version compatibility is checked and reported clearly in HA (locally verified; candidate not published/deployed).
 - [x] **NUX-07**: The BL-HAOS media/speaker UI is available as a Lovelace dashboard card with Add card discovery; the separate sidebar panel is retired with migration notes. Integration0.2.24 is deployed and the card was placed on the explicitly authorized new Audio dashboard; existing dashboards were preserved. Broader live acceptance remains open.
 - [ ] **NUX-06**: v1.2 passes CI and authorized live acceptance, with an explicit go/no-go after evidence review.
+- [x] **NUX-08**: All dashboard card views use clean HA-native, light/dark theme-aware styling with consistent hierarchy, responsive card-width layouts and preserved actions, labels, focus, errors and44px interaction targets.
 
 Decision: add-on and integration stay separate packages (the add-on needs privileged BlueZ/D-Bus/audio access that Core cannot provide); only the UI moves.
 
@@ -126,6 +127,7 @@ Decision: add-on and integration stay separate packages (the add-on needs privil
 | NUX-04 | Phase 38 | Locally verified; candidate not published/deployed |
 | NUX-05 | Phase 38 | Locally verified; candidate not published/deployed |
 | NUX-07 | Phase 38.1 | Deployed0.2.24; real Add card picker and authorized Audio dashboard verified at375/768/1440; broader acceptance pending |
+| NUX-08 | Phase 38.2 | Locally verified through unit, mock-browser, theme/container matrix and package parity; no live acceptance claimed |
 | NUX-06 | Phase 39 | Pending |
 
 **Coverage:**
@@ -139,4 +141,4 @@ Decision: add-on and integration stay separate packages (the add-on needs privil
 ---
 *v1.0 requirements defined: 2026-10-10*
 *v1.1 requirements defined: 2026-10-28*
-*Last updated: 2026-10-28 after Phase 28 local package and SIL verification*
+*Last updated: 2026-10-29 after Phase 38.2 local/mock UI verification*

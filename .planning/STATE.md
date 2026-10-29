@@ -5,15 +5,16 @@ milestone_name: Production Readiness & Release (Current)
 current_phase: 30
 current_phase_name: Security Gate & Finding Closure
 status: human_needed
-last_updated: "2026-10-29T02:20:18.621Z"
+stopped_at: Completed 38.2-01 locally; Phase 30 remains human_needed
+last_updated: "2026-10-29T03:56:23.685Z"
 last_activity: 2026-10-29
-last_activity_desc: User explicitly requested pushing all remaining workspace evidence. Reviewed pending text for credential patterns and all screenshots visually before publication; external session fixtures remain excluded. Production acceptance gates remain open.
+last_activity_desc: User approved local card design and source publication only. Integration d809e27 pushed; 91 unit,71 mock-browser,12 package/parity and build passed. No deployment/restart or host actions; full-matrix human and live acceptance limitations retained.
 progress:
   total_phases: 7
   completed_phases: 1
   total_plans: 7
-  completed_plans: 2
-  percent: 29
+  completed_plans: 7
+  percent: 14
 ---
 
 # Project State
@@ -23,16 +24,16 @@ progress:
 See: [PROJECT.md](PROJECT.md) (updated 2026-10-28)
 
 **Core value:** Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `media_player` playback to any Bluetooth speaker with rock-solid background auto-reconnection, safe degraded-mode behavior, and production-grade operational visibility.
-**Current focus:** Phase30 evidence review remains human_needed. Integration0.2.25 is deployed with bridge0.2.71; HTTP playlist creation and local custom queue shuffle/repeat/next/previous passed on the authorized Logitech entity. Playback stopped, temporary playlist deleted, other saved records and volume unchanged. The full-feature card remains on the Audio dashboard at /audio-dashboard/audio. Provider/session-expiry, broader accessibility, hardware soak and rollback acceptance remain open.
+**Current focus:** Phase38.2 HA-native card polish locally verified and user-approved for commit/push only. Integration candidate d809e27 published without version bump; deployed integration0.2.25/bridge0.2.71 unchanged. Phase30 production acceptance remains human_needed.
 
 ## Current Position
 
 Phase: 30 (Security Gate & Finding Closure) - HUMAN NEEDED
 Plan: 01 prepared; closure not accepted
 Status: Host actions and deployment were authorized in chat. T-24-15/T-24-16 still need reviewed live evidence; general authorization does not establish acceptance.
-Last activity: 2026-10-29 - User explicitly requested pushing all remaining workspace evidence. Reviewed the 55 pending evidence files (including 39 screenshots); no credential patterns found in text and no credentials observed in screenshots. External authenticated session fixtures and session helper scripts are not included. No production acceptance gates closed.
+Last activity: 2026-10-29 - User approved local card design and source publication only. Integration d809e27 pushed; 91 unit,71 mock-browser,12 package/parity and build passed. No deployment/restart or host actions; full-matrix human and live acceptance limitations retained.
 
-Progress: [███░░░░░░░] 29%
+Progress: [█░░░░░░░░░] 14%
 
 ## Performance Metrics
 
@@ -52,6 +53,11 @@ Progress: [███░░░░░░░] 29%
 | 28. Package Panel Bundle Parity | 1/1 | Complete (local scope) | Complete 2026-10-28 |
 | 29. PR-Safe Root, Bridge & Integration CI | 1/1 | Hosted Node 22 PR #1 checks all green (2026-10-28) | Complete |
 | 38.1. Dashboard Card & Sidebar Panel Retirement | 2/3 | Plans 01–02 locally verified; Plan 03 dashboard placement/live validation gated | 2026-10-29 |
+**Per-Plan Metrics:**
+
+| Plan | Duration | Tasks | Files |
+|------|----------|-------|-------|
+| Phase 38.2 P01 | 30min | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -67,6 +73,8 @@ Progress: [███░░░░░░░] 29%
 - 2026-10-29: Phase 38.1 Plans 01–02 completed locally: full-feature Lovelace card, sidebar retired, integration 0.2.24 candidate, and migration documentation updated. Local UI, mock-browser, package/docs, and WSL SIL gates passed. No commit, push, deployment, host change, or dashboard mutation; Plan 03 remains gated. NUX-07 is locally verified only; Phase 30 remains the current `human_needed` position.
 - 2026-10-24: Phase 27 added: Bluetooth Reconnect Reliability. Run only phase 27 for the requested retry/locking/backoff fix; leave playlist phases 24-26 paused. The user delegated routine decisions while unavailable. No deployment, radio reset, pairing deletion, or commits in this run.
 - 2026-10-28: v1.1 roadmap created as Phases 28-34. The v1.0 audit remains `gaps_found`; no MILESTONES.md or completed milestone record was created. Planning does not grant live-test, deployment, publication, host-change, restart, playback, provider/session, or hardware authorization.
+- Phase 38.2 inserted after Phase 38: User selected HA-native card polish across Library Browse Speakers Settings; manual roadmap insertion after parser rejection; production acceptance remains open. (URGENT)
+- 2026-10-29: Phase 38.2-01 completed locally: HA-theme-aware responsive Library, Browse, Speakers and existing Settings surfaces; 91 unit tests, 71 local card/mock-browser tests, 12 package-layout checks passed; 26 local mock screenshots reviewed. No host access, settings writes, playback, deployment, version change, publication or commits. NUX-08 is locally verified; Phase 30 remains current `human_needed` and Phase 39 remains blocked.
 
 ### Decisions
 
@@ -85,6 +93,9 @@ Recent decisions affecting current work:
 - User selected controlled deployment/test-window planning only. The plan in 24-06-CHECKPOINT.md covers backup/restore verification, version-only amd64 publication, update/Core restart and rollback budgets, explicit playback/session consent and host review. Read-only inventory confirmed live add-on 0.2.67 and installed integration 0.2.19; the installed integration differs from the local candidate. Assign a unique integration candidate version (proposed 0.2.20) before publication and rerun metadata gates. No publishing, backup creation, commit, install, restart or playback was authorized/performed by this planning step.
 - Phase 27: The scheduler owns repeated reconnects; manager-level adapter locks serialize automatic/operator connections. Defaults are 10-120 seconds exponential backoff and a 300-second breaker, with no automatic link reset.
 - Local mock-progression exception: user explicitly approved phase-25/26 local work while T-24-15 remains OPEN/HIGH. `.planning/config.json` temporarily sets `workflow.security_block_on=critical`; restore it to `high` before live verification, publication, or deployment. This is not risk acceptance, production verification, or release approval.
+- [Phase 38.2]: Keep Settings under its existing Speakers area; do not add a top-level tab.
+- [Phase 38.2]: Preserve HA action/session/auth boundaries; keep validation local/mock-only and make no release changes.
+- [Phase 38.2]: Honor explicit no-commit override; leave source and planning changes uncommitted.
 
 ### Pending Todos
 
@@ -132,9 +143,11 @@ Local audible-playback evidence: after explicit user approval, one supplied loca
 
 ## Session Continuity
 
-Last session: 2026-10-29T00:57:34Z
+**Stopped at:** Completed 38.2-01 locally; Phase 30 remains human_needed
+
+Last session: 2026-10-29T03:43:26.202Z
 Current: v1.1 remains paused at Phase 30 evidence review. Phase 29 hosted checks passed; Phases 35-38 shipped under explicit user approval. Host 192.168.1.18 runs bridge 0.2.71 and integration 0.2.23. The thumbnail fix is verified on the actual deployed panel, not just a local override. Phase 38.1 Plans 01–02 are local-only; integration 0.2.24 is unpublished and real-HA dashboard placement remains gated in Plan 03. Do not close Phase 30, advance dependent release gates, or archive either milestone without the missing reviewed evidence. Do not manipulate the shared provider session to manufacture expiry evidence.
-Resume file: .planning/v1.0-MILESTONE-AUDIT.md
+Resume file: None
 
 ## Update 2026-10-28
 
