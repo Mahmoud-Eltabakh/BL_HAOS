@@ -69,6 +69,7 @@ Requirements for closing the audited v1.0 packaging, CI, security, host-acceptan
 - [ ] **NUX-03**: Pairing, speaker management and settings are available in the integration (config/options flow, services, panel).
 - [x] **NUX-04**: The add-on runs as a headless service and its ingress web UI is retired with documented migration notes (locally verified; candidate not published/deployed).
 - [x] **NUX-05**: Add-on/integration version compatibility is checked and reported clearly in HA (locally verified; candidate not published/deployed).
+- [x] **NUX-07**: The BL-HAOS media/speaker UI is available as a Lovelace dashboard card with Add card discovery; the separate sidebar panel is retired with migration notes. Integration0.2.24 is deployed and the card was placed on the explicitly authorized new Audio dashboard; existing dashboards were preserved. Broader live acceptance remains open.
 - [ ] **NUX-06**: v1.2 passes CI and authorized live acceptance, with an explicit go/no-go after evidence review.
 
 Decision: add-on and integration stay separate packages (the add-on needs privileged BlueZ/D-Bus/audio access that Core cannot provide); only the UI moves.
@@ -124,6 +125,7 @@ Decision: add-on and integration stay separate packages (the add-on needs privil
 | NUX-03 | Phase 37 | Pending |
 | NUX-04 | Phase 38 | Locally verified; candidate not published/deployed |
 | NUX-05 | Phase 38 | Locally verified; candidate not published/deployed |
+| NUX-07 | Phase 38.1 | Deployed0.2.24; real Add card picker and authorized Audio dashboard verified at375/768/1440; broader acceptance pending |
 | NUX-06 | Phase 39 | Pending |
 
 **Coverage:**

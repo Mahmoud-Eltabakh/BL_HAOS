@@ -102,9 +102,10 @@ contact HA or dispatch playback.
 
 ### Phase 24 Authorized Target-Host Acceptance (Pending)
 
-Production panel/release 0.2.69 remain undeployed. Do not run host tests until
-installation, host access and real playback are separately authorized. This
-suite dispatches real play, not a silent probe. The previous one-restart
+The integration 0.2.24 dashboard-card candidate is unpublished and undeployed.
+Do not run host tests until installation, host access, the exact dashboard card
+path, and real playback are separately authorized. This suite dispatches real
+play, not a silent probe. The previous one-restart
 authorization is exhausted; no restart, radio reset, pairing, shared-session
 extraction, expiry or revocation is implied.
 
@@ -114,6 +115,7 @@ logs, app code or this document:
 | Input | Required contract |
 |---|---|
 | `BLHAOS_HA_URL` | Credential-free HTTP(S) Core 2026.10.3 origin, no path/query/fragment |
+| `BLHAOS_HA_DASHBOARD_PATH` | Exact local dashboard/view path containing the manually placed card; no query/fragment or host |
 | `BLHAOS_HA_STORAGE_STATE` | Absolute external workspace-disposable authenticated Playwright file outside repository roots; harness-only |
 | `BLHAOS_HA_TARGET` | Explicit connected BL-HAOS media_player entity, no implicit speaker |
 | `BLHAOS_HA_PROVIDER_ID` | Original opaque expandable media-source provider reference |
@@ -141,8 +143,8 @@ npm run test:host
 ```
 
 The separate `e2e/playwright.config.ts` checks exact Core and the actual HA
-`bl-haos-media-panel` shadow root, not a demo. Missing prerequisites hard-fail,
-never skip/fake acceptance. Default execution without env must fail before host
+`bl-haos-media-card` shadow root at the configured dashboard path, not a demo.
+Missing prerequisites hard-fail, never skip/fake acceptance. Default execution without env must fail before host
 access: record an expected precondition failure, not a passed host test.
 Traces, HAR, video and automatic failure screenshots are disabled. Explicit
 catalog screenshots go under ignored `test-results/ha-catalog` at 375/768/1440
