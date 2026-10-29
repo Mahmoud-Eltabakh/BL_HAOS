@@ -5,9 +5,9 @@ milestone_name: Production Readiness & Release (Current)
 current_phase: 30
 current_phase_name: Security Gate & Finding Closure
 status: human_needed
-last_updated: "2026-10-29T01:26:12.740Z"
+last_updated: "2026-10-29T01:44:23.000Z"
 last_activity: 2026-10-29
-last_activity_desc: Deployed integration0.2.24 after Core check and one restart; created only new Audio dashboard with explicit user approval; Overview/Map preserved. Actual By card picker verified without saving changes.
+last_activity_desc: Released and deployed integration0.2.25 with explicit approval; fixed HTTP playlist creation and verified temporary local queue shuffle/repeat/next/previous. Playback stopped and temporary playlist deleted; broader acceptance remains open.
 progress:
   total_phases: 7
   completed_phases: 1
@@ -23,14 +23,14 @@ progress:
 See: [PROJECT.md](PROJECT.md) (updated 2026-10-28)
 
 **Core value:** Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `media_player` playback to any Bluetooth speaker with rock-solid background auto-reconnection, safe degraded-mode behavior, and production-grade operational visibility.
-**Current focus:** Phase30 evidence review remains human_needed. Integration0.2.24 is deployed; the full-feature card is on the authorized Audio dashboard at /audio-dashboard/audio, and the old BL-HAOS Media panel is retired. Picker and real dashboard at375/768/1440 verified; broader acceptance remains open.
+**Current focus:** Phase30 evidence review remains human_needed. Integration0.2.25 is deployed with bridge0.2.71; HTTP playlist creation and local custom queue shuffle/repeat/next/previous passed on the authorized Logitech entity. Playback stopped, temporary playlist deleted, other saved records and volume unchanged. The full-feature card remains on the Audio dashboard at /audio-dashboard/audio. Provider/session-expiry, broader accessibility, hardware soak and rollback acceptance remain open.
 
 ## Current Position
 
 Phase: 30 (Security Gate & Finding Closure) - HUMAN NEEDED
 Plan: 01 prepared; closure not accepted
 Status: Host actions and deployment were authorized in chat. T-24-15/T-24-16 still need reviewed live evidence; general authorization does not establish acceptance.
-Last activity: 2026-10-29 - Deployed integration0.2.24 after Core check and one restart; created only new Audio dashboard with explicit user approval; Overview/Map preserved. Actual By card picker verified without saving changes.
+Last activity: 2026-10-29 - Released and deployed integration0.2.25 after Core check and one restart; live HTTP playlist creation and custom queue controls passed, with targeted stop/delete cleanup. No backup created per explicit user direction.
 
 Progress: [███░░░░░░░] 29%
 
@@ -56,6 +56,8 @@ Progress: [███░░░░░░░] 29%
 ## Accumulated Context
 
 ### Roadmap Evolution
+
+- 2026-10-29: Authorized acceptance reproduced Create playlist failing on local HTTP because crypto.randomUUID is unavailable. Integration0.2.25 (fde38f0) uses secure getRandomValues UUIDv4 IDs and preserves retry IDs. User explicitly approved commit/push/deploy and one Core restart without backup. Core check passed, deployed bundle hash matched, and live dashboard creation plus shuffle on/off, repeat all/one/off, next item2 and previous item1 passed. Temporary playlist removed, playback idle, volume unchanged at0.08, other records unchanged. Five-node read-only metadata sampling found no genuine provider playlist; genuine expiry fixture remains unavailable. T-24-15/T-24-16 and Phase30 stay open; no milestone completion claimed.
 
 - 2026-10-29: Phase 38.1 inserted manually in the v1.2 section (dashboard card + sidebar panel retirement, NUX-07, before Phase 39). `gsd-tools query phase.insert 38` failed ("Phase 38 not found": parser only discovers v1.1). Planned only: integration 0.2.24 target, bridge unchanged; no deploy, dashboard edit or commit authorized. Phase 30 T-24-15/T-24-16 remain open.
 - 2026-10-29: Phase 38.1 Plans 01–02 completed locally: full-feature Lovelace card, sidebar retired, integration 0.2.24 candidate, and migration documentation updated. Local UI, mock-browser, package/docs, and WSL SIL gates passed. No commit, push, deployment, host change, or dashboard mutation; Plan 03 remains gated. NUX-07 is locally verified only; Phase 30 remains the current `human_needed` position.

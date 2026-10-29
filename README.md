@@ -8,9 +8,11 @@ Local Core 2026.10.3 tests do not prove actual provider layout, session expiry
 or physical audio. Deployment requires separate authorization; the temporary
 contract probe was removed after its one permitted restart.
 
-The Phase 38.1 local integration 0.2.24 candidate replaces the sidebar panel
-with the full-feature `custom:bl-haos-media-card`. It is not published or
-deployed. After separately authorized installation, add the card from the
+Integration 0.2.24 introduced the full-feature `custom:bl-haos-media-card` in
+place of the sidebar panel. Integration **0.2.25** and bridge **0.2.71** are
+deployed on the explicitly authorized host. Version 0.2.25 fixes playlist
+creation over local HTTP using cryptographically secure UUIDv4 generation.
+For other installations, add the card from the
 Lovelace **Add card** picker, or use `initial_view: browse`; placement on a
 dashboard is always a user action. The card shares the catalog, playlists,
 queue controls, pairing, speaker management, and settings UI. **Native Browse
@@ -34,9 +36,11 @@ the authenticated panel and HA-owned storage for custom playlists of ordered
 Home Assistant media references and one-reference provider shortcuts; provider
 tracks are not copied. Explicit availability checks browse the exact HA media
 reference only; they do not resolve or play media and never rewrite saved IDs.
-This remains local/mock behavior: Phase 24 production requirements are pending,
+Live local-playlist creation and queue control were also verified on the
+authorized host with integration 0.2.25. This is not provider or session-expiry
+acceptance: Phase 24 production requirements are pending,
 T-24-15 remains OPEN/HIGH, and T-24-16 remains OPEN/MEDIUM. Phase 26 owns
-playback and queue controls. Release and deployment are not approved. See
+playback and queue controls. Additional host changes still require scoped approval. See
 [TESTING.md](TESTING.md) for local versus separately authorized host checks.
 Retired Docker E2E and demo fixtures are not host proof.
 
@@ -53,26 +57,26 @@ The modules are included here as Git submodules under `modules/bridge` and `modu
 
 ## Phase 38 historical candidate and migration
 
-The local bridge 0.2.71 and integration 0.2.22 candidates retire the add-on
-Ingress UI; the Home Assistant-native media and Speakers panels remain. Update
+Bridge 0.2.71 and integration 0.2.22 introduced the retirement of the add-on
+Ingress UI; the current dashboard card supplies media and Speakers views. Update
 the integration first, back up existing configuration/data, then update the bridge
 and check HA Repairs. Pairing, settings, and adapter controls use the integration
-Speakers view, services, or options flow. The supported candidate pair is 0.2.71
-/ 0.2.22; the integration minimum add-on version is 0.2.70. These versions are
-not published or deployed. See module migration instructions; Phase 39 separately
-gates publication, installation, deployment and live acceptance.
+Speakers view, services, or options flow. The current deployed pair is 0.2.71
+/ 0.2.25; the integration minimum add-on version is 0.2.70. See module migration
+instructions; Phase 39's remaining live acceptance gates are still open.
 
-## Phase 38.1 dashboard card candidate
+## Phase 38.1 dashboard card
 
-The integration 0.2.24 candidate retires the separate BL-HAOS Media sidebar
+Integration 0.2.24 retired the separate BL-HAOS Media sidebar
 panel and loads `custom:bl-haos-media-card` through Home Assistant's
 `frontend.add_extra_js_url` lifecycle. No Lovelace resource or dashboard write
 is performed by the integration. The Add card picker and YAML configuration are
 supported; YAML dashboards need no `resources:` entry unless a custom frontend
 configuration disables extra-module loading, in which case use the documented
-versioned manual resource fallback. The candidate is local only. Deployment,
-host changes, dashboard edits, and placement still require their separate
-authorization and exact target confirmation.
+versioned manual resource fallback. The authorized deployment includes the
+card on a new Audio dashboard, leaving existing dashboards unchanged. Additional
+host changes, dashboard edits, and placement still require separate authorization
+and exact target confirmation.
 
 ## Install
 
