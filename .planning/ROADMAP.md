@@ -2,7 +2,7 @@
 
 ## Overview
 
-BL-HAOS is a Home Assistant OS Bluetooth audio platform combining BlueZ, PipeWire, Snapcast, a native Home Assistant media-player integration, and an Ingress UI. The current milestone moves the project from feature completeness to production trustworthiness.
+BL-HAOS is a Home Assistant OS Bluetooth audio platform combining BlueZ, PipeWire, Snapcast, a native Home Assistant media-player integration; speaker controls are moving fully into Home Assistant. The current milestone moves the project from feature completeness to production trustworthiness.
 
 The reference bar is the operational maturity demonstrated by Sendspin Bluetooth Bridge: explicit lifecycle contracts, isolated failure domains, deterministic diagnostics, guided recovery, reproducible test modes, and release governance. BL-HAOS adopts those engineering lessons while retaining native Home Assistant control as its product boundary.
 
@@ -410,19 +410,130 @@ Plans:
 Plans:
 - [ ] TBD (run $gsd-plan-phase 34 to break down)
 
+## v1.2 Native HA UX (Phases 35-39, planned; runs alongside open v1.1)
+
+**Goal:** All user-facing UI lives in the Home Assistant integration, and the add-on becomes a headless Bluetooth/audio service. v1.1 stays open; its live evidence gates (Phases 30-34) are unchanged and no archiving was done.
+**Requirements:** NUX-01 through NUX-06 (see REQUIREMENTS.md)
+**Authorization:** The user subsequently authorized host actions and deployment to 192.168.1.18 in chat. Phases 35-38 are deployed as bridge 0.2.71 and integration 0.2.22. This does not substitute for provider/session evidence, human acceptance, hardware soak, rollback rehearsal or release go/no-go.
+
+- [ ] **Phase 35: Queue Control Fix & Real Error Reasons** - Shuffle/repeat work or are disabled when no queue exists; the bridge and integration surface the real failure reason instead of "Native playback command failed".
+- [ ] **Phase 36: Native Playlist & Browse-and-Play UI** - Playlist creation/editing and browse-and-play live in the integration's native HA UI.
+- [ ] **Phase 37: Native Pairing, Speaker & Settings UI** - Pairing, speaker management and settings move into the integration (config/options flow, services, panel).
+- [ ] **Phase 38: Headless Add-on & Ingress UI Retirement** - The add-on exposes only the service API; its ingress web UI is removed with a documented migration.
+- [ ] **Phase 38.1: Dashboard Card & Sidebar Panel Retirement** (INSERTED) - The full media/speaker UI becomes a Lovelace custom card (Add card picker + later confirmed placement) and the BL-HAOS Media sidebar panel is removed.
+- [ ] **Phase 39: v1.2 Verification & Release Gates** - Local/SIL parity checks, then authorized live acceptance and go/no-go, after Phase 34.
+
+### Phase 35: Queue Control Fix & Real Error Reasons
+
+**Goal**: Shuffle and repeat never fail opaquely.
+**Depends on**: Phase 29
+**Requirements**: NUX-01
+**Success Criteria** (what must be TRUE):
+  1. `media_player.shuffle_set` and `repeat_set` succeed on an active queue.
+  2. With no queue (single `play_media`), the integration disables or hides shuffle/repeat, or applies them to the next queue, without raising an error.
+  3. A failed queue command shows its safe, specific reason (for example "No active queue") in HA instead of the generic message.
+  4. Bridge and integration tests cover the no-queue and active-queue paths.
+
+**Plans**: 0 (TBD)
+
+### Phase 36: Native Playlist & Browse-and-Play UI
+
+**Goal**: Users create playlists and browse-and-play from the integration without the add-on UI.
+**Depends on**: Phase 35
+**Requirements**: NUX-02
+**Success Criteria** (what must be TRUE):
+  1. Playlist create, rename, edit and delete work in the integration's native UI.
+  2. Browse-and-play uses HA media sources from the integration.
+  3. Existing saved playlists remain readable and unchanged.
+
+**Plans**: 0 (TBD)
+**UI hint**: yes
+
+### Phase 37: Native Pairing, Speaker & Settings UI
+
+**Goal**: Pairing, speaker management and settings are available in the integration.
+**Depends on**: Phase 36
+**Requirements**: NUX-03
+**Success Criteria** (what must be TRUE):
+  1. A speaker can be scanned, paired, connected, removed and renamed from HA.
+  2. Settings previously changed in the add-on UI are editable via options flow or services.
+  3. Every action has a bridge API endpoint and a test.
+
+**Plans**: 0 (TBD)
+**UI hint**: yes
+
+### Phase 38: Headless Add-on & Ingress UI Retirement
+
+**Goal**: The add-on is a headless service with a stable API.
+**Depends on**: Phase 37
+**Requirements**: NUX-04, NUX-05
+**Success Criteria** (what must be TRUE):
+  1. The add-on ships without its ingress web UI and with no UI-only endpoints required by users.
+  2. Add-on/integration version compatibility is checked and reported clearly in HA.
+  3. Upgrade notes cover moving from the old UI to the integration.
+
+**Plans**: 3 plans
+
+Plans:
+- [x] 38-01-PLAN.md — Retire ingress UI/static assets and UI-only routes; preserve native/operational contracts and local gates.
+- [x] 38-02-PLAN.md — Add authenticated version metadata, shared compatibility checks, HA repairs/diagnostics and recovery tests.
+- [x] 38-03-PLAN.md — Document staged migration, bump local candidates to bridge 0.2.71/integration 0.2.22, and verify docs/version parity.
+
+### Phase 38.1: Dashboard Card & Sidebar Panel Retirement (INSERTED)
+
+**Goal**: The existing React media/speaker UI is a Lovelace card loaded through integration-owned HA frontend APIs; the separate sidebar panel is retired with migration notes.
+**Depends on**: Phase 38
+**Requirements**: NUX-07
+**Note**: Inserted manually; `gsd-tools query phase.insert 38` fails ("Phase 38 not found") because the parser only discovers the v1.1 section. No renumbering. Target integration 0.2.24, bridge unchanged. No deployment, dashboard mutation or commit authorized; Phase 30 T-24-15/T-24-16 stay open.
+**Success Criteria** (what must be TRUE):
+  1. `custom:bl-haos-media-card` reuses `MediaPanel` (card layout, no `100dvh`), implements setConfig/hass/getCardSize/getGridOptions/getStubConfig and is listed in `window.customCards`.
+  2. The module loads via `frontend.add_extra_js_url` with multi-entry owner, unload and fail-closed rollback; no Lovelace resource or dashboard is created or modified; YAML dashboards documented.
+  3. Sidebar panel `bl-haos-media` is not registered; legacy route/migration notes explicit.
+  4. Unit, SIL, package, build and mock-browser gates pass locally; real-HA browser/placement validation is a separate authorization-gated checkpoint.
+
+**Plans**: 3 plans
+
+Plans:
+- [x] 38.1-01-PLAN.md - Card element, picker discovery and owned module loading (panel kept; locally verified).
+- [x] 38.1-02-PLAN.md - Remove sidebar panel, docs/migration, integration 0.2.24 (verified and deployed).
+- [ ] 38.1-03-PLAN.md - Authorized Audio dashboard created and actual picker/layout verified; broader live unload, action and rollback acceptance remains pending.
+
+### Phase 39: v1.2 Verification & Release Gates
+
+**Goal**: v1.2 is verified locally, then accepted live under explicit authorization.
+**Depends on**: Phase 34, Phase 38.1
+**Requirements**: NUX-06
+**Success Criteria** (what must be TRUE):
+  1. Bridge, integration, SIL and frontend gates pass in CI.
+  2. Authorized live acceptance covers the native UI, pairing, playback, shuffle and repeat.
+  3. An explicit go/no-go is recorded after evidence review.
+
+**Plans**: 0 (TBD)
+
+## v1.2 Progress
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 35. Queue Control Fix & Real Error Reasons | 1/1 (inline) | Implemented and deployed; live queue/no-queue acceptance pending | 2026-10-28 |
+| 36. Native Playlist & Browse-and-Play UI | 1/1 | Implemented and deployed; local vitest/SIL/parity passed; live acceptance pending | 2026-10-28 |
+| 37. Native Pairing, Speaker & Settings UI | 3/3 | Implemented and deployed; local gates passed; live acceptance pending; `default_codec` has no known playback consumer | 2026-10-28 |
+| 38. Headless Add-on & Ingress UI Retirement | 3/3 | Published/deployed: bridge 0.2.71, integration 0.2.22. Local bridge 366 passed/1 skipped; integration 120, WSL SIL 179, Vitest 76 passed; build/parity passed. Host ingress off, legacy routes 404, native auth 401; full live acceptance pending | 2026-10-28 |
+| 38.1. Dashboard Card & Sidebar Panel Retirement (INSERTED) | 2/3 fully accepted | Integration0.2.24 shipped/deployed. Authorized Audio dashboard created; prior dashboards preserved. Actual picker and card views verified at375/768/1440; broader Plan03 live acceptance remains open | 2026-10-29 |
+| 39. v1.2 Verification & Release Gates | 0/TBD | Blocked behind Phase 34 and reviewed live acceptance evidence | - |
+
 ## v1.1 Progress
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 28. Package Panel Bundle Parity | 1/1 | Complete (local scope) | 2026-10-28 |
-| 29. PR-Safe Root, Bridge & Integration CI | 1/1 | Local execution passed; hosted Node 22 PR evidence deferred | 2026-10-28 |
-| 30. Security Gate & Finding Closure | 0/TBD | Blocked pending explicit security-evidence authorization | - |
-| 31. Authorized HA & Provider Playback Acceptance | 0/TBD | Blocked pending explicit host and provider authorization | - |
-| 32. HA-Shell Accessibility & Responsive Acceptance | 0/TBD | Blocked pending explicit shell-review authorization | - |
-| 33. Authorized Reconnect Hardware Soak | 0/TBD | Blocked pending explicit hardware authorization | - |
+| 29. PR-Safe Root, Bridge & Integration CI | 1/1 | Local execution passed; hosted Node 22 PR #1 checks all green | 2026-10-28 |
+| 30. Security Gate & Finding Closure | 0/1 accepted | Human needed: T-24-15/T-24-16 live evidence and reviewer acceptance outstanding; host authorization recorded | - |
+| 31. Authorized HA & Provider Playback Acceptance | 0/1 accepted | Depends on Phase 30; provider/queue/audio/negative-case evidence pending | - |
+| 32. HA-Shell Accessibility & Responsive Acceptance | 0/1 accepted | Depends on Phase 31; real-shell captures and bounded contrast/name/44px-target/reduced-motion/Tab checks at 375/768/1440 passed. Integration 0.2.23 thumbnails verified deployed. Full human accessibility acceptance pending | - |
+| 33. Authorized Reconnect Hardware Soak | 0/1 accepted | Depends on Phase 32; scoped hardware soak and recovery evidence pending | - |
 | 34. Release Candidate Evidence & Go/No-Go Preparation | 0/TBD | Blocked pending completion of earlier authorized gates | - |
 
-**v1.1 coverage:** PRD-01 through PRD-08 are each assigned to exactly one phase. PRD-01 is locally verified; PRD-02 has local evidence and a deferred hosted PR gate; PRD-03 through PRD-08 remain blocked behind explicit authorization and reviewer-approved evidence. Phase 28 and the local execution of Phase 29 are complete for their scoped evidence, while Phases 30-34 remain intentionally blocked rather than reported as complete.
+**v1.1 coverage:** PRD-01 through PRD-08 are each assigned to exactly one phase. PRD-01 is locally verified; PRD-02 has passing hosted PR evidence. PRD-03 through PRD-08 remain pending reviewed live evidence. Host/deployment approval was recorded in chat; Phases 30-34 are not complete.
 
 ---
-*Roadmap updated: 2026-10-28 after Phase 29 local CI gates; hosted PR evidence remains deferred and v1.0 remains `gaps_found`.*
+*Roadmap updated: 2026-10-29 after approved integration0.2.24 deployment and Audio dashboard placement. Plan03 broader acceptance remains pending; v1.0 remains `gaps_found`.*

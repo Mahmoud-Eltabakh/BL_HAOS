@@ -1,0 +1,418 @@
+{
+  "timestamp": "2026-10-28T23:27:59.788Z",
+  "scope": "Read-only deployed 0.2.23 accessibility checks; no action buttons activated beyond Library/Browse/Speakers navigation",
+  "results": [
+    {
+      "view": "Library",
+      "width": 375,
+      "coreVersion": "2026.10.4",
+      "focusableControls": 7,
+      "unnamedControls": [],
+      "undersizedControls": [],
+      "contrastMeasured": 15,
+      "contrastUnmeasured": 0,
+      "contrastFailures": [],
+      "liveRegions": [
+        {
+          "role": "status",
+          "live": "polite",
+          "atomic": "true"
+        },
+        {
+          "role": null,
+          "live": "polite",
+          "atomic": "true"
+        }
+      ],
+      "undersizedTargets": [],
+      "keyboard": {
+        "checked": true,
+        "visited": 7,
+        "expected": 7,
+        "focusFailures": [],
+        "unreachableControls": []
+      },
+      "reducedMotion": {
+        "preferenceActive": true,
+        "remainingTransitions": 0,
+        "remainingAnimations": 0
+      }
+    },
+    {
+      "view": "Browse media",
+      "width": 375,
+      "coreVersion": "2026.10.4",
+      "focusableControls": 13,
+      "unnamedControls": [],
+      "undersizedControls": [],
+      "contrastMeasured": 24,
+      "contrastUnmeasured": 0,
+      "contrastFailures": [],
+      "liveRegions": [
+        {
+          "role": "status",
+          "live": "polite",
+          "atomic": "true"
+        }
+      ],
+      "undersizedTargets": [],
+      "keyboard": {
+        "checked": true,
+        "visited": 13,
+        "expected": 13,
+        "focusFailures": [],
+        "unreachableControls": []
+      },
+      "reducedMotion": {
+        "preferenceActive": true,
+        "remainingTransitions": 0,
+        "remainingAnimations": 0
+      }
+    },
+    {
+      "view": "Speakers",
+      "width": 375,
+      "coreVersion": "2026.10.4",
+      "focusableControls": 33,
+      "unnamedControls": [],
+      "undersizedControls": [
+        {
+          "index": 13,
+          "name": "Auto-reconnect Logitech BT Adapter",
+          "width": 13,
+          "height": 44,
+          "labelFragments": [
+            {
+              "width": 118.06,
+              "height": 50
+            }
+          ]
+        },
+        {
+          "index": 29,
+          "name": "Adapter power hci0",
+          "width": 13,
+          "height": 44,
+          "labelFragments": [
+            {
+              "width": 325,
+              "height": 50
+            }
+          ]
+        },
+        {
+          "index": 32,
+          "name": "Global auto-reconnect",
+          "width": 13,
+          "height": 44,
+          "labelFragments": [
+            {
+              "width": 325,
+              "height": 50
+            }
+          ]
+        }
+      ],
+      "contrastMeasured": 63,
+      "contrastUnmeasured": 0,
+      "contrastFailures": [],
+      "liveRegions": [
+        {
+          "role": "status",
+          "live": "polite",
+          "atomic": null
+        }
+      ],
+      "undersizedTargets": [],
+      "keyboard": {
+        "checked": true,
+        "visited": 33,
+        "expected": 33,
+        "focusFailures": [],
+        "unreachableControls": []
+      },
+      "reducedMotion": {
+        "preferenceActive": true,
+        "remainingTransitions": 0,
+        "remainingAnimations": 0
+      }
+    },
+    {
+      "view": "Library",
+      "width": 768,
+      "coreVersion": "2026.10.4",
+      "focusableControls": 7,
+      "unnamedControls": [],
+      "undersizedControls": [],
+      "contrastMeasured": 15,
+      "contrastUnmeasured": 0,
+      "contrastFailures": [],
+      "liveRegions": [
+        {
+          "role": "status",
+          "live": "polite",
+          "atomic": "true"
+        },
+        {
+          "role": null,
+          "live": "polite",
+          "atomic": "true"
+        }
+      ],
+      "undersizedTargets": [],
+      "keyboard": {
+        "checked": true,
+        "visited": 7,
+        "expected": 7,
+        "focusFailures": [],
+        "unreachableControls": []
+      },
+      "reducedMotion": {
+        "preferenceActive": true,
+        "remainingTransitions": 0,
+        "remainingAnimations": 0
+      }
+    },
+    {
+      "view": "Browse media",
+      "width": 768,
+      "coreVersion": "2026.10.4",
+      "focusableControls": 13,
+      "unnamedControls": [],
+      "undersizedControls": [],
+      "contrastMeasured": 24,
+      "contrastUnmeasured": 0,
+      "contrastFailures": [],
+      "liveRegions": [
+        {
+          "role": "status",
+          "live": "polite",
+          "atomic": "true"
+        }
+      ],
+      "undersizedTargets": [],
+      "keyboard": {
+        "checked": true,
+        "visited": 13,
+        "expected": 13,
+        "focusFailures": [],
+        "unreachableControls": []
+      },
+      "reducedMotion": {
+        "preferenceActive": true,
+        "remainingTransitions": 0,
+        "remainingAnimations": 0
+      }
+    },
+    {
+      "view": "Speakers",
+      "width": 768,
+      "coreVersion": "2026.10.4",
+      "focusableControls": 33,
+      "unnamedControls": [],
+      "undersizedControls": [
+        {
+          "index": 13,
+          "name": "Auto-reconnect Logitech BT Adapter",
+          "width": 13,
+          "height": 44,
+          "labelFragments": [
+            {
+              "width": 118.06,
+              "height": 50
+            }
+          ]
+        },
+        {
+          "index": 29,
+          "name": "Adapter power hci0",
+          "width": 13,
+          "height": 44,
+          "labelFragments": [
+            {
+              "width": 686,
+              "height": 50
+            }
+          ]
+        },
+        {
+          "index": 32,
+          "name": "Global auto-reconnect",
+          "width": 13,
+          "height": 44,
+          "labelFragments": [
+            {
+              "width": 686,
+              "height": 50
+            }
+          ]
+        }
+      ],
+      "contrastMeasured": 63,
+      "contrastUnmeasured": 0,
+      "contrastFailures": [],
+      "liveRegions": [
+        {
+          "role": "status",
+          "live": "polite",
+          "atomic": null
+        }
+      ],
+      "undersizedTargets": [],
+      "keyboard": {
+        "checked": true,
+        "visited": 33,
+        "expected": 33,
+        "focusFailures": [],
+        "unreachableControls": []
+      },
+      "reducedMotion": {
+        "preferenceActive": true,
+        "remainingTransitions": 0,
+        "remainingAnimations": 0
+      }
+    },
+    {
+      "view": "Library",
+      "width": 1440,
+      "coreVersion": "2026.10.4",
+      "focusableControls": 7,
+      "unnamedControls": [],
+      "undersizedControls": [],
+      "contrastMeasured": 15,
+      "contrastUnmeasured": 0,
+      "contrastFailures": [],
+      "liveRegions": [
+        {
+          "role": "status",
+          "live": "polite",
+          "atomic": "true"
+        },
+        {
+          "role": null,
+          "live": "polite",
+          "atomic": "true"
+        }
+      ],
+      "undersizedTargets": [],
+      "keyboard": {
+        "checked": true,
+        "visited": 7,
+        "expected": 7,
+        "focusFailures": [],
+        "unreachableControls": []
+      },
+      "reducedMotion": {
+        "preferenceActive": true,
+        "remainingTransitions": 0,
+        "remainingAnimations": 0
+      }
+    },
+    {
+      "view": "Browse media",
+      "width": 1440,
+      "coreVersion": "2026.10.4",
+      "focusableControls": 13,
+      "unnamedControls": [],
+      "undersizedControls": [],
+      "contrastMeasured": 24,
+      "contrastUnmeasured": 0,
+      "contrastFailures": [],
+      "liveRegions": [
+        {
+          "role": "status",
+          "live": "polite",
+          "atomic": "true"
+        }
+      ],
+      "undersizedTargets": [],
+      "keyboard": {
+        "checked": true,
+        "visited": 13,
+        "expected": 13,
+        "focusFailures": [],
+        "unreachableControls": []
+      },
+      "reducedMotion": {
+        "preferenceActive": true,
+        "remainingTransitions": 0,
+        "remainingAnimations": 0
+      }
+    },
+    {
+      "view": "Speakers",
+      "width": 1440,
+      "coreVersion": "2026.10.4",
+      "focusableControls": 33,
+      "unnamedControls": [],
+      "undersizedControls": [
+        {
+          "index": 13,
+          "name": "Auto-reconnect Logitech BT Adapter",
+          "width": 13,
+          "height": 44,
+          "labelFragments": [
+            {
+              "width": 118.06,
+              "height": 50
+            }
+          ]
+        },
+        {
+          "index": 29,
+          "name": "Adapter power hci0",
+          "width": 13,
+          "height": 44,
+          "labelFragments": [
+            {
+              "width": 1102,
+              "height": 50
+            }
+          ]
+        },
+        {
+          "index": 32,
+          "name": "Global auto-reconnect",
+          "width": 13,
+          "height": 44,
+          "labelFragments": [
+            {
+              "width": 1102,
+              "height": 50
+            }
+          ]
+        }
+      ],
+      "contrastMeasured": 63,
+      "contrastUnmeasured": 0,
+      "contrastFailures": [],
+      "liveRegions": [
+        {
+          "role": "status",
+          "live": "polite",
+          "atomic": null
+        }
+      ],
+      "undersizedTargets": [],
+      "keyboard": {
+        "checked": true,
+        "visited": 33,
+        "expected": 33,
+        "focusFailures": [],
+        "unreachableControls": []
+      },
+      "reducedMotion": {
+        "preferenceActive": true,
+        "remainingTransitions": 0,
+        "remainingAnimations": 0
+      }
+    }
+  ],
+  "limitations": [
+    "Keyboard checks cover Tab reachability and computed outlines at all three widths, not control activation",
+    "DOM name checks are not a full accessibility-tree or screen-reader assessment",
+    "Contrast measurements exclude gradients and opacity layers; unmeasured samples are not passes",
+    "Small input boxes are distinguished from effective targets supplied by associated native labels",
+    "No real screen reader, audible playback, settings changes, pairing, scan or session mutation"
+  ]
+}

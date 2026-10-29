@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-10-29T01:21:10.928Z",
+  "registration": {
+    "pickerEntries": 1,
+    "retiredPanelAbsent": true,
+    "cardDefined": true,
+    "legacyPanelDefined": false
+  },
+  "placement": {
+    "id": "audio_dashboard",
+    "urlPath": "audio-dashboard",
+    "created": true,
+    "savedCardType": "custom:bl-haos-media-card",
+    "previousDashboardsPreserved": true
+  },
+  "rollback": "Remove only the new audio-dashboard via HA dashboard settings; Overview and Map were not edited."
+}

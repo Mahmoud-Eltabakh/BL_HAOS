@@ -1,0 +1,222 @@
+{
+  "timestamp": "2026-10-29T01:44:23.428Z",
+  "target": "media_player.logitech_bt_adapter",
+  "playlistName": "BL-HAOS temporary acceptance 2026-10-29T01:44:23.427Z",
+  "steps": [
+    {
+      "label": "two-item queue playing",
+      "observed": {
+        "state": "playing",
+        "volume": 0.08,
+        "queue": {
+          "status": "playing",
+          "playlist": "BL-HAOS temporary acceptance 2026-10-29T01:44:23.427Z",
+          "title": "5cc9f578195e0.mp3",
+          "error": null,
+          "position": 0.085,
+          "duration": 182.484333,
+          "position_updated_at": 1793238264.4704258,
+          "index": 1,
+          "count": 2,
+          "shuffle": false,
+          "repeat": "off"
+        },
+        "shuffle": false,
+        "repeat": "off",
+        "physicalSpeaker": true
+      }
+    },
+    {
+      "label": "shuffle on",
+      "observed": {
+        "state": "playing",
+        "volume": 0.08,
+        "queue": {
+          "status": "playing",
+          "playlist": "BL-HAOS temporary acceptance 2026-10-29T01:44:23.427Z",
+          "title": "5cc9f578195e0.mp3",
+          "error": null,
+          "position": 0.465,
+          "duration": 182.484333,
+          "position_updated_at": 1793238264.850918,
+          "index": 1,
+          "count": 2,
+          "shuffle": true,
+          "repeat": "off"
+        },
+        "shuffle": true,
+        "repeat": "off",
+        "physicalSpeaker": true
+      }
+    },
+    {
+      "label": "shuffle off",
+      "observed": {
+        "state": "playing",
+        "volume": 0.08,
+        "queue": {
+          "status": "playing",
+          "playlist": "BL-HAOS temporary acceptance 2026-10-29T01:44:23.427Z",
+          "title": "5cc9f578195e0.mp3",
+          "error": null,
+          "position": 0.507,
+          "duration": 182.484333,
+          "position_updated_at": 1793238264.8930256,
+          "index": 1,
+          "count": 2,
+          "shuffle": false,
+          "repeat": "off"
+        },
+        "shuffle": false,
+        "repeat": "off",
+        "physicalSpeaker": true
+      }
+    },
+    {
+      "label": "repeat all",
+      "observed": {
+        "state": "playing",
+        "volume": 0.08,
+        "queue": {
+          "status": "playing",
+          "playlist": "BL-HAOS temporary acceptance 2026-10-29T01:44:23.427Z",
+          "title": "5cc9f578195e0.mp3",
+          "error": null,
+          "position": 0.538,
+          "duration": 182.484333,
+          "position_updated_at": 1793238264.9233837,
+          "index": 1,
+          "count": 2,
+          "shuffle": false,
+          "repeat": "all"
+        },
+        "shuffle": false,
+        "repeat": "all",
+        "physicalSpeaker": true
+      }
+    },
+    {
+      "label": "repeat one",
+      "observed": {
+        "state": "playing",
+        "volume": 0.08,
+        "queue": {
+          "status": "playing",
+          "playlist": "BL-HAOS temporary acceptance 2026-10-29T01:44:23.427Z",
+          "title": "5cc9f578195e0.mp3",
+          "error": null,
+          "position": 0.569,
+          "duration": 182.484333,
+          "position_updated_at": 1793238264.9543734,
+          "index": 1,
+          "count": 2,
+          "shuffle": false,
+          "repeat": "one"
+        },
+        "shuffle": false,
+        "repeat": "one",
+        "physicalSpeaker": true
+      }
+    },
+    {
+      "label": "repeat off",
+      "observed": {
+        "state": "playing",
+        "volume": 0.08,
+        "queue": {
+          "status": "playing",
+          "playlist": "BL-HAOS temporary acceptance 2026-10-29T01:44:23.427Z",
+          "title": "5cc9f578195e0.mp3",
+          "error": null,
+          "position": 0.597,
+          "duration": 182.484333,
+          "position_updated_at": 1793238264.9826255,
+          "index": 1,
+          "count": 2,
+          "shuffle": false,
+          "repeat": "off"
+        },
+        "shuffle": false,
+        "repeat": "off",
+        "physicalSpeaker": true
+      }
+    },
+    {
+      "label": "next reaches item two",
+      "observed": {
+        "state": "playing",
+        "volume": 0.08,
+        "queue": {
+          "status": "playing",
+          "playlist": "BL-HAOS temporary acceptance 2026-10-29T01:44:23.427Z",
+          "title": "5cc9f578195e0.mp3",
+          "error": null,
+          "position": 0.004,
+          "duration": null,
+          "position_updated_at": 1793238265.2770422,
+          "index": 2,
+          "count": 2,
+          "shuffle": false,
+          "repeat": "off"
+        },
+        "shuffle": false,
+        "repeat": "off",
+        "physicalSpeaker": true
+      }
+    },
+    {
+      "label": "previous reaches item one",
+      "observed": {
+        "state": "playing",
+        "volume": 0.08,
+        "queue": {
+          "status": "playing",
+          "playlist": "BL-HAOS temporary acceptance 2026-10-29T01:44:23.427Z",
+          "title": "5cc9f578195e0.mp3",
+          "error": null,
+          "position": 0.005,
+          "duration": null,
+          "position_updated_at": 1793238265.818701,
+          "index": 1,
+          "count": 2,
+          "shuffle": false,
+          "repeat": "off"
+        },
+        "shuffle": false,
+        "repeat": "off",
+        "physicalSpeaker": true
+      }
+    }
+  ],
+  "cleanup": {
+    "stopped": true,
+    "testPlaylistDeleted": true,
+    "otherRecordsUnchanged": true
+  },
+  "passed": true,
+  "before": {
+    "state": "idle",
+    "volume": 0.08,
+    "queue": null,
+    "shuffle": null,
+    "repeat": null,
+    "physicalSpeaker": true
+  },
+  "createdRecordId": "a333a578-8ca0-419d-bfd9-dfa0bd87425c",
+  "uiCreationVerified": true,
+  "controlsPassed": true,
+  "after": {
+    "state": "idle",
+    "volume": 0.08,
+    "queue": null,
+    "shuffle": null,
+    "repeat": null,
+    "physicalSpeaker": true
+  },
+  "volumeUnchanged": true,
+  "limitations": [
+    "Repeated local MP3, not a genuine provider playlist",
+    "State observations are not physical audio confirmation or distinct-track audio verification",
+    "No natural track completion, repeat wraparound, expiry, no-queue or hardware soak acceptance"
+  ]
+}

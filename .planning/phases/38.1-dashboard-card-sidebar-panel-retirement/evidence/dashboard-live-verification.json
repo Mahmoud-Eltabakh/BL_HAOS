@@ -1,0 +1,141 @@
+{
+  "timestamp": "2026-10-29T01:21:22.456Z",
+  "integrationVersion": "0.2.24",
+  "dashboardURL": "http://192.168.1.18/audio-dashboard/audio",
+  "registration": {
+    "pickerEntries": 1,
+    "retiredPanelAbsent": true,
+    "cardDefined": true,
+    "legacyPanelDefined": false
+  },
+  "placement": {
+    "id": "audio_dashboard",
+    "urlPath": "audio-dashboard",
+    "created": true,
+    "savedCardType": "custom:bl-haos-media-card",
+    "previousDashboardsPreserved": true
+  },
+  "observations": [
+    {
+      "view": "Library",
+      "width": 375,
+      "connected": true,
+      "fitsViewport": true,
+      "horizontalDocumentOverflow": false,
+      "height": 1068,
+      "mainScrollOverflow": false,
+      "sourceCount": 0,
+      "unavailableArtwork": 0,
+      "credentialPatternVisible": false,
+      "screenshot": "dashboard-library-375.png"
+    },
+    {
+      "view": "Browse media",
+      "width": 375,
+      "connected": true,
+      "fitsViewport": true,
+      "horizontalDocumentOverflow": false,
+      "height": 1479,
+      "mainScrollOverflow": false,
+      "sourceCount": 8,
+      "unavailableArtwork": 0,
+      "credentialPatternVisible": false,
+      "screenshot": "dashboard-browse-media-375.png"
+    },
+    {
+      "view": "Speakers",
+      "width": 375,
+      "connected": true,
+      "fitsViewport": true,
+      "horizontalDocumentOverflow": false,
+      "height": 4156,
+      "mainScrollOverflow": false,
+      "sourceCount": 0,
+      "unavailableArtwork": 0,
+      "credentialPatternVisible": false,
+      "screenshot": "dashboard-speakers-375.png"
+    },
+    {
+      "view": "Library",
+      "width": 768,
+      "connected": true,
+      "fitsViewport": true,
+      "horizontalDocumentOverflow": false,
+      "height": 1031,
+      "mainScrollOverflow": false,
+      "sourceCount": 0,
+      "unavailableArtwork": 0,
+      "credentialPatternVisible": false,
+      "screenshot": "dashboard-library-768.png"
+    },
+    {
+      "view": "Browse media",
+      "width": 768,
+      "connected": true,
+      "fitsViewport": true,
+      "horizontalDocumentOverflow": false,
+      "height": 1025,
+      "mainScrollOverflow": false,
+      "sourceCount": 8,
+      "unavailableArtwork": 0,
+      "credentialPatternVisible": false,
+      "screenshot": "dashboard-browse-media-768.png"
+    },
+    {
+      "view": "Speakers",
+      "width": 768,
+      "connected": true,
+      "fitsViewport": true,
+      "horizontalDocumentOverflow": false,
+      "height": 4368,
+      "mainScrollOverflow": false,
+      "sourceCount": 0,
+      "unavailableArtwork": 0,
+      "credentialPatternVisible": false,
+      "screenshot": "dashboard-speakers-768.png"
+    },
+    {
+      "view": "Library",
+      "width": 1440,
+      "connected": true,
+      "fitsViewport": true,
+      "horizontalDocumentOverflow": false,
+      "height": 1031,
+      "mainScrollOverflow": false,
+      "sourceCount": 0,
+      "unavailableArtwork": 0,
+      "credentialPatternVisible": false,
+      "screenshot": "dashboard-library-1440.png"
+    },
+    {
+      "view": "Browse media",
+      "width": 1440,
+      "connected": true,
+      "fitsViewport": true,
+      "horizontalDocumentOverflow": false,
+      "height": 1025,
+      "mainScrollOverflow": false,
+      "sourceCount": 8,
+      "unavailableArtwork": 0,
+      "credentialPatternVisible": false,
+      "screenshot": "dashboard-browse-media-1440.png"
+    },
+    {
+      "view": "Speakers",
+      "width": 1440,
+      "connected": true,
+      "fitsViewport": true,
+      "horizontalDocumentOverflow": false,
+      "height": 4368,
+      "mainScrollOverflow": false,
+      "sourceCount": 0,
+      "unavailableArtwork": 0,
+      "credentialPatternVisible": false,
+      "screenshot": "dashboard-speakers-1440.png"
+    }
+  ],
+  "pageErrorNames": [],
+  "limitations": [
+    "No playback, pairing, scan, settings changes, provider expiry, hardware soak or rollback rehearsal in this run"
+  ]
+}

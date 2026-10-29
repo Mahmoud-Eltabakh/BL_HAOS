@@ -2,30 +2,45 @@
 
 ## Phase 24 Media Catalog (Local, Undeployed)
 
-The integrated bridge release 0.2.69 and production panel are undeployed.
+The Phase 24 integrated bridge 0.2.69 catalog candidate is historical and
+undeployed.
 Local Core 2026.10.3 tests do not prove actual provider layout, session expiry
 or physical audio. Deployment requires separate authorization; the temporary
 contract probe was removed after its one permitted restart.
 
-After authorized installation, use **Native Browse Media** on a speaker or
-**Open Media Catalog** beside Home Assistant Native integration in Ingress.
-The link opens HA's **BL-HAOS Media** panel at `/bl-haos-media`. In **Play on**,
-select exactly one connected BL-HAOS speaker, browse the audio provider hierarchy
-and press **Play** on an item or playlist. The original opaque reference reaches
-native `media_player.play_media` unchanged;
-HA owns provider authentication and reference resolution. A provider playlist
-stays one reference, not a local queue. Submission does not prove audible playback.
+Integration 0.2.24 introduced the full-feature `custom:bl-haos-media-card` in
+place of the sidebar panel. Integration **0.2.25** and bridge **0.2.71** are
+deployed on the explicitly authorized host. Version 0.2.25 fixes playlist
+creation over local HTTP using cryptographically secure UUIDv4 generation.
+For other installations, add the card from the
+Lovelace **Add card** picker, or use `initial_view: browse`; placement on a
+dashboard is always a user action. The card shares the catalog, playlists,
+queue controls, pairing, speaker management, and settings UI. **Native Browse
+Media** remains available on a speaker.
 
-The panel does not store browser/add-on HA/provider credentials, proxy a bridge
+The integration loads its versioned frontend module automatically; YAML
+dashboards normally need no `resources:` entry. It does not create resources or
+modify dashboards. The old `/bl-haos-media` panel and bookmarks are not
+redirected; after the authorized upgrade, point saved links (including the old
+**Open Media Catalog** destination) at the dashboard view containing the card.
+In **Play on**, select exactly one connected BL-HAOS speaker, browse the audio
+provider hierarchy and press **Play** on an item or playlist. The original
+opaque reference reaches native `media_player.play_media` unchanged; HA owns
+provider authentication and reference resolution. A provider playlist stays
+one reference, not a local queue. Submission does not prove audible playback.
+
+The dashboard card does not store browser/add-on HA/provider credentials, proxy a bridge
 catalog, call providers directly, or accept raw playback URLs. Existing native
 direct-URL support is not a catalog fallback. The local Phase 25 candidate uses
 the authenticated panel and HA-owned storage for custom playlists of ordered
 Home Assistant media references and one-reference provider shortcuts; provider
 tracks are not copied. Explicit availability checks browse the exact HA media
 reference only; they do not resolve or play media and never rewrite saved IDs.
-This remains local/mock behavior: Phase 24 production requirements are pending,
+Live local-playlist creation and queue control were also verified on the
+authorized host with integration 0.2.25. This is not provider or session-expiry
+acceptance: Phase 24 production requirements are pending,
 T-24-15 remains OPEN/HIGH, and T-24-16 remains OPEN/MEDIUM. Phase 26 owns
-playback and queue controls. Release and deployment are not approved. See
+playback and queue controls. Additional host changes still require scoped approval. See
 [TESTING.md](TESTING.md) for local versus separately authorized host checks.
 Retired Docker E2E and demo fixtures are not host proof.
 
@@ -39,6 +54,29 @@ BL-HAOS is the umbrella project for Bluetooth audio playback on Home Assistant O
 | Integration | [BL-HAOS-Integration](https://github.com/Mahmoud-Eltabakh/BL-HAOS-Integration) | HACS custom integration: native `media_player` entities and Home Assistant config flow. |
 
 The modules are included here as Git submodules under `modules/bridge` and `modules/integration`.
+
+## Phase 38 historical candidate and migration
+
+Bridge 0.2.71 and integration 0.2.22 introduced the retirement of the add-on
+Ingress UI; the current dashboard card supplies media and Speakers views. Update
+the integration first, back up existing configuration/data, then update the bridge
+and check HA Repairs. Pairing, settings, and adapter controls use the integration
+Speakers view, services, or options flow. The current deployed pair is 0.2.71
+/ 0.2.25; the integration minimum add-on version is 0.2.70. See module migration
+instructions; Phase 39's remaining live acceptance gates are still open.
+
+## Phase 38.1 dashboard card
+
+Integration 0.2.24 retired the separate BL-HAOS Media sidebar
+panel and loads `custom:bl-haos-media-card` through Home Assistant's
+`frontend.add_extra_js_url` lifecycle. No Lovelace resource or dashboard write
+is performed by the integration. The Add card picker and YAML configuration are
+supported; YAML dashboards need no `resources:` entry unless a custom frontend
+configuration disables extra-module loading, in which case use the documented
+versioned manual resource fallback. The authorized deployment includes the
+card on a new Audio dashboard, leaving existing dashboards unchanged. Additional
+host changes, dashboard edits, and placement still require separate authorization
+and exact target confirmation.
 
 ## Install
 
@@ -59,8 +97,8 @@ Develop and release the Bridge and Integration from their own repositories. This
 
 Run the module-local unit and system-level tests with `pytest tests/ -q`.
 For HAOS behavior, use a Home Assistant OS virtual machine with the add-on
-and integration installed; validate pairing, playback, ingress, recovery,
-and native `media_player` control against the live VM.
+and integration installed; validate pairing, playback, recovery, and native
+`media_player` control against the live VM. The add-on Ingress UI is retired.
 
 ## Security
 
