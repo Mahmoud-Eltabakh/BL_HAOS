@@ -6,9 +6,9 @@ current_phase: 30
 current_phase_name: Security Gate & Finding Closure
 status: human_needed
 stopped_at: Completed 38.2-01 locally; Phase 30 remains human_needed
-last_updated: "2026-10-29T03:56:23.685Z"
+last_updated: "2026-10-29T04:10:54.988Z"
 last_activity: 2026-10-29
-last_activity_desc: User approved local card design and source publication only. Integration d809e27 pushed; 91 unit,71 mock-browser,12 package/parity and build passed. No deployment/restart or host actions; full-matrix human and live acceptance limitations retained.
+last_activity_desc: User authorized0.2.26 release/deploy and one restart, then0.2.27 contrast correction with one additional restart. Both Core checks passed, final bundle hash matched,9 read-only layout/contrast cases passed, dashboards unchanged; no playback/pairing/settings saves.
 progress:
   total_phases: 7
   completed_phases: 1
@@ -24,14 +24,14 @@ progress:
 See: [PROJECT.md](PROJECT.md) (updated 2026-10-28)
 
 **Core value:** Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `media_player` playback to any Bluetooth speaker with rock-solid background auto-reconnection, safe degraded-mode behavior, and production-grade operational visibility.
-**Current focus:** Phase38.2 HA-native card polish locally verified and user-approved for commit/push only. Integration candidate d809e27 published without version bump; deployed integration0.2.25/bridge0.2.71 unchanged. Phase30 production acceptance remains human_needed.
+**Current focus:** Phase38.2 HA-native card polish deployed as integration0.2.27 with bridge0.2.71 unchanged.9 read-only real-HA layout cases passed; primary/navigation contrast18.42/16.47 minimum; dashboards unchanged. Phase30 production evidence remains human_needed.
 
 ## Current Position
 
 Phase: 30 (Security Gate & Finding Closure) - HUMAN NEEDED
 Plan: 01 prepared; closure not accepted
 Status: Host actions and deployment were authorized in chat. T-24-15/T-24-16 still need reviewed live evidence; general authorization does not establish acceptance.
-Last activity: 2026-10-29 - User approved local card design and source publication only. Integration d809e27 pushed; 91 unit,71 mock-browser,12 package/parity and build passed. No deployment/restart or host actions; full-matrix human and live acceptance limitations retained.
+Last activity: 2026-10-29 - User authorized0.2.26 release/deploy and one restart, then0.2.27 contrast correction with one additional restart. Both Core checks passed, final bundle hash matched,9 read-only layout/contrast cases passed, dashboards unchanged; no playback/pairing/settings saves.
 
 Progress: [█░░░░░░░░░] 14%
 
@@ -75,6 +75,7 @@ Progress: [█░░░░░░░░░] 14%
 - 2026-10-28: v1.1 roadmap created as Phases 28-34. The v1.0 audit remains `gaps_found`; no MILESTONES.md or completed milestone record was created. Planning does not grant live-test, deployment, publication, host-change, restart, playback, provider/session, or hardware authorization.
 - Phase 38.2 inserted after Phase 38: User selected HA-native card polish across Library Browse Speakers Settings; manual roadmap insertion after parser rejection; production acceptance remains open. (URGENT)
 - 2026-10-29: Phase 38.2-01 completed locally: HA-theme-aware responsive Library, Browse, Speakers and existing Settings surfaces; 91 unit tests, 71 local card/mock-browser tests, 12 package-layout checks passed; 26 local mock screenshots reviewed. No host access, settings writes, playback, deployment, version change, publication or commits. NUX-08 is locally verified; Phase 30 remains current `human_needed` and Phase 39 remains blocked.
+- Phase 38.2 completed: User approved local design then separately authorized integration0.2.26 and0.2.27 releases/deployments with one restart each. Final fe450ab deployed;9 real-HA layout cases and measured18.42 primary/16.47 navigation contrast passed. No dashboard mutation; production acceptance remains open.
 
 ### Decisions
 

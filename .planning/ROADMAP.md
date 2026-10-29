@@ -503,7 +503,7 @@ Plans:
 **Goal**: Refine every card view into a clean, theme-aware Home Assistant dashboard experience without changing supported actions or connection/session boundaries.
 **Depends on**: Phase 38.1 implementation (its broader live acceptance remains open)
 **Requirements**: NUX-08
-**Scope**: User selected clean HA-native styling across Library, Browse, Speakers and Settings. Local implementation/build/mock validation only; host deployment, playback, pairing and settings mutations require separate approval.
+**Scope**: User selected clean HA-native styling across Library, Browse, Speakers and Settings. Subsequently approved publication,0.2.26 deployment with one restart, and0.2.27 contrast correction with one additional restart. No playback, pairing or settings mutations were performed.
 **Note**: Manually inserted after `gsd-tools query phase.insert 38` returned "Phase 38 not found" due to the existing multi-milestone parser limitation. Phase30 remains the production acceptance blocker.
 **Success Criteria**:
   1. HA theme variables drive surfaces, text, controls, focus and statuses in light/dark themes; heavy neumorphic shadows and forced narrow content are removed.
@@ -537,7 +537,7 @@ Plans:
 | 37. Native Pairing, Speaker & Settings UI | 3/3 | Implemented and deployed; local gates passed; live acceptance pending; `default_codec` has no known playback consumer | 2026-10-28 |
 | 38. Headless Add-on & Ingress UI Retirement | 3/3 | Published/deployed: bridge 0.2.71, integration 0.2.22. Local bridge 366 passed/1 skipped; integration 120, WSL SIL 179, Vitest 76 passed; build/parity passed. Host ingress off, legacy routes 404, native auth 401; full live acceptance pending | 2026-10-28 |
 | 38.1. Dashboard Card & Sidebar Panel Retirement (INSERTED) | 2/3 fully accepted | Integration0.2.24 shipped/deployed. Authorized Audio dashboard created; prior dashboards preserved. Actual picker and card views verified at375/768/1440; broader Plan03 live acceptance remains open | 2026-10-29 |
-| 38.2. HA-native Card UI Polish (INSERTED) | 1/1 | NUX-08 locally/mock verified; user approved local design and commit/push only. Candidate d809e27 published without version bump or deployment; full-matrix human review limitation retained; Phase30 remains human-needed | 2026-10-29 |
+| 38.2. HA-native Card UI Polish (INSERTED) | 1/1 | Integration0.2.27 deployed after separate user approvals.9 actual-HA layout cases passed at375/768/1440; primary/navigation contrast18.42/16.47 minimum; dashboards unchanged. Full accessibility/provider/expiry/hardware/rollback acceptance remains open | 2026-10-29 |
 | 39. v1.2 Verification & Release Gates | 0/TBD | Blocked behind Phase 34 and reviewed live acceptance evidence | - |
 
 ## v1.1 Progress

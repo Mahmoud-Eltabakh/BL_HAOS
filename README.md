@@ -9,9 +9,11 @@ or physical audio. Deployment requires separate authorization; the temporary
 contract probe was removed after its one permitted restart.
 
 Integration 0.2.24 introduced the full-feature `custom:bl-haos-media-card` in
-place of the sidebar panel. Integration **0.2.25** and bridge **0.2.71** are
+place of the sidebar panel. Integration **0.2.27** and bridge **0.2.71** are
 deployed on the explicitly authorized host. Version 0.2.25 fixes playlist
 creation over local HTTP using cryptographically secure UUIDv4 generation.
+Versions0.2.26/0.2.27 add HA-native light/dark styling, card-container-responsive
+controls and readable theme text with accent borders, including bright accents.
 For other installations, add the card from the
 Lovelace **Add card** picker, or use `initial_view: browse`; placement on a
 dashboard is always a user action. The card shares the catalog, playlists,
@@ -62,7 +64,7 @@ Ingress UI; the current dashboard card supplies media and Speakers views. Update
 the integration first, back up existing configuration/data, then update the bridge
 and check HA Repairs. Pairing, settings, and adapter controls use the integration
 Speakers view, services, or options flow. The current deployed pair is 0.2.71
-/ 0.2.25; the integration minimum add-on version is 0.2.70. See module migration
+/ 0.2.27; the integration minimum add-on version is 0.2.70. See module migration
 instructions; Phase 39's remaining live acceptance gates are still open.
 
 ## Phase 38.1 dashboard card
