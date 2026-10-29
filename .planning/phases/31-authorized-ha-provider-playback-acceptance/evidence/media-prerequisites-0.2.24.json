@@ -1,0 +1,737 @@
+{
+  "timestamp": "2026-10-29T01:28:51.965Z",
+  "scope": "Read-only browse metadata of local media and Radio Browser; no resolve, playback or mutations",
+  "roots": [
+    {
+      "title": "AI generated images",
+      "mediaClass": "app",
+      "contentType": "app",
+      "canExpand": true,
+      "canPlay": false,
+      "playlist": false
+    },
+    {
+      "title": "Camera",
+      "mediaClass": "app",
+      "contentType": "app",
+      "canExpand": true,
+      "canPlay": false,
+      "playlist": false
+    },
+    {
+      "title": "Image",
+      "mediaClass": "app",
+      "contentType": "app",
+      "canExpand": true,
+      "canPlay": false,
+      "playlist": false
+    },
+    {
+      "title": "Image upload",
+      "mediaClass": "app",
+      "contentType": "app",
+      "canExpand": true,
+      "canPlay": false,
+      "playlist": false
+    },
+    {
+      "title": "MAWAQIT",
+      "mediaClass": "app",
+      "contentType": "app",
+      "canExpand": true,
+      "canPlay": false,
+      "playlist": false
+    },
+    {
+      "title": "My media",
+      "mediaClass": "app",
+      "contentType": "app",
+      "canExpand": true,
+      "canPlay": false,
+      "playlist": false
+    },
+    {
+      "title": "Radio Browser",
+      "mediaClass": "app",
+      "contentType": "app",
+      "canExpand": true,
+      "canPlay": false,
+      "playlist": false
+    },
+    {
+      "title": "Text-to-speech",
+      "mediaClass": "app",
+      "contentType": "app",
+      "canExpand": true,
+      "canPlay": false,
+      "playlist": false
+    }
+  ],
+  "observations": [
+    {
+      "title": "media",
+      "depth": 0,
+      "children": [
+        {
+          "title": "Music",
+          "mediaClass": "directory",
+          "contentType": "",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "broccole",
+          "mediaClass": "directory",
+          "contentType": "",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "teta_aml",
+          "mediaClass": "directory",
+          "contentType": "",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "002.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "01.athan_fajr_Mansoor Az-Zahrani.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "018.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "03.athan_fajr_Malek Chibat Al-Hamd.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "04.athan_mishary.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "4026.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "5cc9f578195e0.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "Abdul-Basit.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "Adhan Egypt.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "freesound_community-birds-19624.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "sharawy_doaa_24.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "أذكار الصباح.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "اذكار المساء.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        }
+      ],
+      "truncated": false
+    },
+    {
+      "title": "Radio Browser",
+      "depth": 0,
+      "children": [
+        {
+          "title": "Popular",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "By Category",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "By Language",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Local stations",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Afghanistan",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Åland Islands",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Albania",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Algeria",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "American Samoa",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Andorra",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Angola",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Anguilla",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Antarctica",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Antigua and Barbuda",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Argentina",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Armenia",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Aruba",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Australia",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Austria",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Azerbaijan",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Bahamas",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Bahrain",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Bangladesh",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Barbados",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Belarus",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Belgium",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Belize",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Benin",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Bermuda",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Bhutan",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Bolivia, Plurinational State of",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Bonaire, Sint Eustatius and Saba",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Bosnia and Herzegovina",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Botswana",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Brazil",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "British Indian Ocean Territory",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Brunei Darussalam",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Bulgaria",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Burkina Faso",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        },
+        {
+          "title": "Burundi",
+          "mediaClass": "directory",
+          "contentType": "music",
+          "canExpand": true,
+          "canPlay": false,
+          "playlist": false
+        }
+      ],
+      "truncated": true
+    },
+    {
+      "title": "Music",
+      "depth": 1,
+      "children": [
+        {
+          "title": "Habibi W Ebn Habibi.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "Mahmoud El Esseily - Kol Sana Wadi Degla - محمود العسيلي- كل سنة وادي دجلة رمضان ٢٠٢٥ - MAMA (128k).mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "Wadi Degla Developments.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        }
+      ],
+      "truncated": false
+    },
+    {
+      "title": "broccole",
+      "depth": 1,
+      "children": [
+        {
+          "title": "broccole_Noah.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_Yousef_2.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_adam.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_aisa_maraim.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_ayob.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_dawood.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_hood.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_ibrahim.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_idris.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_mousa_1.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_mousa_2.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_saleh.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_soliman.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_yahia_zakaria_idris_.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_younes.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_yousef_1.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "broccole_zakaria_yahia.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        }
+      ],
+      "truncated": false
+    },
+    {
+      "title": "teta_aml",
+      "depth": 1,
+      "children": [
+        {
+          "title": "Harhoor The Cat.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        },
+        {
+          "title": "The Watermelon.mp3",
+          "mediaClass": "music",
+          "contentType": "audio/mpeg",
+          "canExpand": false,
+          "canPlay": true,
+          "playlist": false
+        }
+      ],
+      "truncated": false
+    }
+  ],
+  "browsedNodes": 5,
+  "remainingNodes": 0,
+  "playablePlaylistsFound": 0,
+  "limitations": [
+    "Bounded metadata inspection only; not exhaustive provider support or expiry acceptance"
+  ]
+}

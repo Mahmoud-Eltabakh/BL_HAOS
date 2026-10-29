@@ -1,0 +1,126 @@
+{
+  "timestamp": "2026-10-29T01:50:02.838Z",
+  "target": "media_player.logitech_bt_adapter",
+  "scope": "Authorized shuffle/repeat on idle speaker without an active queue; no playback",
+  "steps": [
+    {
+      "command": "shuffle_set",
+      "data": {
+        "shuffle": true
+      },
+      "accepted": false,
+      "noActiveQueue": false,
+      "unsupportedAction": true,
+      "genericPlaybackFailure": false,
+      "errorCode": "service_validation_error",
+      "observed": {
+        "state": "idle",
+        "volume": 0.08,
+        "physicalSpeaker": true,
+        "queue": null,
+        "shuffle": null,
+        "repeat": null,
+        "supportedFeatures": 152117
+      }
+    },
+    {
+      "command": "shuffle_set",
+      "data": {
+        "shuffle": false
+      },
+      "accepted": false,
+      "noActiveQueue": false,
+      "unsupportedAction": true,
+      "genericPlaybackFailure": false,
+      "errorCode": "service_validation_error",
+      "observed": {
+        "state": "idle",
+        "volume": 0.08,
+        "physicalSpeaker": true,
+        "queue": null,
+        "shuffle": null,
+        "repeat": null,
+        "supportedFeatures": 152117
+      }
+    },
+    {
+      "command": "repeat_set",
+      "data": {
+        "repeat": "all"
+      },
+      "accepted": false,
+      "noActiveQueue": false,
+      "unsupportedAction": true,
+      "genericPlaybackFailure": false,
+      "errorCode": "service_validation_error",
+      "observed": {
+        "state": "idle",
+        "volume": 0.08,
+        "physicalSpeaker": true,
+        "queue": null,
+        "shuffle": null,
+        "repeat": null,
+        "supportedFeatures": 152117
+      }
+    },
+    {
+      "command": "repeat_set",
+      "data": {
+        "repeat": "one"
+      },
+      "accepted": false,
+      "noActiveQueue": false,
+      "unsupportedAction": true,
+      "genericPlaybackFailure": false,
+      "errorCode": "service_validation_error",
+      "observed": {
+        "state": "idle",
+        "volume": 0.08,
+        "physicalSpeaker": true,
+        "queue": null,
+        "shuffle": null,
+        "repeat": null,
+        "supportedFeatures": 152117
+      }
+    },
+    {
+      "command": "repeat_set",
+      "data": {
+        "repeat": "off"
+      },
+      "accepted": false,
+      "noActiveQueue": false,
+      "unsupportedAction": true,
+      "genericPlaybackFailure": false,
+      "errorCode": "service_validation_error",
+      "observed": {
+        "state": "idle",
+        "volume": 0.08,
+        "physicalSpeaker": true,
+        "queue": null,
+        "shuffle": null,
+        "repeat": null,
+        "supportedFeatures": 152117
+      }
+    }
+  ],
+  "passed": true,
+  "before": {
+    "state": "idle",
+    "volume": 0.08,
+    "physicalSpeaker": true,
+    "queue": null,
+    "shuffle": null,
+    "repeat": null,
+    "supportedFeatures": 152117
+  },
+  "after": {
+    "state": "idle",
+    "volume": 0.08,
+    "physicalSpeaker": true,
+    "queue": null,
+    "shuffle": null,
+    "repeat": null,
+    "supportedFeatures": 152117
+  }
+}

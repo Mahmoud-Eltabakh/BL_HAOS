@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-10-28T23:29:30.743Z",
+  "target": "media_player.logitech_bt_adapter",
+  "sourceKind": "user-supplied local MP3 media-source reference",
+  "sourceReference": "media-source://media_source/local/5cc9f578195e0.mp3",
+  "before": {
+    "present": true,
+    "state": "idle",
+    "adapterPresent": true,
+    "bluetoothAddressPresent": true,
+    "volumeLevel": 0.3
+  },
+  "serviceAttempts": 1,
+  "serviceAccepted": true,
+  "playingObserved": true,
+  "physicalAudioConfirmed": true,
+  "physicalAudioConfirmation": "User confirmed the expected audio is clearly audible in chat.",
+  "volumeChanged": false,
+  "after": {
+    "state": "playing",
+    "volumeLevel": 0.3,
+    "mediaPosition": 0,
+    "mediaDuration": 182,
+    "supportedFeatures": 152117
+  },
+  "observedAt": "2026-10-28T23:29:31.796Z",
+  "limitations": [
+    "HA state is not proof of audible output",
+    "No provider playlist, queue controls, expiry or hardware soak acceptance"
+  ]
+}

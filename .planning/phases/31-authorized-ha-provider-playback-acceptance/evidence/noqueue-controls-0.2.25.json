@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-10-29T01:48:05.671Z",
+  "target": "media_player.logitech_bt_adapter",
+  "scope": "Authorized shuffle/repeat on idle speaker without an active queue; no playback",
+  "steps": [
+    {
+      "command": "shuffle_set",
+      "data": {
+        "shuffle": true
+      },
+      "accepted": false
+    }
+  ],
+  "passed": false,
+  "before": {
+    "state": "idle",
+    "volume": 0.08,
+    "physicalSpeaker": true,
+    "queue": null,
+    "shuffle": null,
+    "repeat": null
+  },
+  "failure": {
+    "stage": "shuffle_set {\"shuffle\":true}",
+    "errorType": "Error"
+  }
+}

@@ -5,9 +5,9 @@ milestone_name: Production Readiness & Release (Current)
 current_phase: 30
 current_phase_name: Security Gate & Finding Closure
 status: human_needed
-last_updated: "2026-10-29T02:15:00.487Z"
+last_updated: "2026-10-29T02:20:18.621Z"
 last_activity: 2026-10-29
-last_activity_desc: Recorded authorized idle/no-queue shuffle/repeat validation: HA rejected all five requests as unsupported, not generic native playback failures; speaker remained idle and volume unchanged. Integration0.2.25 and bridge0.2.71 remain deployed; broader acceptance remains open.
+last_activity_desc: User explicitly requested pushing all remaining workspace evidence. Reviewed pending text for credential patterns and all screenshots visually before publication; external session fixtures remain excluded. Production acceptance gates remain open.
 progress:
   total_phases: 7
   completed_phases: 1
@@ -30,7 +30,7 @@ See: [PROJECT.md](PROJECT.md) (updated 2026-10-28)
 Phase: 30 (Security Gate & Finding Closure) - HUMAN NEEDED
 Plan: 01 prepared; closure not accepted
 Status: Host actions and deployment were authorized in chat. T-24-15/T-24-16 still need reviewed live evidence; general authorization does not establish acceptance.
-Last activity: 2026-10-29 - Recorded authorized idle/no-queue shuffle/repeat gating: all five requests rejected as unsupported by HA service validation, no generic native playback failure, no playback and no volume change. No further code change or deployment was needed.
+Last activity: 2026-10-29 - User explicitly requested pushing all remaining workspace evidence. Reviewed the 55 pending evidence files (including 39 screenshots); no credential patterns found in text and no credentials observed in screenshots. External authenticated session fixtures and session helper scripts are not included. No production acceptance gates closed.
 
 Progress: [███░░░░░░░] 29%
 
@@ -56,6 +56,8 @@ Progress: [███░░░░░░░] 29%
 ## Accumulated Context
 
 ### Roadmap Evolution
+
+- 2026-10-29: User's explicit "push everything" instruction supersedes the earlier local-only treatment of the remaining workspace evidence. Publish the Phase31/32 reports and Phase32/38.1 screenshots after bounded credential-pattern scanning and visual screenshot review. Failed helper attempts remain recorded alongside successful checks; publication does not turn them into accepted results or close Phase30. Session credentials outside the repository remain private and excluded.
 
 - 2026-10-29: Separately authorized idle/no-queue checks verified native HA feature gating on Logitech: shuffle true/false and repeat all/one/off each returned service_validation_error with an unsupported-action reason, not Native playback command failed. The speaker remained idle without a queue and volume was unchanged. These are expected rejections, not successful idle mode changes or backend race-path acceptance. Detailed host reports/screenshots remain private/local and untracked; only this bounded summary is published. Phase30 and the remaining production gates stay open.
 

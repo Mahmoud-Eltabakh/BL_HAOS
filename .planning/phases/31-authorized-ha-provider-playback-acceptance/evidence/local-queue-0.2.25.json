@@ -1,0 +1,59 @@
+{
+  "timestamp": "2026-10-29T01:43:14.596Z",
+  "target": "media_player.logitech_bt_adapter",
+  "playlistName": "BL-HAOS temporary acceptance 2026-10-29T01:43:14.596Z",
+  "steps": [],
+  "cleanup": {
+    "stopped": true,
+    "testPlaylistDeleted": true,
+    "otherRecordsUnchanged": true
+  },
+  "passed": false,
+  "before": {
+    "state": "paused",
+    "volume": 0.08,
+    "queue": null,
+    "shuffle": null,
+    "repeat": null,
+    "physicalSpeaker": true
+  },
+  "createdRecordId": "ad25af98-dfc2-435d-8020-a55e5a4d6e2c",
+  "uiCreationVerified": true,
+  "failure": {
+    "stage": "launch playlist through dashboard",
+    "errorType": "TimeoutError",
+    "ui": {
+      "headings": [
+        "Media Library",
+        "Playback queue",
+        "Your playlists",
+        "Saved Home Assistant playlists"
+      ],
+      "buttons": [
+        "Library",
+        "Browse media",
+        "Speakers",
+        "Play playlist BL-HAOS temporary acceptance 2026-10-29T01:43:14.596Z",
+        "Edit playlist",
+        "Delete playlist",
+        "Create playlist",
+        "Browse media"
+      ],
+      "alertCount": 0
+    }
+  },
+  "after": {
+    "state": "idle",
+    "volume": 0.08,
+    "queue": null,
+    "shuffle": null,
+    "repeat": null,
+    "physicalSpeaker": true
+  },
+  "volumeUnchanged": true,
+  "limitations": [
+    "Repeated local MP3, not a genuine provider playlist",
+    "State observations are not physical audio confirmation or distinct-track audio verification",
+    "No natural track completion, repeat wraparound, expiry, no-queue or hardware soak acceptance"
+  ]
+}
