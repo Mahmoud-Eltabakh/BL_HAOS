@@ -1,6 +1,15 @@
 # Phase 31: Authorized HA & Provider Playback Acceptance
 
-**Status:** blocked pending explicit host authorization
+**Status:** human_needed; scoped host approvals recorded, provider/expiry prerequisites missing
+
+## Current-state correction (2026-10-29)
+
+The host and earlier actions were authorized through explicit chat checkpoints.
+Integration0.2.27/bridge0.2.71 are deployed. Local MP3 audibility, custom queue
+controls and idle/no-queue service gating have partial live evidence.
+Genuine provider-playlist and independent disposable expired-session fixtures
+remain missing; the historical planning-only statements below do not erase
+those approvals or authorize new live actions.
 
 ## Discussion
 

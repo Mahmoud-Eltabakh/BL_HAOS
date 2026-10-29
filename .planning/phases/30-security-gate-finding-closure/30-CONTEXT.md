@@ -1,6 +1,6 @@
 # Phase 30: Security Gate & Finding Closure
 
-**Status:** blocked pending explicit authorization and evidence review
+**Status:** human_needed; scoped approvals recorded, evidence review incomplete
 
 ## Discussion
 

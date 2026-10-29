@@ -6,9 +6,9 @@ current_phase: 30
 current_phase_name: Security Gate & Finding Closure
 status: human_needed
 stopped_at: Completed 38.2-01 locally; Phase 30 remains human_needed
-last_updated: "2026-10-29T04:10:54.988Z"
+last_updated: "2026-10-29T04:26:20.881Z"
 last_activity: 2026-10-29
-last_activity_desc: User authorized0.2.26 release/deploy and one restart, then0.2.27 contrast correction with one additional restart. Both Core checks passed, final bundle hash matched,9 read-only layout/contrast cases passed, dashboards unchanged; no playback/pairing/settings saves.
+last_activity_desc: Autonomous resume reconciled Phase30/31 historical authorization/threshold notes with recorded approvals and current high enforcement. No live actions, config changes, finding closure, commit or deployment; waiting for provider/expiry prerequisites.
 progress:
   total_phases: 7
   completed_phases: 1
@@ -24,14 +24,14 @@ progress:
 See: [PROJECT.md](PROJECT.md) (updated 2026-10-28)
 
 **Core value:** Effortless pairing, high-fidelity audio streaming, and seamless Home Assistant `media_player` playback to any Bluetooth speaker with rock-solid background auto-reconnection, safe degraded-mode behavior, and production-grade operational visibility.
-**Current focus:** Phase38.2 HA-native card polish deployed as integration0.2.27 with bridge0.2.71 unchanged.9 read-only real-HA layout cases passed; primary/navigation contrast18.42/16.47 minimum; dashboards unchanged. Phase30 production evidence remains human_needed.
+**Current focus:** Phase30 human_needed: production threshold high confirmed in current local config; stale authorization-only phase notes reconciled. Genuine provider playlist, real-session leakage and independently attested disposable expired-session prerequisites remain missing. Deployed integration0.2.27/bridge0.2.71 unchanged.
 
 ## Current Position
 
 Phase: 30 (Security Gate & Finding Closure) - HUMAN NEEDED
 Plan: 01 prepared; closure not accepted
 Status: Host actions and deployment were authorized in chat. T-24-15/T-24-16 still need reviewed live evidence; general authorization does not establish acceptance.
-Last activity: 2026-10-29 - User authorized0.2.26 release/deploy and one restart, then0.2.27 contrast correction with one additional restart. Both Core checks passed, final bundle hash matched,9 read-only layout/contrast cases passed, dashboards unchanged; no playback/pairing/settings saves.
+Last activity: 2026-10-29 - Autonomous resume reconciled Phase30/31 historical authorization/threshold notes with recorded approvals and current high enforcement. No live actions, config changes, finding closure, commit or deployment; waiting for provider/expiry prerequisites.
 
 Progress: [█░░░░░░░░░] 14%
 
