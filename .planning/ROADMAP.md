@@ -498,10 +498,28 @@ Plans:
 - [x] 38.1-02-PLAN.md - Remove sidebar panel, docs/migration, integration 0.2.24 (verified and deployed).
 - [ ] 38.1-03-PLAN.md - Authorized Audio dashboard created and actual picker/layout verified; broader live unload, action and rollback acceptance remains pending.
 
+### Phase 38.2: HA-native Card UI Polish (INSERTED)
+
+**Goal**: Refine every card view into a clean, theme-aware Home Assistant dashboard experience without changing supported actions or connection/session boundaries.
+**Depends on**: Phase 38.1 implementation (its broader live acceptance remains open)
+**Requirements**: NUX-08
+**Scope**: User selected clean HA-native styling across Library, Browse, Speakers and Settings. Subsequently approved publication,0.2.26 deployment with one restart, and0.2.27 contrast correction with one additional restart. No playback, pairing or settings mutations were performed.
+**Note**: Manually inserted after `gsd-tools query phase.insert 38` returned "Phase 38 not found" due to the existing multi-milestone parser limitation. Phase30 remains the production acceptance blocker.
+**Success Criteria**:
+  1. HA theme variables drive surfaces, text, controls, focus and statuses in light/dark themes; heavy neumorphic shadows and forced narrow content are removed.
+  2. Library, Browse, Speakers and Settings have consistent hierarchy, spacing and responsive rows without hiding supported actions.
+  3. At375/768/1440 viewport widths and narrow dashboard-card containers, content fits without horizontal overflow, controls retain44px targets, labels/focus/error states remain usable and reduced motion is respected.
+  4. Existing behavior tests, added layout/theme regressions, TypeScript build and packaged bundle parity pass; local screenshots are reviewed without claiming live accessibility acceptance.
+
+**Plans:** 1/1 plans executed
+
+Plans:
+- [x] 38.2-01-PLAN.md — Theme-aware responsive styling and local verification across all card views.
+
 ### Phase 39: v1.2 Verification & Release Gates
 
 **Goal**: v1.2 is verified locally, then accepted live under explicit authorization.
-**Depends on**: Phase 34, Phase 38.1
+**Depends on**: Phase 34, Phase 38.1, Phase 38.2
 **Requirements**: NUX-06
 **Success Criteria** (what must be TRUE):
   1. Bridge, integration, SIL and frontend gates pass in CI.
@@ -519,6 +537,7 @@ Plans:
 | 37. Native Pairing, Speaker & Settings UI | 3/3 | Implemented and deployed; local gates passed; live acceptance pending; `default_codec` has no known playback consumer | 2026-10-28 |
 | 38. Headless Add-on & Ingress UI Retirement | 3/3 | Published/deployed: bridge 0.2.71, integration 0.2.22. Local bridge 366 passed/1 skipped; integration 120, WSL SIL 179, Vitest 76 passed; build/parity passed. Host ingress off, legacy routes 404, native auth 401; full live acceptance pending | 2026-10-28 |
 | 38.1. Dashboard Card & Sidebar Panel Retirement (INSERTED) | 2/3 fully accepted | Integration0.2.24 shipped/deployed. Authorized Audio dashboard created; prior dashboards preserved. Actual picker and card views verified at375/768/1440; broader Plan03 live acceptance remains open | 2026-10-29 |
+| 38.2. HA-native Card UI Polish (INSERTED) | 1/1 | Integration0.2.27 deployed after separate user approvals.9 actual-HA layout cases passed at375/768/1440; primary/navigation contrast18.42/16.47 minimum; dashboards unchanged. Full accessibility/provider/expiry/hardware/rollback acceptance remains open | 2026-10-29 |
 | 39. v1.2 Verification & Release Gates | 0/TBD | Blocked behind Phase 34 and reviewed live acceptance evidence | - |
 
 ## v1.1 Progress

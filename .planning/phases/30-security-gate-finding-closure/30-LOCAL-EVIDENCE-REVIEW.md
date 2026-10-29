@@ -1,5 +1,19 @@
 # Phase 30: Local Security Evidence Review
 
+## Current-state correction (2026-10-29)
+
+The review below is a historical2026-10-28 snapshot. Current read-only local
+config inspection confirms security_block_on=high, security_enforcement=true,
+security_asvs_level=1; the critical-only override described below is no longer
+active. No configuration change was made during this reconciliation.
+
+Scoped live approvals and partial evidence now exist: native401/legacy404,
+local audible MP3, custom queue controls, no-queue feature gating, deployed
+card layout and measured foreground contrast. These observations do not close
+the findings: genuine provider-playlist, real-session leakage, independently
+attested disposable expired-session rejection and full human acceptance remain
+incomplete. Phase30 remains human_needed and no finding status is changed.
+
 **Date:** 2026-10-28
 **Scope:** Local, read-only review of planning artifacts. No live host, provider, session, playback, or hardware action was taken.
 **Outcome:** NOT CLOSED. Phase 30 stays blocked; no finding is closed and no override is changed.
